@@ -1,5 +1,5 @@
 ---
-layout: blog_entry
+layout: default
 title: Blog First
 ---
 First Page Test!
