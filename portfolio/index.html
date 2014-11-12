@@ -1,0 +1,18 @@
+---
+layout: default
+title: Portfolio
+---
+
+<section class = "content" >
+  <h2>Portfolio</h2>
+  <p>Check</p>
+</section>
+<ul clss="entries">
+{% for post in site.posts %}
+<li>
+  <a href="{{ post.url }}">
+  {{ post.title }}
+  </a>
+</li>
+{% endfor %}
+</ul>
