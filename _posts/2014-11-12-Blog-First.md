@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Blog First
+title: Hello, Blog
 ---
-First Page Test!
-Comming soon...
+<p>First Page Test!</p>
+<p>Comming soon...</p>
+<p>{{ page.date | date_to_string }}</p>
