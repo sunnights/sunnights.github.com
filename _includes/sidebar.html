@@ -17,24 +17,22 @@
 <div class='navigator text-center'>
 	<a href='/index.html' title='首页'>&#xf012b;</a>
 	<a href='/rss.xml' title='RSS订阅'>&#xf01bc;</a>
-	<!-- <a href='/me.html' title='关于我'>&#xf00cc;</a> -->
+	<a href='/me.html' title='关于我'>&#xf00cc;</a>
 	<a href='/series.html' title='系列文章'>&#xf0161;</a>
 </div>
 
-<!-- <div class='category'>
-	<ul>
-		{% for cat in site.categories %}
-			<li><a href="{{ site.BASE_PATH }}/category.html#{{ cat[0] }}">{{ cat[0] }}<span>{{ cat[1].size }}</span></a></li>
-		{% endfor %}
-	</ul>
+<div class="sidebar-nav text-center">
+</ul>
+    <a class="sidebar-nav-item active" href="/"><i class="fa fa-home fa-fw"></i>&nbsp; 首页 · Home</a>
+    <a class="sidebar-nav-item" href="/about.html"><i class="fa fa-book fa-fw"></i>&nbsp; 关于 · About</a>
+    <a class="sidebar-nav-item" href="/archive.html"><i class="fa fa-book fa-fw"></i>&nbsp; 归档 · Archive</a>
+    <a class="sidebar-nav-item" href="/categories.html"><i class="fa fa-book fa-fw"></i>&nbsp; 分类 · Categories</a>
+    <a class="sidebar-nav-item" href="/links.html"><i class="fa fa-book fa-fw"></i>&nbsp; 链接 · Links</a>
+    <a class="sidebar-nav-item" href="/search.html"><i class="fa fa-book fa-fw"></i>&nbsp; 搜索 · Search</a>
+    <a class="sidebar-nav-item" href="/tags.html"><i class="fa fa-book fa-fw"></i>&nbsp; 标签 · Tags</a>
 </div>
 
-<div class='tags'>
-	{% for tag in site.tags %}
-		<a href="{{ site.BASE_PATH }}/tag.html#{{ tag[0] }}" style='font-size:{{ tag[1].size | times: 2 | plus: 15  }}px;'>{{ tag[0] }}</a>
-	{% endfor %}
-</div> -->
-
 <div class='foot text-center'>
-	<p>Powered by</p><p><a href='https://github.com/'>Github</a> <a href='http://jekyllrb.com/'>jekyll</a> <a href="http://www.bootcss.com/">bootstrap</a> <a href="http://typo.sofi.sh/">typo.css</a> <a href="http://jekyllthemes.org/themes/dbyll/">Dbyll</a> <a href="http://disqus.com" class="dsq-brlink">Disqus</a></p>
+    <span><i class="fa fa-info-circle"></i>&nbsp; Ver. 2014.11.17</span>
+	<!-- <p>Powered by</p><p><a href='https://github.com/'>Github</a> <a href='http://jekyllrb.com/'>jekyll</a> <a href="http://www.bootcss.com/">bootstrap</a> <a href="http://disqus.com" class="dsq-brlink">Disqus</a></p> -->
 </div>
