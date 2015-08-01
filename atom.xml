@@ -52,42 +52,6 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Leetcode刷题记录 ]]></title>
-    <link href="http://jakezy.com/2015/08/01/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-10%20-%20%E5%89%AF%E6%9C%AC/"/>
-    <id>http://jakezy.com/2015/08/01/Leetcode刷题记录-10 - 副本/</id>
-    <published>2015-08-01T03:10:39.000Z</published>
-    <updated>2015-08-01T03:11:10.000Z</updated>
-    <content type="html"><![CDATA[<ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-</ul>
-<a id="more"></a>
-<p><hr></p>
-<h2 id=""><a href=""></a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="-1"><a href=""></a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="-2"><a href=""></a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    <summary type="html">
-    <![CDATA[<ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-</ul>]]>
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
-    
-      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Leetcode刷题记录 9]]></title>
     <link href="http://jakezy.com/2015/07/30/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-9/"/>
     <id>http://jakezy.com/2015/07/30/Leetcode刷题记录-9/</id>
@@ -796,6 +760,38 @@ group1/M00/<span class="number">00</span>/<span class="number">00</span>/wKgBM1N
 ]]></content>
     <summary type="html">
     <![CDATA[<p>第三周任务（3.23-3.29）：<br>]]>
+    
+    </summary>
+    
+      <category term="life" scheme="http://jakezy.com/tags/life/"/>
+    
+      <category term="生活记录" scheme="http://jakezy.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[第二周记录]]></title>
+    <link href="http://jakezy.com/2015/03/15/2nd-week/"/>
+    <id>http://jakezy.com/2015/03/15/2nd-week/</id>
+    <published>2015-03-15T14:08:04.000Z</published>
+    <updated>2015-03-31T05:32:28.730Z</updated>
+    <content type="html"><![CDATA[<p>第二周任务（3.16-3.22）：<br><a id="more"></a></p>
+<ul>
+<li><del><a href="http://book.douban.com/subject/6709809/" target="_blank" rel="external">暗时间</a></del></li>
+<li><a href="http://book.douban.com/subject/1230413/" target="_blank" rel="external">深入理解计算机系统</a></li>
+<li>开始阅读一个开源项目</li>
+<li><del>全面复习<a href="http://djangobook.py3k.cn/2.0/" target="_blank" rel="external">Django</a></del>，为下周入职准备</li>
+<li>SpringMVC</li>
+<li>继续读书笔记……</li>
+</ul>
+<hr>
+<p>第二周小结：</p>
+<p>这周满满一周的课，很累…… 但还是抽时间看完了刘未鹏的《暗时间》，很不错的一本书，关于思考，关于心理学，很多思想都很有感触，而他用语言表述了出来，这些东西也会一直影响我。</p>
+<p>周六去参加了Python的一个讲座，原豆瓣技术总监清风大哥分享的内容让我对这个语言有了更全面的认识，也让我对以后的发展有了更多思考。对于我的情况，Python只能作为辅助工具，不能用来养家糊口……</p>
+<p>接下来需要加强练习，抓紧有效时间来学习，找时间研究下最近很火的docker，C++方面也要抓紧时间看完一个不错的开源项目，而对于本学期的项目实训，还要尽快学会SpringMVC，fighting！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>第二周任务（3.16-3.22）：<br>]]>
     
     </summary>
     
