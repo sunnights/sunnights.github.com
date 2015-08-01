@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-07-30T17:03:40.000Z</updated>
+  <updated>2015-07-30T17:03:40.509Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jakezy.com/2015/07/30/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-9/"/>
     <id>http://jakezy.com/2015/07/30/Leetcode刷题记录-9/</id>
     <published>2015-07-30T08:15:58.000Z</published>
-    <updated>2015-07-30T17:03:40.000Z</updated>
+    <updated>2015-07-30T17:03:40.509Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/delete-node-in-a-linked-list/" target="_blank" rel="external">Delete Node in a Linked List</a></li>
 <li><a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank" rel="external">Palindrome Linked List</a></li>
@@ -66,7 +66,7 @@
     <link href="http://jakezy.com/2015/07/29/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-8/"/>
     <id>http://jakezy.com/2015/07/29/Leetcode刷题记录-8/</id>
     <published>2015-07-28T17:54:58.000Z</published>
-    <updated>2015-07-30T17:00:16.000Z</updated>
+    <updated>2015-07-30T17:00:16.450Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/partition-list/" target="_blank" rel="external">Partition List</a></li>
 <li><a href="https://leetcode.com/problems/reorder-list/" target="_blank" rel="external">Reorder List</a></li>
@@ -108,7 +108,7 @@
     <link href="http://jakezy.com/2015/07/28/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-7/"/>
     <id>http://jakezy.com/2015/07/28/Leetcode刷题记录-7/</id>
     <published>2015-07-28T04:51:53.000Z</published>
-    <updated>2015-07-29T17:23:46.000Z</updated>
+    <updated>2015-07-29T17:23:46.978Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/palindrome-partitioning-ii/" target="_blank" rel="external">Palindrome Partitioning II</a></li>
 <li><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/" target="_blank" rel="external">Remove Duplicates from Sorted List</a></li>
@@ -148,7 +148,7 @@
     <link href="http://jakezy.com/2015/07/27/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-6/"/>
     <id>http://jakezy.com/2015/07/27/Leetcode刷题记录-6/</id>
     <published>2015-07-27T04:46:51.000Z</published>
-    <updated>2015-07-29T07:32:07.000Z</updated>
+    <updated>2015-07-29T07:32:07.302Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="external">Minimum Path Sum</a></li>
 <li><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="external">Climbing Stairs</a></li>
@@ -196,7 +196,7 @@
     <link href="http://jakezy.com/2015/07/26/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-5/"/>
     <id>http://jakezy.com/2015/07/26/Leetcode刷题记录-5/</id>
     <published>2015-07-26T10:03:04.000Z</published>
-    <updated>2015-07-29T17:51:53.000Z</updated>
+    <updated>2015-07-29T17:51:53.637Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/triangle/" target="_blank" rel="external">Triangle</a></li>
 <li><a href="https://leetcode.com/problems/unique-paths/" target="_blank" rel="external">Unique Paths</a></li>
@@ -246,7 +246,7 @@
     <link href="http://jakezy.com/2015/07/25/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-4/"/>
     <id>http://jakezy.com/2015/07/25/Leetcode刷题记录-4/</id>
     <published>2015-07-25T11:28:45.000Z</published>
-    <updated>2015-07-29T17:51:24.000Z</updated>
+    <updated>2015-07-29T17:51:24.763Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="external">Reverse Linked List</a></li>
 <li><a href="https://leetcode.com/problems/reverse-linked-list-ii/" target="_blank" rel="external">Reverse Linked List II</a></li>
@@ -294,7 +294,7 @@
     <link href="http://jakezy.com/2015/07/24/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-3/"/>
     <id>http://jakezy.com/2015/07/24/Leetcode刷题记录-3/</id>
     <published>2015-07-24T07:17:25.000Z</published>
-    <updated>2015-07-29T17:51:38.000Z</updated>
+    <updated>2015-07-29T17:51:38.434Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="external">Remove Nth Node From End of List</a></li>
 <li><a href="https://leetcode.com/problems/swap-nodes-in-pairs/" target="_blank" rel="external">Swap Nodes in Pairs</a></li>
@@ -340,7 +340,7 @@
     <link href="http://jakezy.com/2015/07/22/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-2/"/>
     <id>http://jakezy.com/2015/07/22/Leetcode刷题记录-2/</id>
     <published>2015-07-22T07:48:16.000Z</published>
-    <updated>2015-07-29T07:28:14.000Z</updated>
+    <updated>2015-07-29T07:28:14.746Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="external">Longest Substring Without Repeating Characters</a></li>
 <li><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="external">Valid Parentheses</a></li>
@@ -389,7 +389,7 @@
     <link href="http://jakezy.com/2015/07/21/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-1/"/>
     <id>http://jakezy.com/2015/07/21/Leetcode刷题记录-1/</id>
     <published>2015-07-21T15:36:16.000Z</published>
-    <updated>2015-07-29T07:28:09.000Z</updated>
+    <updated>2015-07-29T07:28:09.683Z</updated>
     <content type="html"><![CDATA[<p>每日三道题：</p>
 <ul>
 <li><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="external">Two Sum</a></li>
@@ -438,7 +438,7 @@
     <link href="http://jakezy.com/2015/07/04/POI%E8%AE%BE%E7%BD%AEExcel%E5%8D%95%E5%85%83%E6%A0%BC%E6%A0%BC%E5%BC%8F/"/>
     <id>http://jakezy.com/2015/07/04/POI设置Excel单元格格式/</id>
     <published>2015-07-04T03:40:25.000Z</published>
-    <updated>2015-07-06T05:01:30.000Z</updated>
+    <updated>2015-07-06T05:01:30.438Z</updated>
     <content type="html"><![CDATA[<p>最近用POI导出Excel时，碰到一些问题，记录下：</p>
 <ul>
 <li>数字格式</li>
@@ -483,7 +483,7 @@
     <link href="http://jakezy.com/2015/06/09/Java-problem-record/"/>
     <id>http://jakezy.com/2015/06/09/Java-problem-record/</id>
     <published>2015-06-09T15:15:37.000Z</published>
-    <updated>2015-06-09T15:25:25.000Z</updated>
+    <updated>2015-06-09T15:25:25.575Z</updated>
     <content type="html"><![CDATA[<p>问题：我的Eclipse环境用的JDK 8，项目是JDK 7，在jetty中启动项目时报错：INFO: No Spring WebApplicationInitializer types detected<br><a id="more"></a><br>解决：确定项目编译时的jdk版本，更改Eclipse编译用的jdk版本即可</p>
 <p>参考<a href="http://stackoverflow.com/questions/22938689/info-no-spring-webapplicationinitializer-types-detected-on-classpath" target="_blank" rel="external">http://stackoverflow.com/questions/22938689/info-no-spring-webapplicationinitializer-types-detected-on-classpath</a></p>
 <blockquote>
@@ -508,7 +508,7 @@
     <link href="http://jakezy.com/2015/06/09/Java-interview-notes/"/>
     <id>http://jakezy.com/2015/06/09/Java-interview-notes/</id>
     <published>2015-06-09T15:06:36.000Z</published>
-    <updated>2015-06-12T08:37:46.000Z</updated>
+    <updated>2015-06-12T08:37:46.315Z</updated>
     <content type="html"><![CDATA[<ol>
 <li>String, StringBuffer, StringBuilder使用场景，线程安全？</li>
 <li>手写代码：快排</li>
@@ -543,7 +543,7 @@
     <link href="http://jakezy.com/2015/06/01/14th-week/"/>
     <id>http://jakezy.com/2015/06/01/14th-week/</id>
     <published>2015-06-01T12:32:39.000Z</published>
-    <updated>2015-06-09T15:26:29.000Z</updated>
+    <updated>2015-06-09T15:26:29.068Z</updated>
     <content type="html"><![CDATA[<p>近期阅读<br><a id="more"></a></p>
 <ul>
 <li><a href="http://ericliang.info/after-the-collapse/" target="_blank" rel="external">故障之后</a></li>
@@ -571,7 +571,7 @@
     <link href="http://jakezy.com/2015/05/21/11th-week/"/>
     <id>http://jakezy.com/2015/05/21/11th-week/</id>
     <published>2015-05-21T10:43:54.000Z</published>
-    <updated>2015-05-22T04:48:24.000Z</updated>
+    <updated>2015-05-22T04:48:24.351Z</updated>
     <content type="html"><![CDATA[<p>本周阅读<br><a id="more"></a></p>
 <ul>
 <li><a href="http://lucida.me/blog/developer-reading-list/" target="_blank" rel="external">程序员必读书单</a></li>
@@ -606,7 +606,7 @@
     <link href="http://jakezy.com/2015/04/20/FastDFS/"/>
     <id>http://jakezy.com/2015/04/20/FastDFS/</id>
     <published>2015-04-20T10:18:54.000Z</published>
-    <updated>2015-05-22T11:25:39.000Z</updated>
+    <updated>2015-05-22T11:25:39.421Z</updated>
     <content type="html"><![CDATA[<h2 id="安装libevent">安装libevent</h2><p>1.下载libevent：<br>wget <a href="https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz" target="_blank" rel="external">https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz</a><br>2.解压libevent：<br>tar -zxf libevent-2.0.21-stable.tar.gz<br>3.进入解压目录：<br>cd libevent-2.0.21-stable<br>4.指定安装目录：<br>./configure<br>5.安装libevent：<br>make<br>make install</p>
 <h2 id="安装libfastcommon">安装libfastcommon</h2><p>#step 1. download libfastcommon source package from github and install it,<br>   the github address:<br>   <a href="https://github.com/happyfish100/libfastcommon.git" target="_blank" rel="external">https://github.com/happyfish100/libfastcommon.git</a><br>unzip libfastcommon.zip<br>cd libfastcommon-master<br>./make.sh<br>./make.sh install</p>
 <p>rm -f /usr/local/lib/libfastcommon.so<br>rm -f /usr/local/lib/libfdfsclient.so<br>rm -f /usr/lib/libfastcommon.so<br>rm -f /usr/lib/libfdfsclient.so<br>ln -s /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.so<br>ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so<br>ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so<br>ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so </p>
@@ -662,7 +662,7 @@ group1/M00/<span class="number">00</span>/<span class="number">00</span>/wKgBM1N
     <link href="http://jakezy.com/2015/04/15/6th-week/"/>
     <id>http://jakezy.com/2015/04/15/6th-week/</id>
     <published>2015-04-15T06:45:41.000Z</published>
-    <updated>2015-04-15T19:07:52.000Z</updated>
+    <updated>2015-04-15T19:07:52.334Z</updated>
     <content type="html"><![CDATA[<p><a href="http://timyang.net/misc/choose-difficulty/" target="_blank" rel="external">选择学习目标的困难与焦虑</a>这篇文章描述的正是我一直以来的状态…<br><a id="more"></a></p>
 <p>这几天看<a href="http://book.douban.com/subject/24335672/" target="_blank" rel="external">淘宝技术这十年</a>，牛P列传里感受正祥老师的风格：朴素的只想把一件事情做好，把做事、做成事作为主要目标。深受感触，尽以这次实训为例，尽快改变自己当下的状态。</p>
 ]]></content>
@@ -682,7 +682,7 @@ group1/M00/<span class="number">00</span>/<span class="number">00</span>/wKgBM1N
     <link href="http://jakezy.com/2015/03/31/4th-week/"/>
     <id>http://jakezy.com/2015/03/31/4th-week/</id>
     <published>2015-03-31T05:18:29.000Z</published>
-    <updated>2015-03-31T05:29:21.000Z</updated>
+    <updated>2015-03-31T05:29:21.971Z</updated>
     <content type="html"><![CDATA[<p>第四周任务（3.30-4.5）：<br><a id="more"></a></p>
 <ul>
 <li>根据业务确定项目实训具体架构</li>
@@ -708,7 +708,7 @@ group1/M00/<span class="number">00</span>/<span class="number">00</span>/wKgBM1N
     <link href="http://jakezy.com/2015/03/22/3rd-week/"/>
     <id>http://jakezy.com/2015/03/22/3rd-week/</id>
     <published>2015-03-22T06:09:02.000Z</published>
-    <updated>2015-03-31T05:32:24.000Z</updated>
+    <updated>2015-03-31T05:32:24.846Z</updated>
     <content type="html"><![CDATA[<p>第三周任务（3.23-3.29）：<br><a id="more"></a></p>
 <ul>
 <li>SpringMVC</li>
@@ -738,7 +738,7 @@ group1/M00/<span class="number">00</span>/<span class="number">00</span>/wKgBM1N
     <link href="http://jakezy.com/2015/03/15/2nd-week/"/>
     <id>http://jakezy.com/2015/03/15/2nd-week/</id>
     <published>2015-03-15T14:08:04.000Z</published>
-    <updated>2015-03-31T05:32:28.000Z</updated>
+    <updated>2015-03-31T05:32:28.730Z</updated>
     <content type="html"><![CDATA[<p>第二周任务（3.16-3.22）：<br><a id="more"></a></p>
 <ul>
 <li><del><a href="http://book.douban.com/subject/6709809/" target="_blank" rel="external">暗时间</a></del></li>
@@ -770,7 +770,7 @@ group1/M00/<span class="number">00</span>/<span class="number">00</span>/wKgBM1N
     <link href="http://jakezy.com/2015/03/13/Interview-notes-2/"/>
     <id>http://jakezy.com/2015/03/13/Interview-notes-2/</id>
     <published>2015-03-13T04:39:53.000Z</published>
-    <updated>2015-03-15T15:14:15.000Z</updated>
+    <updated>2015-03-15T15:14:15.316Z</updated>
     <content type="html"><![CDATA[<p>上午去一家创业公司面试，主要针对简历上写的东西问问题<br><a id="more"></a></p>
 <ol>
 <li>常见设计模式，装饰者模式</li>
