@@ -43,9 +43,10 @@ CollectionCollection接口：单对象存储的集合对象
 
 List允许元素重复
 ArrayList实现方式：数组方式存放对象
+
 创建：ArrayList(int)  实例化一个大小为intitailCapacity（默认为10）的Object数组，并赋值给elementData
 插入对象：add(E)
-ArrayList已有元素数量+1，赋值给">
+ArrayList已有元素数量+1，赋值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="集合包">
 <meta property="og:url" content="http://jakezy.com/2015/08/05/集合包/index.html">
@@ -56,11 +57,12 @@ CollectionCollection接口：单对象存储的集合对象
 
 List允许元素重复
 ArrayList实现方式：数组方式存放对象
+
 创建：ArrayList(int)  实例化一个大小为intitailCapacity（默认为10）的Object数组，并赋值给elementData
 插入对象：add(E)
-ArrayList已有元素数量+1，赋值给">
+ArrayList已有元素数量+1，赋值">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/965a04dfgw1euqy0ir7gyj20i806y3zg.jpg">
-<meta property="og:updated_time" content="2015-08-04T16:40:11.000Z">
+<meta property="og:updated_time" content="2015-08-04T16:43:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="集合包">
 <meta name="twitter:description" content="JDK类库：集合包（java.util）
@@ -69,9 +71,10 @@ CollectionCollection接口：单对象存储的集合对象
 
 List允许元素重复
 ArrayList实现方式：数组方式存放对象
+
 创建：ArrayList(int)  实例化一个大小为intitailCapacity（默认为10）的Object数组，并赋值给elementData
 插入对象：add(E)
-ArrayList已有元素数量+1，赋值给">
+ArrayList已有元素数量+1，赋值">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -280,7 +283,8 @@ ArrayList已有元素数量+1，赋值给">
 <h2 id="Collection"><strong>Collection</strong></h2><p>Collection接口：单对象存储的集合对象</p>
 <hr>
 <h3 id="List"><strong>List</strong></h3><p>允许元素重复</p>
-<h4 id="ArrayList"><strong>ArrayList</strong></h4><h5 id="实现方式：数组方式存放对象">实现方式：数组方式存放对象</h5><ul>
+<h4 id="ArrayList"><strong>ArrayList</strong></h4><p>实现方式：数组方式存放对象</p>
+<ul>
 <li>创建：ArrayList(int)<br>  实例化一个大小为intitailCapacity（默认为10）的Object数组，并赋值给elementData</li>
 <li>插入对象：add(E)<ul>
 <li>ArrayList已有元素数量+1，赋值给minCapacity</li>
@@ -295,13 +299,15 @@ ArrayList已有元素数量+1，赋值给">
 <li>遍历对象：iterator()</li>
 <li>判断对象是否存在：contains(E)</li>
 </ul>
-<h5 id="注意要点：">注意要点：</h5><ul>
+<p>注意要点：</p>
+<ul>
 <li>ArrayList基于数组实现，无容量限制</li>
 <li>插入元素时可能要扩容，删除时不会减少容量（可调用trimToSize()缩小容量）</li>
 <li>查找元素时要遍历数组，对于非null元素采用equals方式查找</li>
 <li>ArrayList是非线程安全的</li>
 </ul>
-<h4 id="LinkedList"><strong>LinkedList</strong></h4><h5 id="实现方式：基于双向链表，Entry类代表集合中的元素">实现方式：基于双向链表，Entry类代表集合中的元素</h5><ul>
+<h4 id="LinkedList"><strong>LinkedList</strong></h4><p>实现方式：基于双向链表，Entry类代表集合中的元素</p>
+<ul>
 <li>创建：LinkedList()</li>
 <li>插入对象：add(E)<ul>
 <li>创建新的Entry对象，修改相邻两个元素的属性</li>
@@ -316,13 +322,15 @@ ArrayList已有元素数量+1，赋值给">
 <li>遍历对象：iterator()</li>
 <li>判断对象是否存在：contains(E)</li>
 </ul>
-<h5 id="注意要点：-1">注意要点：</h5><ul>
+<p>注意要点：</p>
+<ul>
 <li>LinkedList基于双向链表实现</li>
 <li>插入元素时要创建新的Entry对象，并修改前后元素的引用</li>
 <li>查找删除元素时要遍历链表</li>
 <li>LinkedList是非线程安全的</li>
 </ul>
-<h4 id="Vector"><strong>Vector</strong></h4><h5 id="实现方式：Vector和ArrayList一样，基于Object数组实现">实现方式：Vector和ArrayList一样，基于Object数组实现</h5><ul>
+<h4 id="Vector"><strong>Vector</strong></h4><p>实现方式：Vector和ArrayList一样，基于Object数组实现</p>
+<ul>
 <li>创建：Vector()<ul>
 <li>默认创建大小为10的Object数组，将capacityIncrement设置为0</li>
 </ul>
@@ -354,11 +362,13 @@ ArrayList已有元素数量+1，赋值给">
 </ul>
 </li>
 </ul>
-<h5 id="注意要点：-2">注意要点：</h5><ul>
+<p>注意要点：</p>
+<ul>
 <li>Vector是基于Synchronized实现的线程安全的ArrayList</li>
 <li>容量扩充机制和ArrayList不同，可通过传入capacityIncrement控制容量扩充</li>
 </ul>
-<h4 id="Stack"><strong>Stack</strong></h4><h5 id="实现方式：Stack继承自Vector，在Vector基础上实现了LIFO的弹出及压入操作">实现方式：Stack继承自Vector，在Vector基础上实现了LIFO的弹出及压入操作</h5><ul>
+<h4 id="Stack"><strong>Stack</strong></h4><p>实现方式：Stack继承自Vector，在Vector基础上实现了LIFO的弹出及压入操作</p>
+<ul>
 <li>push：<ul>
 <li>调用Vector中的addElement</li>
 </ul>
@@ -372,12 +382,14 @@ ArrayList已有元素数量+1，赋值给">
 </ul>
 </li>
 </ul>
-<h5 id="注意要点：-3">注意要点：</h5><ul>
+<p>注意要点：</p>
+<ul>
 <li>Stack基于Vector实现，支持LIFO（后进先出）</li>
 </ul>
 <hr>
 <h3 id="Set"><strong>Set</strong></h3><p>不允许元素重复<br>基于HashMap实现</p>
-<h4 id="HashSet"><strong>HashSet</strong></h4><h5 id="实现方式：Set接口的实现，基于HashMap实现">实现方式：Set接口的实现，基于HashMap实现</h5><ul>
+<h4 id="HashSet"><strong>HashSet</strong></h4><p>实现方式：Set接口的实现，基于HashMap实现</p>
+<ul>
 <li>创建：HashSet(int)<ul>
 <li>创建一个HashMap对象</li>
 </ul>
@@ -400,11 +412,13 @@ ArrayList已有元素数量+1，赋值给">
 </ul>
 </li>
 </ul>
-<h5 id="注意要点：-4">注意要点：</h5><ul>
+<p>注意要点：</p>
+<ul>
 <li>HashSet基于HashMap实现，无容量限制</li>
 <li>HashSet是非线程安全的</li>
 </ul>
-<h4 id="TreeSet"><strong>TreeSet</strong></h4><h5 id="实现方式：TreeSet基于TreeMap实现，TreeSet和HashSet主要不同在于TreeSet对于排序的支持（如传入Comparator实现、descendingSet及descendingIterator等）">实现方式：TreeSet基于TreeMap实现，TreeSet和HashSet主要不同在于TreeSet对于排序的支持（如传入Comparator实现、descendingSet及descendingIterator等）</h5><ul>
+<h4 id="TreeSet"><strong>TreeSet</strong></h4><p>实现方式：TreeSet基于TreeMap实现，TreeSet和HashSet主要不同在于TreeSet对于排序的支持（如传入Comparator实现、descendingSet及descendingIterator等）</p>
+<ul>
 <li>创建：TreeSet(int)<ul>
 <li>创建一个TreeMap对象</li>
 </ul>
@@ -423,14 +437,16 @@ ArrayList已有元素数量+1，赋值给">
 </ul>
 </li>
 </ul>
-<h5 id="注意要点：-5">注意要点：</h5><ul>
+<p>注意要点：</p>
+<ul>
 <li>TreeSet基于TreeMap实现，支持排序</li>
 <li>TreeSet是非线程安全的</li>
 </ul>
 <hr>
 <h2 id="Map"><strong>Map</strong></h2><p>Map接口：key-value的集合对象</p>
 <hr>
-<h4 id="HashMap"><strong>HashMap</strong></h4><h5 id="实现方式：">实现方式：</h5><ul>
+<h4 id="HashMap"><strong>HashMap</strong></h4><p>实现方式：</p>
+<ul>
 <li>创建：HashMap()<ul>
 <li>loadFactor=0.75，threshold=12，创建大小为16的Entry对象数组</li>
 <li>若传入初始容量值initialCapacity，则capacity大小为大于initialCapacity的2的倍数</li>
@@ -480,14 +496,16 @@ ArrayList已有元素数量+1，赋值给">
 </ul>
 </li>
 </ul>
-<h5 id="注意要点：-6">注意要点：</h5><ul>
+<p>注意要点：</p>
+<ul>
 <li>HashMap采用数组方式存储key-value构成的Entry对象，无容量限制</li>
 <li>HashMap基于key hash寻找Entry对象存放到数组的位置，hash冲突采用链表的方式解决</li>
 <li>插入元素时可能会扩大数组容量，此时需要重新计算hash并复制对象到新的数组</li>
 <li>HashMap是非线程安全的，并发场景中可能在执行get时进入死循环，将CPU消耗到100%</li>
 <li>并发场景中推荐使用并发包中的ConcurrentHashMap</li>
 </ul>
-<h4 id="TreeMap"><strong>TreeMap</strong></h4><h5 id="实现方式：支持排序的Map实现">实现方式：支持排序的Map实现</h5><ul>
+<h4 id="TreeMap"><strong>TreeMap</strong></h4><p>实现方式：支持排序的Map实现</p>
+<ul>
 <li>创建：TreeMap()<ul>
 <li>将comparator置为null，也可使用带Comparator参数的构造器</li>
 </ul>
@@ -524,7 +542,8 @@ ArrayList已有元素数量+1，赋值给">
 </ul>
 </li>
 </ul>
-<h5 id="注意要点：-7">注意要点：</h5><ul>
+<p>注意要点：</p>
+<ul>
 <li>TreeMap基于红黑树实现，无容量限制</li>
 <li>TreeMap是非线程安全的</li>
 </ul>
@@ -715,7 +734,7 @@ ArrayList已有元素数量+1，赋值给">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK类库：集合包（java-util）"><span class="nav-number">1.</span> <span class="nav-text">JDK类库：集合包（java.util）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">2.</span> <span class="nav-text">Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">2.1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList"><span class="nav-number">2.1.1.</span> <span class="nav-text">ArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式：数组方式存放对象"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">实现方式：数组方式存放对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意要点："><span class="nav-number">2.1.1.2.</span> <span class="nav-text">注意要点：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList"><span class="nav-number">2.1.2.</span> <span class="nav-text">LinkedList</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式：基于双向链表，Entry类代表集合中的元素"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">实现方式：基于双向链表，Entry类代表集合中的元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意要点：-1"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">注意要点：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector"><span class="nav-number">2.1.3.</span> <span class="nav-text">Vector</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式：Vector和ArrayList一样，基于Object数组实现"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">实现方式：Vector和ArrayList一样，基于Object数组实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意要点：-2"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">注意要点：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stack"><span class="nav-number">2.1.4.</span> <span class="nav-text">Stack</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式：Stack继承自Vector，在Vector基础上实现了LIFO的弹出及压入操作"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">实现方式：Stack继承自Vector，在Vector基础上实现了LIFO的弹出及压入操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意要点：-3"><span class="nav-number">2.1.4.2.</span> <span class="nav-text">注意要点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">2.2.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashSet"><span class="nav-number">2.2.1.</span> <span class="nav-text">HashSet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式：Set接口的实现，基于HashMap实现"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">实现方式：Set接口的实现，基于HashMap实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意要点：-4"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">注意要点：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeSet"><span class="nav-number">2.2.2.</span> <span class="nav-text">TreeSet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式：TreeSet基于TreeMap实现，TreeSet和HashSet主要不同在于TreeSet对于排序的支持（如传入Comparator实现、descendingSet及descendingIterator等）"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">实现方式：TreeSet基于TreeMap实现，TreeSet和HashSet主要不同在于TreeSet对于排序的支持（如传入Comparator实现、descendingSet及descendingIterator等）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意要点：-5"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">注意要点：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap"><span class="nav-number">3.0.1.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式："><span class="nav-number">3.0.1.1.</span> <span class="nav-text">实现方式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意要点：-6"><span class="nav-number">3.0.1.2.</span> <span class="nav-text">注意要点：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeMap"><span class="nav-number">3.0.2.</span> <span class="nav-text">TreeMap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式：支持排序的Map实现"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">实现方式：支持排序的Map实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意要点：-7"><span class="nav-number">3.0.2.2.</span> <span class="nav-text">注意要点：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK类库：集合包（java-util）"><span class="nav-number">1.</span> <span class="nav-text">JDK类库：集合包（java.util）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">2.</span> <span class="nav-text">Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">2.1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList"><span class="nav-number">2.1.1.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList"><span class="nav-number">2.1.2.</span> <span class="nav-text">LinkedList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector"><span class="nav-number">2.1.3.</span> <span class="nav-text">Vector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stack"><span class="nav-number">2.1.4.</span> <span class="nav-text">Stack</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">2.2.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashSet"><span class="nav-number">2.2.1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeSet"><span class="nav-number">2.2.2.</span> <span class="nav-text">TreeSet</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap"><span class="nav-number">3.0.1.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeMap"><span class="nav-number">3.0.2.</span> <span class="nav-text">TreeMap</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
