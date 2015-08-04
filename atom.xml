@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-04T16:21:57.000Z</updated>
+  <updated>2015-08-04T16:28:58.000Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jakezy.com/2015/08/05/%E9%9B%86%E5%90%88%E5%8C%85/"/>
     <id>http://jakezy.com/2015/08/05/集合包/</id>
     <published>2015-08-04T16:21:57.000Z</published>
-    <updated>2015-08-04T16:21:57.000Z</updated>
+    <updated>2015-08-04T16:28:58.000Z</updated>
     <content type="html"><![CDATA[<h1 id="JDK类库：集合包（java-util）"><strong>JDK类库：集合包（java.util）</strong></h1><p><img src="http://ww2.sinaimg.cn/large/965a04dfgw1euqy0ir7gyj20i806y3zg.jpg" alt="集合包"></p>
 <hr>
 <h2 id="Collection"><strong>Collection</strong></h2><p>Collection接口：单对象存储的集合对象</p>
@@ -28,7 +28,14 @@
 <h3 id="List"><strong>List</strong></h3><p>允许元素重复</p>
 <h4 id="ArrayList"><strong>ArrayList</strong></h4><h5 id="实现方式：数组方式存放对象">实现方式：数组方式存放对象</h5><ul>
 <li>创建：ArrayList(int)<br>  实例化一个大小为intitailCapacity（默认为10）的Object数组，并赋值给elementData</li>
-<li>插入对象：add(E)<br>  ArrayList已有元素数量+1，赋值给minCapacity<br>  若minCapacity&gt;Object.length，则将Object赋给一个数组对象，产生一个新的数组容量值（大小为当前Object.length*1.5+1）<br>  若新的Object.length仍小于minCapacity，则以minCapacity作为新容量值<br>  调用Arrays.copyOf生成新的数组对象，若想调整容量的增长策略，可继承ArrayList并覆盖ensureCapacity方法<br>  Arrays.copyOf实现方法：（未完。。。）</li>
+<li>插入对象：add(E)<ul>
+<li>ArrayList已有元素数量+1，赋值给minCapacity</li>
+<li>若minCapacity&gt;Object.length，则将Object赋给一个数组对象，产生一个新的数组容量值（大小为当前Object.length*1.5+1）</li>
+<li>若新的Object.length仍小于minCapacity，则以minCapacity作为新容量值</li>
+<li>调用Arrays.copyOf生成新的数组对象，若想调整容量的增长策略，可继承ArrayList并覆盖ensureCapacity方法</li>
+<li>Arrays.copyOf实现方法：（未完。。。）</li>
+</ul>
+</li>
 <li>删除对象：remove(E)</li>
 <li>获取单个对象：get(int)</li>
 <li>遍历对象：iterator()</li>
