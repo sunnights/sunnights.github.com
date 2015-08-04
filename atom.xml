@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-04T15:14:56.000Z</updated>
+  <updated>2015-08-04T16:10:36.000Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[JDK]]></title>
+    <title><![CDATA[JDK类库]]></title>
     <link href="http://jakezy.com/2015/08/04/JDK%E7%B1%BB%E5%BA%93/"/>
     <id>http://jakezy.com/2015/08/04/JDK类库/</id>
     <published>2015-08-04T15:14:56.000Z</published>
-    <updated>2015-08-04T15:14:56.000Z</updated>
+    <updated>2015-08-04T16:10:36.000Z</updated>
     <content type="html"><![CDATA[<h1 id="JDK类库"><strong>JDK类库</strong></h1><p><img src="http://ww1.sinaimg.cn/large/965a04dfgw1euqz5bkuvrj20ix0ga41f.jpg" alt="JDK类库"></p>
 <hr>
 <h2 id="集合包"><strong>集合包</strong></h2><p>随着元素数量的上升（1000以上），List实现方式查找和删除元素时性能下降较严重（查找时遍历整个集合），Set、Map基本不受元素数量影响</p>
