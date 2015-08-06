@@ -307,7 +307,7 @@
     <link href="http://jakezy.com/2015/08/04/JDK%E7%B1%BB%E5%BA%93/"/>
     <id>http://jakezy.com/2015/08/04/JDK类库/</id>
     <published>2015-08-04T15:14:56.000Z</published>
-    <updated>2015-08-04T16:10:36.000Z</updated>
+    <updated>2015-08-05T09:23:25.000Z</updated>
     <content type="html"><![CDATA[<h1 id="JDK类库"><strong>JDK类库</strong></h1><p><img src="http://ww1.sinaimg.cn/large/965a04dfgw1euqz5bkuvrj20ix0ga41f.jpg" alt="JDK类库"></p>
 <hr>
 <h2 id="集合包"><strong>集合包</strong></h2><p>随着元素数量的上升（1000以上），List实现方式查找和删除元素时性能下降较严重（查找时遍历整个集合），Set、Map基本不受元素数量影响</p>
@@ -318,7 +318,7 @@
 </li>
 <li><p>选择相应的实现类<br> ArrayList：要通过位置来读取元素的场景（数组）<br> LinkedList：要头尾操作及插入指定位置的场景（双向链表）<br> Vector：线程安全的ArrayList场景<br> Stack：线程安全的LIFO场景</p>
 <p> HashSet：无排序要求的非重复元素存放<br> TreeSet：要排序的非重复元素存放</p>
-<p> HashMap：大部分key-value存取场景<br> TreeMap：需排序的key-value存取场景</p>
+<p> HashMap：大部分key-value存取场景<br> TreeMap：要排序的key-value存取场景</p>
 </li>
 <li><p>根据场景中需要存储的数据量、操作、并发量进行相应性能测试，若无法满足性能要求，则需自行实现或选择并发包中的集合类</p>
 </li>
@@ -333,6 +333,47 @@
       <category term="Java" scheme="http://jakezy.com/tags/Java/"/>
     
       <category term="Java" scheme="http://jakezy.com/categories/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Leetcode刷题记录 12]]></title>
+    <link href="http://jakezy.com/2015/08/04/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-12/"/>
+    <id>http://jakezy.com/2015/08/04/Leetcode刷题记录-12/</id>
+    <published>2015-08-04T03:16:58.000Z</published>
+    <updated>2015-08-06T06:53:37.000Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li><a href="https://leetcode.com/problems/single-number/" target="_blank" rel="external">Single Number</a></li>
+<li><a href="https://leetcode.com/problems/single-number-ii/" target="_blank" rel="external">Single Number II</a></li>
+<li><a href="http://www.lintcode.com/en/problem/single-number-iii/" target="_blank" rel="external">Single Number III</a></li>
+</ul>
+<a id="more"></a>
+<p><hr></p>
+<h2 id="Single_Number"><a href="https://leetcode.com/problems/single-number/" target="_blank" rel="external">Single Number</a></h2><p>思路：</p>
+<p>异或：不进位加法（相同为0，相异为1）<br>a ^ a = 0<br>a ^ 0 = a<br>a ^ b = c =&gt; a ^ c = b, b ^ c = a</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            res ^= nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><hr><br><a href="https://leetcode.com/problems/single-number-ii/" target="_blank" rel="external">Single Number II</a></p>
+<p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// count[]记录二进制每一位上1出现的次数</span></span><br><span class="line">        <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">32</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">                <span class="comment">// nums[j]右移i位再&amp;1的结果即为nums[j]第i位的二进制值</span></span><br><span class="line">                <span class="comment">// count[i]即为第i位1出现的次数</span></span><br><span class="line">                count[i] += (nums[j] &gt;&gt; i &amp; <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// count[i]%3即为res在该位的二进制值</span></span><br><span class="line">            res |= (count[i] % <span class="number">3</span>) &lt;&lt; i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="Single_Number_III"><a href="http://www.lintcode.com/en/problem/single-number-iii/" target="_blank" rel="external">Single Number III</a></h2><p>思路：<br>使用n&amp;-n把a和b两个只出现一次的数区分开<br>n&amp;-n结果只保留n的二进制中第一个1出现的位置<br>n&amp;-n = n&amp;~(n-1)</p>
+<pre><code>例如：
+<span class="keyword">n</span>    = 010100
+-<span class="keyword">n</span>   = 101100
+<span class="keyword">n</span>&amp;-<span class="keyword">n</span> = 000100
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">singleNumberIII</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">            temp ^= A[i];</span><br><span class="line">        &#125;</span><br><span class="line">        temp = temp &amp; -temp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((temp &amp; A[i]) == <span class="number">0</span>)</span><br><span class="line">                res[<span class="number">0</span>] ^= A[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                res[<span class="number">1</span>] ^= A[i];</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Integer&gt; result = Arrays.asList(res[<span class="number">0</span>], res[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<ul>
+<li><a href="https://leetcode.com/problems/single-number/">Single Number</a></li>
+<li><a href="https://leetcode.com/problems/single-number-ii/">Single Number II</a></li>
+<li><a href="http://www.lintcode.com/en/problem/single-number-iii/">Single Number III</a></li>
+</ul>]]>
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
     
   </entry>
   
@@ -1064,26 +1105,6 @@ group1/M00/<span class="number">00</span>/<span class="number">00</span>/wKgBM1N
       <category term="nginx" scheme="http://jakezy.com/tags/nginx/"/>
     
       <category term="FastDFS" scheme="http://jakezy.com/categories/FastDFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[第六周记录]]></title>
-    <link href="http://jakezy.com/2015/04/15/6th-week/"/>
-    <id>http://jakezy.com/2015/04/15/6th-week/</id>
-    <published>2015-04-15T06:45:41.000Z</published>
-    <updated>2015-04-15T19:07:52.000Z</updated>
-    <content type="html"><![CDATA[<p><a href="http://timyang.net/misc/choose-difficulty/" target="_blank" rel="external">选择学习目标的困难与焦虑</a>这篇文章描述的正是我一直以来的状态…<br><a id="more"></a></p>
-<p>这几天看<a href="http://book.douban.com/subject/24335672/" target="_blank" rel="external">淘宝技术这十年</a>，牛P列传里感受正祥老师的风格：朴素的只想把一件事情做好，把做事、做成事作为主要目标。深受感触，尽以这次实训为例，尽快改变自己当下的状态。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p><a href="http://timyang.net/misc/choose-difficulty/">选择学习目标的困难与焦虑</a>这篇文章描述的正是我一直以来的状态…<br>]]>
-    
-    </summary>
-    
-      <category term="life" scheme="http://jakezy.com/tags/life/"/>
-    
-      <category term="生活记录" scheme="http://jakezy.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
