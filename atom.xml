@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-04T17:28:39.000Z</updated>
+  <updated>2015-08-06T14:01:33.000Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Leetcode刷题记录 13]]></title>
+    <link href="http://jakezy.com/2015/08/06/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-13/"/>
+    <id>http://jakezy.com/2015/08/06/Leetcode刷题记录-13/</id>
+    <published>2015-08-06T14:01:33.000Z</published>
+    <updated>2015-08-06T14:01:33.000Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li><a href="https://leetcode.com/problems/majority-element/" target="_blank" rel="external">Majority Element</a></li>
+<li><a href="https://leetcode.com/problems/majority-element-ii/" target="_blank" rel="external">Majority Element II</a></li>
+<li><a href="http://www.lintcode.com/en/problem/majority-number-iii/" target="_blank" rel="external">Majority Number III</a></li>
+</ul>
+<a id="more"></a>
+<p><hr></p>
+<h2 id="Majority_Element"><a href="https://leetcode.com/problems/majority-element/" target="_blank" rel="external">Majority Element</a></h2><p>思路：<br>多数投票算法：</p>
+<ol>
+<li>若count==0，则将result设为数组当前元素num，count++</li>
+<li>若result和现在数组元素num相同，则count++，否则count–</li>
+<li>重复上述两步，直到扫描完数组</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">                result = num;</span><br><span class="line">                n++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (result == num) &#123;</span><br><span class="line">                    n++;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    n--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="Majority_Element_II"><a href="https://leetcode.com/problems/majority-element-ii/" target="_blank" rel="external">Majority Element II</a></h2><p>思路：<br>出现次数大于n/3的数最多两个，最少一个也没有<br>同样利用多数投票算法，但此时有两个候选元素<br>注意两个候选元素相同的情况，最后要再重新统计一遍两个候选元素的出现次数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;Integer&gt;(<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] number = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (count[<span class="number">0</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">                number[<span class="number">0</span>] = num;</span><br><span class="line">                count[<span class="number">0</span>]++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (count[<span class="number">1</span>] == <span class="number">0</span> &amp;&amp; number[<span class="number">0</span>] != num) &#123;</span><br><span class="line">                number[<span class="number">1</span>] = num;</span><br><span class="line">                count[<span class="number">1</span>]++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (num == number[<span class="number">0</span>]) &#123;</span><br><span class="line">                    count[<span class="number">0</span>]++;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num == number[<span class="number">1</span>]) &#123;</span><br><span class="line">                    count[<span class="number">1</span>]++;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    count[<span class="number">0</span>]--;</span><br><span class="line">                    count[<span class="number">1</span>]--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        count[<span class="number">0</span>] = count[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (num == number[<span class="number">0</span>])</span><br><span class="line">                count[<span class="number">0</span>]++;</span><br><span class="line">            <span class="keyword">if</span> (num == number[<span class="number">1</span>])</span><br><span class="line">                count[<span class="number">1</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count[<span class="number">0</span>] &gt; nums.length / <span class="number">3</span>)</span><br><span class="line">            result.add(number[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">if</span> (count[<span class="number">1</span>] &gt; nums.length / <span class="number">3</span> &amp;&amp; number[<span class="number">0</span>] != number[<span class="number">1</span>])</span><br><span class="line">            result.add(number[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="Majority_Number_III"><a href="http://www.lintcode.com/en/problem/majority-number-iii/" target="_blank" rel="external">Majority Number III</a></h2><p>思路：<br>题目明确说明只有一个众数<br>利用多数投票算法，HashMap保存k个候选元素</p>
+<ol>
+<li>若HashMap中不存在num，则将num置入HashMap，对应value=1</li>
+<li>若HashMap中存在num，则将对应value++</li>
+<li>若HashMap的size等于k，则每个元素value–，若此时value=0，则从HashMap中删除</li>
+<li>重复上述两步，直到扫描完数组</li>
+<li>最后重新统计一遍HashMap中候选元素的出现次数</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@param</span> nums: A list of integers</span><br><span class="line">     * <span class="doctag">@param</span> k: As described</span><br><span class="line">     * <span class="doctag">@return</span>: The majority number</span><br><span class="line">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// (HashMap删除元素时报错：java.util.ConcurrentModificationException)[http://jakezy.com/2015/08/04/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-12/]</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeKey</span><span class="params">(Map&lt;Integer, Integer&gt; map)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; keySet = map.keySet();</span><br><span class="line">        List&lt;Integer&gt; remove = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (Integer key : keySet) &#123;</span><br><span class="line">            <span class="keyword">if</span> (map.get(key) == <span class="number">1</span>) &#123;</span><br><span class="line">                remove.add(key);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                map.put(key, map.get(key) - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Integer key : remove) &#123;</span><br><span class="line">            map.remove(key);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityNumber</span><span class="params">(ArrayList&lt;Integer&gt; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!map.containsKey(num)) &#123;</span><br><span class="line">                map.put(num, <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                map.put(num, map.get(num) + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (map.size() &gt;= k) &#123;</span><br><span class="line">                removeKey(map);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> times = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> key : map.keySet()) &#123;</span><br><span class="line">            <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">                <span class="keyword">if</span> (num == key)</span><br><span class="line">                    count++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (count &gt; times) &#123;</span><br><span class="line">                times = count;</span><br><span class="line">                result = key;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<ul>
+<li><a href="https://leetcode.com/problems/majority-element/">Majority Element</a></li>
+<li><a href="https://leetcode.com/problems/majority-element-ii/">Majority Element II</a></li>
+<li><a href="http://www.lintcode.com/en/problem/majority-number-iii/">Majority Number III</a></li>
+</ul>]]>
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[集合包]]></title>
@@ -1047,62 +1095,6 @@
       <category term="reading" scheme="http://jakezy.com/tags/reading/"/>
     
       <category term="生活记录" scheme="http://jakezy.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[CentOS下FastDFS_v5.05 + nginx安装配置]]></title>
-    <link href="http://jakezy.com/2015/04/20/FastDFS/"/>
-    <id>http://jakezy.com/2015/04/20/FastDFS/</id>
-    <published>2015-04-20T10:18:54.000Z</published>
-    <updated>2015-05-22T11:25:39.000Z</updated>
-    <content type="html"><![CDATA[<h2 id="安装libevent">安装libevent</h2><p>1.下载libevent：<br>wget <a href="https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz" target="_blank" rel="external">https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz</a><br>2.解压libevent：<br>tar -zxf libevent-2.0.21-stable.tar.gz<br>3.进入解压目录：<br>cd libevent-2.0.21-stable<br>4.指定安装目录：<br>./configure<br>5.安装libevent：<br>make<br>make install</p>
-<h2 id="安装libfastcommon">安装libfastcommon</h2><p>#step 1. download libfastcommon source package from github and install it,<br>   the github address:<br>   <a href="https://github.com/happyfish100/libfastcommon.git" target="_blank" rel="external">https://github.com/happyfish100/libfastcommon.git</a><br>unzip libfastcommon.zip<br>cd libfastcommon-master<br>./make.sh<br>./make.sh install</p>
-<p>rm -f /usr/local/lib/libfastcommon.so<br>rm -f /usr/local/lib/libfdfsclient.so<br>rm -f /usr/lib/libfastcommon.so<br>rm -f /usr/lib/libfdfsclient.so<br>ln -s /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.so<br>ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so<br>ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so<br>ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so </p>
-<h2 id="安装FastDFS">安装FastDFS</h2><p>#step 2. download FastDFS source package and unpack it,<br>tar xzf FastDFS_v5.x.tar.gz<br>#for example:<br>tar xzf FastDFS_v5.04.tar.gz</p>
-<p>#step 3. enter the FastDFS dir<br>cd FastDFS<br>#修改安装路径（与fdfs_trackerd/fdfs_storaged服务脚本路径保持一致）<br>vi make.sh<br>将TARGET_PREFIX=$DESTDIR/usr改成TARGET_PREFIX=$DESTDIR/usr/local</p>
-<p>#step 4. execute:<br>./make.sh</p>
-<p>#step 5. make install<br>./make.sh install</p>
-<p>#step 6. edit/modify the config file of tracker and storage<br>fdfs_trackerd服务配置:<br>    mkdir /opt/fastdfs_tracker<br>    cd /etc/fdfs<br>    cp tracker.conf.sample tracker.conf<br>    vi tracker.conf<br>    将base_path=/home/yuqing/fastdfs改成base_path=/opt/fastdfs_tracker</p>
-<p>fdfs_storaged服务配置<br>    mkdir /opt/fastdfs_storage_info<br>    mkdir /opt/fastdfs_storage_data<br>    cd /etc/fdfs<br>    cp storage.conf.sample storage.conf<br>    vi storage.conf<br>    将base_path=/home/yuqing/fastdfs改成base_path=/opt/fastdfs_storage_info<br>    将store_path0=/home/yuqing/fastdfs改成store_path0=/opt/fastdfs_storage_data<br>    将tracker_server=192.168.209.121:22122改成tracker_server=192.168.1.78:22122</p>
-<p>client配置<br>    mkdir /opt/fastdfs_client<br>    cd /etc/fdfs<br>    cp client.conf.sample client.conf<br>    vi client.conf<br>    将base_path=/home/yuqing/fastdfs改成base_path=/opt/fastdfs_client<br>    将tracker_server=192.168.209.121:22122改成tracker_server=192.168.1.78:22122 </p>
-<pre><code>在fastdfs_client上上传文件测试：
-echo <span class="string">"this is fastdfs_client"</span> &gt; index<span class="class">.html</span>
-fdfs_test /etc/fdfs/client<span class="class">.conf</span> upload aa<span class="class">.txt</span>
-/usr/local/bin/fdfs_upload_file /etc/fdfs/client<span class="class">.conf</span> index<span class="class">.html</span>
-group1/M00/<span class="number">00</span>/<span class="number">00</span>/wKgBM1NW5JmAO_BCAAAAFhSwOfU49<span class="class">.html</span>
-这个是在storage服务器下的物理路径。
-</code></pre><p>#step 7. run server programs<br>#start the tracker server:<br>    /usr/local/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart</p>
-<pre><code><span class="id">#in</span> Linux, you can start fdfs_trackerd as <span class="tag">a</span> service:
-/sbin/service fdfs_trackerd start
-</code></pre><p>#start the storage server:<br>    /usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart</p>
-<pre><code><span class="id">#in</span> Linux, you can start fdfs_storaged as <span class="tag">a</span> service:
-/sbin/service fdfs_storaged start
-</code></pre><p>查看端口<br>lsof -i:22122<br>lsof -i:23000</p>
-<p>#step 8. run test program<br>#run the client test program:<br>/usr/bin/fdfs_test <client_conf_filename> <operation><br>/usr/bin/fdfs_test1 <client_conf_filename> <operation><br>#for example, upload a file:<br>/usr/bin/fdfs_test1 <client_conf_filename> <operation><br>#for example, upload a file:<br>/usr/bin/fdfs_test conf/client.conf upload /usr/include/stdlib.h</operation></client_conf_filename></operation></client_conf_filename></operation></client_conf_filename></p>
-<p>#step 9. run monitor program<br>#run the monitor program:<br>/usr/bin/fdfs_monitor <client_conf_filename></client_conf_filename></p>
-<h2 id="安装nginx">安装nginx</h2><p>在安装nginx前，需要确保系统安装了g++、gcc、openssl-devel、pcre-devel和zlib-devel软件。安装必须软件：<br>yum install gcc-c++<br>yum -y install zlib zlib-devel openssl openssl-devel pcre pcre-devel </p>
-<p>tar -zxv -f nginx-1.2.6.tar.gz<br>./configure –add-module=…../fastdfs-nginx-module/src<br>make<br>make install</p>
-<p>配置nginx：<br>vi /usr/local/nginx/conf/nginx.conf<br>在server段中添加：<br>        location /group1/M00 {<br>            root /opt/fastdfs_storage_data/data;<br>            ngx_fastdfs_module;<br>        }</p>
-<p>把FastDFS源码目录下conf子目录下面的http.conf和mime.types文件拷贝到/etc/fdfs目录下</p>
-<p>cp /usr/local/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs/<br>配置etc/fdfs/mod_fastdfs.conf配置文件：<br>vi mod_fastdfs.conf<br>tracker_server=192.168.1.60:22122<br>url_have_group_name = true<br>store_path0=/mnt/fastdfs_storage_data<br>response_mode=proxy</p>
-<p>#修改防火墙配置：<br>vi + /etc/sysconfig/iptables<br>#添加配置项<br>-A INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT<br>#重启防火墙<br>service iptables restart</p>
-<p>#nginx启动<br>/usr/local/nginx/sbin/nginx<br>#nginx停止<br>/usr/local/nginx/sbin/nginx -s stop<br>#nginx重启<br>/usr/local/nginx/sbin/nginx -s reload<br>#查询nginx主进程号<br>ps -ef | grep nginx</p>
-<p>#测试端口<br>netstat –na|grep 80<br>#浏览器中测试<br><a href="http://ip:80" target="_blank" rel="external">http://ip:80</a></p>
-<p>#查看已有的nginx编译参数：<br>nginx不像apache一样可以通过 apxs -i -a -c mod_rewrite.c 这种方式单独安装模块，需要重新编译。</p>
-<p>#设置开机自动启动<br>vi /etc/rc.d/rc.local<br>将运行命令行添加进文件：<br>/usr/local/bin/fdfs_trackerd start<br>/sbin/service fdfs_storaged start<br>/usr/local/nginx/sbin/nginx</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h2 id="安装libevent">安装libevent</h2><p>1.下载libevent：<br>wget <a href="https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.t]]>
-    </summary>
-    
-      <category term="FastDFS" scheme="http://jakezy.com/tags/FastDFS/"/>
-    
-      <category term="libevent" scheme="http://jakezy.com/tags/libevent/"/>
-    
-      <category term="nginx" scheme="http://jakezy.com/tags/nginx/"/>
-    
-      <category term="FastDFS" scheme="http://jakezy.com/categories/FastDFS/"/>
     
   </entry>
   
