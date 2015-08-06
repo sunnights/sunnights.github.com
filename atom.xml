@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-06T14:06:21.000Z</updated>
+  <updated>2015-08-06T14:08:21.000Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -16,15 +16,21 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[java]]></title>
+    <title><![CDATA[java.util.ConcurrentModificationException出现原因及解决办法]]></title>
     <link href="http://jakezy.com/2015/08/06/java.util.ConcurrentModificationException%E5%87%BA%E7%8E%B0%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     <id>http://jakezy.com/2015/08/06/java.util.ConcurrentModificationException出现原因及解决办法/</id>
     <published>2015-08-06T14:06:21.000Z</published>
-    <updated>2015-08-06T14:06:21.000Z</updated>
-    <content type="html"></content>
+    <updated>2015-08-06T14:08:21.000Z</updated>
+    <content type="html"><![CDATA[<p>待补充</p>
+]]></content>
     <summary type="html">
-    
+    <![CDATA[<p>待补充</p>
+]]>
     </summary>
+    
+      <category term="问题记录" scheme="http://jakezy.com/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="Java" scheme="http://jakezy.com/categories/Java/"/>
     
   </entry>
   
