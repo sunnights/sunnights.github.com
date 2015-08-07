@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-06T14:08:21.000Z</updated>
+  <updated>2015-08-06T15:35:35.481Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -16,11 +16,47 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Leetcode刷题记录 14]]></title>
+    <link href="http://jakezy.com/2015/08/06/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-14/"/>
+    <id>http://jakezy.com/2015/08/06/Leetcode刷题记录-14/</id>
+    <published>2015-08-06T15:32:49.000Z</published>
+    <updated>2015-08-06T15:35:35.481Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+<a id="more"></a>
+<p><hr></p>
+<h2 id=""><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="-1"><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="-2"><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>]]>
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[java.util.ConcurrentModificationException出现原因及解决办法]]></title>
     <link href="http://jakezy.com/2015/08/06/java.util.ConcurrentModificationException%E5%87%BA%E7%8E%B0%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     <id>http://jakezy.com/2015/08/06/java.util.ConcurrentModificationException出现原因及解决办法/</id>
     <published>2015-08-06T14:06:21.000Z</published>
-    <updated>2015-08-06T14:08:21.000Z</updated>
+    <updated>2015-08-06T14:08:21.925Z</updated>
     <content type="html"><![CDATA[<p>待补充</p>
 ]]></content>
     <summary type="html">
@@ -39,7 +75,7 @@
     <link href="http://jakezy.com/2015/08/06/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-13/"/>
     <id>http://jakezy.com/2015/08/06/Leetcode刷题记录-13/</id>
     <published>2015-08-06T14:01:33.000Z</published>
-    <updated>2015-08-06T14:14:01.000Z</updated>
+    <updated>2015-08-06T14:14:01.690Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/majority-element/" target="_blank" rel="external">Majority Element</a></li>
 <li><a href="https://leetcode.com/problems/majority-element-ii/" target="_blank" rel="external">Majority Element II</a></li>
@@ -88,7 +124,7 @@
     <link href="http://jakezy.com/2015/08/05/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-12/"/>
     <id>http://jakezy.com/2015/08/05/Leetcode刷题记录-12/</id>
     <published>2015-08-05T03:16:58.000Z</published>
-    <updated>2015-08-06T14:05:06.000Z</updated>
+    <updated>2015-08-06T14:05:06.271Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/single-number/" target="_blank" rel="external">Single Number</a></li>
 <li><a href="https://leetcode.com/problems/single-number-ii/" target="_blank" rel="external">Single Number II</a></li>
@@ -414,7 +450,7 @@
     <link href="http://jakezy.com/2015/08/04/JDK%E7%B1%BB%E5%BA%93/"/>
     <id>http://jakezy.com/2015/08/04/JDK类库/</id>
     <published>2015-08-04T15:14:56.000Z</published>
-    <updated>2015-08-05T09:23:25.000Z</updated>
+    <updated>2015-08-05T09:23:25.177Z</updated>
     <content type="html"><![CDATA[<h1 id="JDK类库"><strong>JDK类库</strong></h1><p><img src="http://ww1.sinaimg.cn/large/965a04dfgw1euqz5bkuvrj20ix0ga41f.jpg" alt="JDK类库"></p>
 <hr>
 <h2 id="集合包"><strong>集合包</strong></h2><p>随着元素数量的上升（1000以上），List实现方式查找和删除元素时性能下降较严重（查找时遍历整个集合），Set、Map基本不受元素数量影响</p>
@@ -448,7 +484,7 @@
     <link href="http://jakezy.com/2015/08/03/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-11/"/>
     <id>http://jakezy.com/2015/08/03/Leetcode刷题记录-11/</id>
     <published>2015-08-03T06:16:58.000Z</published>
-    <updated>2015-08-03T16:07:09.000Z</updated>
+    <updated>2015-08-03T16:07:09.454Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/copy-list-with-random-pointer/" target="_blank" rel="external">Copy List with Random Pointer</a></li>
 <li><a href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="external">Reverse Nodes in k-Group</a></li>
@@ -488,7 +524,7 @@
     <link href="http://jakezy.com/2015/08/01/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-10/"/>
     <id>http://jakezy.com/2015/08/01/Leetcode刷题记录-10/</id>
     <published>2015-08-01T03:10:39.000Z</published>
-    <updated>2015-08-01T10:01:44.000Z</updated>
+    <updated>2015-08-01T10:01:44.629Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="external">Merge k Sorted Lists</a></li>
 <li><a href="https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/" target="_blank" rel="external">Convert Sorted List to Binary Search Tree</a></li>
@@ -537,7 +573,7 @@
     <link href="http://jakezy.com/2015/07/30/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-9/"/>
     <id>http://jakezy.com/2015/07/30/Leetcode刷题记录-9/</id>
     <published>2015-07-30T08:15:58.000Z</published>
-    <updated>2015-07-30T17:03:40.000Z</updated>
+    <updated>2015-07-30T17:03:40.509Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/delete-node-in-a-linked-list/" target="_blank" rel="external">Delete Node in a Linked List</a></li>
 <li><a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank" rel="external">Palindrome Linked List</a></li>
@@ -583,7 +619,7 @@
     <link href="http://jakezy.com/2015/07/29/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-8/"/>
     <id>http://jakezy.com/2015/07/29/Leetcode刷题记录-8/</id>
     <published>2015-07-28T17:54:58.000Z</published>
-    <updated>2015-07-30T17:00:16.000Z</updated>
+    <updated>2015-07-30T17:00:16.450Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/partition-list/" target="_blank" rel="external">Partition List</a></li>
 <li><a href="https://leetcode.com/problems/reorder-list/" target="_blank" rel="external">Reorder List</a></li>
@@ -625,7 +661,7 @@
     <link href="http://jakezy.com/2015/07/28/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-7/"/>
     <id>http://jakezy.com/2015/07/28/Leetcode刷题记录-7/</id>
     <published>2015-07-28T04:51:53.000Z</published>
-    <updated>2015-07-29T17:23:46.000Z</updated>
+    <updated>2015-07-29T17:23:46.978Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/palindrome-partitioning-ii/" target="_blank" rel="external">Palindrome Partitioning II</a></li>
 <li><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/" target="_blank" rel="external">Remove Duplicates from Sorted List</a></li>
@@ -665,7 +701,7 @@
     <link href="http://jakezy.com/2015/07/27/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-6/"/>
     <id>http://jakezy.com/2015/07/27/Leetcode刷题记录-6/</id>
     <published>2015-07-27T04:46:51.000Z</published>
-    <updated>2015-07-29T07:32:07.000Z</updated>
+    <updated>2015-07-29T07:32:07.302Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="external">Minimum Path Sum</a></li>
 <li><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="external">Climbing Stairs</a></li>
@@ -713,7 +749,7 @@
     <link href="http://jakezy.com/2015/07/26/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-5/"/>
     <id>http://jakezy.com/2015/07/26/Leetcode刷题记录-5/</id>
     <published>2015-07-26T10:03:04.000Z</published>
-    <updated>2015-07-29T17:51:53.000Z</updated>
+    <updated>2015-07-29T17:51:53.637Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/triangle/" target="_blank" rel="external">Triangle</a></li>
 <li><a href="https://leetcode.com/problems/unique-paths/" target="_blank" rel="external">Unique Paths</a></li>
@@ -763,7 +799,7 @@
     <link href="http://jakezy.com/2015/07/25/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-4/"/>
     <id>http://jakezy.com/2015/07/25/Leetcode刷题记录-4/</id>
     <published>2015-07-25T11:28:45.000Z</published>
-    <updated>2015-07-29T17:51:24.000Z</updated>
+    <updated>2015-07-29T17:51:24.763Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="external">Reverse Linked List</a></li>
 <li><a href="https://leetcode.com/problems/reverse-linked-list-ii/" target="_blank" rel="external">Reverse Linked List II</a></li>
@@ -811,7 +847,7 @@
     <link href="http://jakezy.com/2015/07/24/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-3/"/>
     <id>http://jakezy.com/2015/07/24/Leetcode刷题记录-3/</id>
     <published>2015-07-24T07:17:25.000Z</published>
-    <updated>2015-07-29T17:51:38.000Z</updated>
+    <updated>2015-07-29T17:51:38.434Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="external">Remove Nth Node From End of List</a></li>
 <li><a href="https://leetcode.com/problems/swap-nodes-in-pairs/" target="_blank" rel="external">Swap Nodes in Pairs</a></li>
@@ -857,7 +893,7 @@
     <link href="http://jakezy.com/2015/07/22/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-2/"/>
     <id>http://jakezy.com/2015/07/22/Leetcode刷题记录-2/</id>
     <published>2015-07-22T07:48:16.000Z</published>
-    <updated>2015-07-29T07:28:14.000Z</updated>
+    <updated>2015-07-29T07:28:14.746Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="external">Longest Substring Without Repeating Characters</a></li>
 <li><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="external">Valid Parentheses</a></li>
@@ -906,7 +942,7 @@
     <link href="http://jakezy.com/2015/07/21/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-1/"/>
     <id>http://jakezy.com/2015/07/21/Leetcode刷题记录-1/</id>
     <published>2015-07-21T15:36:16.000Z</published>
-    <updated>2015-07-29T07:28:09.000Z</updated>
+    <updated>2015-07-29T07:28:09.683Z</updated>
     <content type="html"><![CDATA[<p>每日三道题：</p>
 <ul>
 <li><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="external">Two Sum</a></li>
@@ -955,7 +991,7 @@
     <link href="http://jakezy.com/2015/07/04/POI%E8%AE%BE%E7%BD%AEExcel%E5%8D%95%E5%85%83%E6%A0%BC%E6%A0%BC%E5%BC%8F/"/>
     <id>http://jakezy.com/2015/07/04/POI设置Excel单元格格式/</id>
     <published>2015-07-04T03:40:25.000Z</published>
-    <updated>2015-07-06T05:01:30.000Z</updated>
+    <updated>2015-07-06T05:01:30.438Z</updated>
     <content type="html"><![CDATA[<p>最近用POI导出Excel时，碰到一些问题，记录下：</p>
 <ul>
 <li>数字格式</li>
@@ -1000,7 +1036,7 @@
     <link href="http://jakezy.com/2015/06/09/Java-problem-record/"/>
     <id>http://jakezy.com/2015/06/09/Java-problem-record/</id>
     <published>2015-06-09T15:15:37.000Z</published>
-    <updated>2015-08-06T07:03:14.000Z</updated>
+    <updated>2015-08-06T07:03:14.101Z</updated>
     <content type="html"><![CDATA[<p>问题：我的Eclipse环境用的JDK 8，项目是JDK 7，在jetty中启动项目时报错：INFO: No Spring WebApplicationInitializer types detected<br><a id="more"></a><br>解决：确定项目编译时的jdk版本，更改Eclipse编译用的jdk版本即可</p>
 <p>参考<a href="http://stackoverflow.com/questions/22938689/info-no-spring-webapplicationinitializer-types-detected-on-classpath" target="_blank" rel="external">http://stackoverflow.com/questions/22938689/info-no-spring-webapplicationinitializer-types-detected-on-classpath</a></p>
 <blockquote>
@@ -1025,7 +1061,7 @@
     <link href="http://jakezy.com/2015/06/09/Java-interview-notes/"/>
     <id>http://jakezy.com/2015/06/09/Java-interview-notes/</id>
     <published>2015-06-09T15:06:36.000Z</published>
-    <updated>2015-06-12T08:37:46.000Z</updated>
+    <updated>2015-06-12T08:37:46.315Z</updated>
     <content type="html"><![CDATA[<ol>
 <li>String, StringBuffer, StringBuilder使用场景，线程安全？</li>
 <li>手写代码：快排</li>
@@ -1052,34 +1088,6 @@
       <category term="面试" scheme="http://jakezy.com/tags/%E9%9D%A2%E8%AF%95/"/>
     
       <category term="求职路上" scheme="http://jakezy.com/categories/%E6%B1%82%E8%81%8C%E8%B7%AF%E4%B8%8A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[十四周记录]]></title>
-    <link href="http://jakezy.com/2015/06/01/14th-week/"/>
-    <id>http://jakezy.com/2015/06/01/14th-week/</id>
-    <published>2015-06-01T12:32:39.000Z</published>
-    <updated>2015-06-09T15:26:29.000Z</updated>
-    <content type="html"><![CDATA[<p>近期阅读<br><a id="more"></a></p>
-<ul>
-<li><a href="http://ericliang.info/after-the-collapse/" target="_blank" rel="external">故障之后</a></li>
-<li><a href="http://blog.csdn.net/linhuanmars/article/category/2336231" target="_blank" rel="external">LeetCode总结</a></li>
-<li><a href="http://mp.weixin.qq.com/s?__biz=MjM5NjA3MjQwMQ==&amp;mid=204381616&amp;idx=1&amp;sn=3de0860b06464452d8abafb7045b6e78" target="_blank" rel="external">闯红灯理论</a></li>
-<li><a href="https://github.com/phodal/awesome-developer/blob/master/entries/different.md" target="_blank" rel="external">程序员差别的本质</a></li>
-<li><a href="http://wohe.me/2015/06/02/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%E6%B5%81%E7%A8%8B%E4%BC%98%E5%8C%96/" target="_blank" rel="external">Hexo发布文章流程优化</a></li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>近期阅读<br>]]>
-    
-    </summary>
-    
-      <category term="life" scheme="http://jakezy.com/tags/life/"/>
-    
-      <category term="reading" scheme="http://jakezy.com/tags/reading/"/>
-    
-      <category term="生活记录" scheme="http://jakezy.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
