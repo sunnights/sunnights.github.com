@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-06T15:35:35.481Z</updated>
+  <updated>2015-08-07T04:32:28.000Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -14,6 +14,19 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[test]]></title>
+    <link href="http://jakezy.com/2015/08/07/2015-08-07-test/"/>
+    <id>http://jakezy.com/2015/08/07/2015-08-07-test/</id>
+    <published>2015-08-07T02:32:28.000Z</published>
+    <updated>2015-08-07T04:32:28.000Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Leetcode刷题记录 14]]></title>
@@ -1053,41 +1066,6 @@
       <category term="问题记录" scheme="http://jakezy.com/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
       <category term="Spring" scheme="http://jakezy.com/categories/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Java面试小记]]></title>
-    <link href="http://jakezy.com/2015/06/09/Java-interview-notes/"/>
-    <id>http://jakezy.com/2015/06/09/Java-interview-notes/</id>
-    <published>2015-06-09T15:06:36.000Z</published>
-    <updated>2015-06-12T08:37:46.315Z</updated>
-    <content type="html"><![CDATA[<ol>
-<li>String, StringBuffer, StringBuilder使用场景，线程安全？</li>
-<li>手写代码：快排</li>
-<li>多线程同步 synchronized<br> 实现一个多线程下的计数操作</li>
-<li>hashmap实现原理</li>
-<li>是否读过Java核心源码、框架源码</li>
-<li>SpringMVC的Controller是线程不安全的，Structs的Action是线程安全的</li>
-<li>手写代码：二叉树层序遍历</li>
-<li>手写代码：单例模式</li>
-<li>Integer、int区别</li>
-<li>MySQL索引原理，先建索引与先插入数据</li>
-<li>POST和GET区别（request header, request body）</li>
-<li>分库分表时的负载均衡：hash - 一致性哈希算法<br>可参考 <a href="http://book.douban.com/subject/25867042/" target="_blank" rel="external">大型网站系统与Java中间件实践</a> 一书中的 5.1 节内容</li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[<ol>
-<li>String, StringBuffer, StringBuilder使用场景，线程安全？</li>
-<li>手写代码：快排</li>
-<li>多线程同步 synchronized<br> 实现一个多线程下的计数操作</li>
-<li>hashmap实现原理</]]>
-    </summary>
-    
-      <category term="面试" scheme="http://jakezy.com/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="求职路上" scheme="http://jakezy.com/categories/%E6%B1%82%E8%81%8C%E8%B7%AF%E4%B8%8A/"/>
     
   </entry>
   
