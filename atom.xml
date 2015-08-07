@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-06T15:35:35.481Z</updated>
+  <updated>2015-08-07T10:25:36.048Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -16,31 +16,246 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[并发包]]></title>
+    <link href="http://jakezy.com/2015/08/07/%E5%B9%B6%E5%8F%91%E5%8C%85/"/>
+    <id>http://jakezy.com/2015/08/07/并发包/</id>
+    <published>2015-08-07T10:25:36.113Z</published>
+    <updated>2015-08-07T10:25:36.048Z</updated>
+    <content type="html"><![CDATA[<p><strong>JDK类库：并发包（java.util.concurrent）</strong></p>
+<p><img src="" alt="并发包"></p>
+<hr>
+<h4 id="ConcurrentHashMap"><strong>ConcurrentHashMap</strong></h4><h5 id="实现方式：线程安全的HashMap的实现">实现方式：线程安全的HashMap的实现</h5><p><strong>ConcurrentHashMap()</strong></p>
+<ul>
+<li>和HashMap一样，有initialCapacity和loadFactor属性，多了一个concurrencyLevel属性，默认值为16、0.75和16</li>
+<li>计算ssize值，传入Segment的newArray方法创建Segment对象数组</li>
+<li>计算cap值，为Segment数组创建Segment对象（继承自ReentrantLock）：创建一个指定大小为cap的HashEntry对象数组，threshold=(int)(newTable.length*loadFactor);</li>
+</ul>
+<p><strong>put(Object key, Object key)</strong></p>
+<ul>
+<li>无synchronized关键字</li>
+<li>首先判断value是否为null，若为null，抛出NullPointerException</li>
+<li>对key.hashCode进行hash操作，得到key的hash值</li>
+<li>根据hash值计算并获取对应数组中的Segment对象，调用Segment的put方法完成put操作<blockquote>
+<p>Segment的put方法：</p>
+<ul>
+<li>lock，判断当前存储的对象个数+1后是否大于threshold</li>
+<li>若大于，将当前HashEntry数组扩大两倍，之前存储的对象重新hash，转移到新数组中</li>
+<li>接下来和HashMap基本一样，hash出来的值与对象数组的大小减1的值进行按位与，得出当前key要存储到数组的位置</li>
+<li>寻找对应位置上的HashEntry对象链表是否有key、hash和当前key相同的</li>
+<li>若找到，则覆盖其value</li>
+<li>否则，则创建新的HashEntry对象，赋值给对应位置的数组对象，并构成链表</li>
+<li>释放锁，unlock</li>
+</ul>
+</blockquote>
+</li>
+<li>小结：ConcurrentHashMap基于匆促人人参与Level划分多个Segment对key-value存储，避免每次put都锁住整个数组。默认情况下，最佳情况可允许16个线程并发无阻塞地操作集合对象</li>
+</ul>
+<p><strong>remove(Object key)</strong></p>
+<ul>
+<li>对key.hashCode进行hash操作，得到hash值找到对应的Segment对象，调用Segment的remove方法完成remove操作<blockquote>
+<p>Segment的remove方法：</p>
+<ul>
+<li>lock，hash值与对象数组的大小减1的值进行按位与，获取数组上对应位置的HashEntry对象</li>
+<li>遍历HashEntry及其next对象，寻找hash值相等及key equals的HashEntry对象</li>
+<li>若找到，重新创建HashEntry链表中位于删除元素之前的所有HashEntry；未找到，返回null</li>
+<li>释放锁，unlock</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><strong>get(Object key)</strong></p>
+<ul>
+<li>对key.hashCode进行hash操作，得到hash值找到对应的Segment对象，调用Segment的get方法完成get操作<blockquote>
+<p>Segment的get方法：</p>
+<ul>
+<li>判断当前HashEntry对象数组中已存储的对象是否为0，若为0，则直接返回null</li>
+<li>hash值与对象数组的大小减1的值进行按位与，获取数组上对应位置的HashEntry对象</li>
+<li>遍历HashEntry及其next对象，寻找hash值相等及key equals的HashEntry对象</li>
+<li>若找到，获取其value，若value不为null，则返回value</li>
+<li>若value为null，则调用readValueUnderLock方法（lock，直接返回HashEntry的value，释放锁）</li>
+</ul>
+</blockquote>
+</li>
+<li>小结：<br>  get仅在寻找到的HashEntry的value为null时才加锁，即ConcurrentHashMap在读数据时大部分情况下不采用锁<blockquote>
+<p>ConcurrentHashMap一致性的保证：</p>
+<ul>
+<li>get操作首先通过hash值与对象数组的大小减1的值进行按位与，获取数组上对应位置的HashEntry对象，这个步骤中可能因对象数组大小的改变，及数组上对应位置的HashEntry产生不一致性</li>
+<li>对象数组大小的改变只有在put操作时有可能发生，而HashEntry对象数组对应的变量是volatile类型，因此可保证HashEntry数组大小改变时，读操作可看到最新的对象数组大小</li>
+<li>put和remove操作进行时都有可能造成HashEntry数组上对应位置的HashEntry发生改变，如get操作获取到HashEntry对象后，有一个put或remove操作完成，此时get操作尚未完成，这时会造成读的不一致，但这种几率非常低</li>
+<li>获取到HashEntry对象后，可保证HashEntry对象及其next属性构成的链表上的对象不会改变，因为HashEntry对象中的hash、key及next都是final的，即无法插入一个HashEntry到基于next构建的链表中间或末尾，这样就保证了当获取到HashEntry对象后，其基于next构建的链表不会发生变化</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><strong>containsKey(Object key)</strong></p>
+<ul>
+<li>整个步骤和get相同，没有加锁，只是当寻找到有key、hash相等的HashEntry时才返回true，否则返回false<br>keySet().iterator()：</li>
+<li>不加锁，遍历每个分段中的HashEntry对象数组，完成集合中所有对象的读取</li>
+</ul>
+<h5 id="小结：">小结：</h5><ul>
+<li>ConcurrentHashMap默认情况下将数据分为16个段存储，各个段持有各自的锁，锁仅用于put和remove等改变集合对象的操作，基于volatile及HashEntry链表的不变性实现读取的不加锁。</li>
+<li>没有全局锁，计算size：<ul>
+<li>不加锁遍历所有段，读取count及modCount（volatile类型）并统计。</li>
+<li>再遍历一次所有段，比较modCount是否改变</li>
+<li>若改变，则尝试两次以上动作</li>
+<li>若扔有问题，则遍历所有段，分别加锁、计算，释放所有锁</li>
+</ul>
+</li>
+</ul>
+<h5 id="和HashMap性能对比：">和HashMap性能对比：</h5><ul>
+<li>线程数为10时，ConcurrentHashMap性能提升不明显</li>
+<li>线程数50或100时，增加删除元素带来一倍左右的性能提升，查找元素10倍左右性能提升</li>
+<li>线程数增长，性能没有出现下降</li>
+</ul>
+<hr>
+<h4 id="CopyOnWriteArrayList"><strong>CopyOnWriteArrayList</strong></h4><h5 id="实现方式：">实现方式：</h5><pre><code>CopyOnWriteArrayList是线程安全、读操作时无锁的ArrayList
+</code></pre><p><strong>CopyOnWriteArrayList()</strong></p>
+<ul>
+<li>创建大小为0的数组</li>
+</ul>
+<p><strong>add(E)</strong></p>
+<ul>
+<li>无synchronized关键字，通过ReentrantLock保证线程安全</li>
+<li>每次都创建一个新的Object数组（数组大小是当前数组大小+1），将之前数组内容复制到新数组，新增加的对象放入数组末尾，最后将新创建的数组对象赋值给全局的数组对象</li>
+</ul>
+<p><strong>remove(E)</strong></p>
+<ul>
+<li>无synchronized关键字，通过ReentrantLock保证线程安全</li>
+<li>首先创建一个比当前数组小1的数组，遍历数组</li>
+<li>若找到equals或均为null的元素，则将之后的元素全部赋值给新数组对象，并将引用切换，返回true</li>
+<li>若未找到，将当前元素赋值给新数组对象，<br>  （未完。。。）</li>
+</ul>
+<p><strong>get(int)</strong></p>
+<ul>
+<li>无锁，直接获取当前数组对应位置的元素，可能出现读脏数据现象</li>
+<li>适合写少读多脏数据影响不大的场景</li>
+</ul>
+<p><strong>iterator()</strong></p>
+<ul>
+<li>创建一个新的COWIterator对象实例，并保存一个当前数组的快照，调用next遍历时仅对此快照数组遍历</li>
+</ul>
+<h5 id="小结：-1">小结：</h5><ul>
+<li>CopyOnWriteArrayList基于ReentrantLock保证了增加删除元素的互斥，读操作是无锁操作，保证了读的性能</li>
+</ul>
+<h5 id="与ArrayList性能比较：">与ArrayList性能比较：</h5><ul>
+<li>随着元素数量和线程数增加，CopyOnWriteArrayList在增删元素时性能下降明显，但查找元素随着线程数增加，性能比ArrayList好很多</li>
+<li>读多写少的并发场景中，CopyOnWriteArrayList比ArrayList更好</li>
+</ul>
+<hr>
+<h4 id="CopyOnWriteArraySet"><strong>CopyOnWriteArraySet</strong></h4><h5 id="实现方式：-1">实现方式：</h5><ul>
+<li>基于CopyOnWriteArrayList实现，唯一不同是在add时调用的是CopyOnWriteArrayList的addIfAbsent方法</li>
+<li>addIfAbsent方法同样采用锁保护，并创建一个新的大小+1的Object数组。遍历当前Object数组，若数组中已有当前元素，则直接返回；若没有，则放入Object数组尾部，并返回</li>
+</ul>
+<h5 id="小结：-2">小结：</h5><ul>
+<li>CopyOnWriteArraySet在add时每次都要遍历数组，因此性能略低于CopyOnWriteArrayList</li>
+</ul>
+<hr>
+<h4 id="ArrayBlockingQueue"><strong>ArrayBlockingQueue</strong></h4><h5 id="实现方式：-2">实现方式：</h5><ul>
+<li>ArrayBlockingQueue是基于数组、FIFO、线程安全的集合类，可实现指定时间的阻塞读写，且容量可限制</li>
+</ul>
+<p><strong>ArrayBlockingQueue(int)</strong></p>
+<ul>
+<li>无默认构造器，传入参数即为创建的对象数组的大小，同时初始化锁和两个锁上的Condition，一个为notEmpty，一个为notFull</li>
+</ul>
+<p><strong>offer(E, long, TimeUnit)</strong></p>
+<ul>
+<li>插入元素至数组尾部。若数组已满，进入等待，直到被唤醒、到达指定时间或当前线程被中断<blockquote>
+<p>先将指定时间转换为纳秒，加锁<br>  若数组未满，将对象插入数组<br>  若数组已满且已超过指定时间，返回false<br>  若数组已满且未超过指定时间，调用notFull condition的awaitNanos方法进行等待</p>
+<ul>
+<li>若被唤醒或超时，则继续判断数组是否已满</li>
+<li>若线程被interrupt，直接抛出InterruptedException</li>
+</ul>
+</blockquote>
+</li>
+<li>不带时间的offer方法在数组满时不进入等待，直接返回false</li>
+<li>也可选择调用put方法，在数组满时一直等待，直到数组不为空或线程被interrupt</li>
+</ul>
+<p><strong>pool(E, long, TimeUnit)</strong></p>
+<ul>
+<li>获取队列中的第一个元素，若队列中没有元素，则进入等待，直到被唤醒、到达指定时间或当前线程被中断<blockquote>
+<p>先将指定时间转换为纳秒，加锁<br>若数组中元素个数不为0，则从当前对象数组中获取最后一个元素，将该位置上元素置null<br>若数组中元素个数为0，</p>
+<ul>
+<li>若剩余等待时间&lt;0，返回null</li>
+<li>若剩余等待时间&gt;0，调用notEmpty condition的awaitNanos方法进行等待<blockquote>
+<p>若被唤醒或超时，则判断数组中元素个数是否不为0<br>若线程被interrupt，则抛出interruptedException</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>不带时间的poll方法在数组中元素个数为0时不进入等待，直接返回null</li>
+<li>也可选择调用take方法，在数组空时一直等待，直到直到数组不为空或线程被interrupt</li>
+</ul>
+<p><strong>iterator()</strong></p>
+<ul>
+<li>加锁，创建Itr对象实例，创建时首先获取当前数组元素尾部的index及尾部的元素，调用完后释放锁</li>
+<li>调用Itr的next方法：加锁，获取Itr中的nextItem，增加需要获取的下一元素index，并检查下一元素是否存在<blockquote>
+<p>若存在，则获取并赋值到nextItem；<br>若不存在，则将nextIndex设置为-1，nextItem设置为null</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="小结：-3">小结：</h5><ul>
+<li>ArrayBlockingQueue为一个基于固定大小数组、ReentrantLock及Condition实现的可阻塞的先进先出的Queue</li>
+</ul>
+<hr>
+<h4 id="AtomicInteger"><strong>AtomicInteger</strong></h4><h5 id="实现方式：-3">实现方式：</h5><p>AtomicInteger是一个支持原子操作的Integer类<br>用AtomicInteger实现的顺序id获取：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger counter = <span class="keyword">new</span> AtomicInteger();</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNextId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> counter.incrementAndGet();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>incrementAndGet()</strong><br>简化后的相关代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AtomicInteger</span> <span class="keyword">extends</span> <span class="title">Number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> value;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Atomically increments by one the current value.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@return</span> the updated value</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">incrementAndGet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 无限循环直到value设置成功</span></span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">int</span> current = get();</span><br><span class="line">            <span class="keyword">int</span> next = current + <span class="number">1</span>;</span><br><span class="line">            <span class="comment">// 前两步非线程安全，因此不能直接返回next</span></span><br><span class="line">            <span class="comment">// 因为此时可能会有其他线程已经对current进行了更改，所以要调用compareAndSet判断</span></span><br><span class="line">            <span class="keyword">if</span> (compareAndSet(current, next))</span><br><span class="line">                <span class="keyword">return</span> next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Atomically sets the value to the given updated value</span><br><span class="line">     * if the current value &#123;<span class="doctag">@code</span> ==&#125; the expected value.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> expect the expected value</span><br><span class="line">     * <span class="doctag">@param</span> update the new value</span><br><span class="line">     * <span class="doctag">@return</span> true if successful. False return indicates that</span><br><span class="line">     * the actual value was not equal to the expected value.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">compareAndSet</span><span class="params">(<span class="keyword">int</span> expect, <span class="keyword">int</span> update)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// CAS有3个操作数：内存值value，要跟内存值做比较的值expect和新值update</span></span><br><span class="line">        <span class="comment">// 若value==expect，则令value=update，返回true；否则，返回false</span></span><br><span class="line">        <span class="keyword">return</span> unsafe.compareAndSwapInt(<span class="keyword">this</span>, valueOffset, expect, update);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>不使用compareAndSet可能出现的异常：</p>
+<ol>
+<li>A线程执行get()操作，获取current值（假设为1）</li>
+<li>B线程执行get()操作，获取current值（为1）</li>
+<li>B线程执行next = current + 1操作，next = 2</li>
+<li>A线程执行next = current + 1操作，next = 2</li>
+</ol>
+</blockquote>
+<p>compareAndSet调用native方法compareAndSwapInt，它基于CAS原语实现，由CPU比较内存位置上的值是否为当前值，若是则将其设置为next，否则返回false<br>基于CAS的操作可认为是无阻塞的，且CAS原语性能会好于同步锁</p>
+<p>基于原子类的CAS操作自主实现无阻塞操作：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line"> * 判断当前方法是否已经初始化</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AtomicBooleanTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicBoolean inited = <span class="keyword">new</span> AtomicBoolean();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!inited.compareAndSet(<span class="keyword">false</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">            System.out.println(<span class="string">"已初始化："</span> + flag);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 初始化操作</span></span><br><span class="line">        System.out.println(<span class="string">"未初始化："</span> + flag);</span><br><span class="line">        flag++;</span><br><span class="line">        System.out.println(<span class="string">"初始化完毕："</span> + flag);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        init();</span><br><span class="line">        System.out.println(<span class="string">"-----"</span>);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><strong>JDK类库：并发包（java.util.concurrent）</strong></p>
+<p><img src="" alt="并发包"></p>
+<hr>
+<h4 id="ConcurrentHashMap"><strong>ConcurrentHash]]>
+    </summary>
+    
+      <category term="Java" scheme="http://jakezy.com/tags/Java/"/>
+    
+      <category term="Java" scheme="http://jakezy.com/categories/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Leetcode刷题记录 14]]></title>
     <link href="http://jakezy.com/2015/08/06/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-14/"/>
     <id>http://jakezy.com/2015/08/06/Leetcode刷题记录-14/</id>
     <published>2015-08-06T15:32:49.000Z</published>
-    <updated>2015-08-06T15:35:35.481Z</updated>
+    <updated>2015-08-07T05:25:58.665Z</updated>
     <content type="html"><![CDATA[<ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="external">Best Time to Buy and Sell Stock</a></li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="external">Best Time to Buy and Sell Stock II</a></li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="external">Best Time to Buy and Sell Stock III</a></li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="external">Best Time to Buy and Sell Stock IV</a></li>
 </ul>
 <a id="more"></a>
 <p><hr></p>
-<h2 id=""><a href=""></a></h2><p>思路：</p>
+<h2 id="Best_Time_to_Buy_and_Sell_Stock"><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="external">Best Time to Buy and Sell Stock</a></h2><p>思路：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 <p><hr></p>
-<h2 id="-1"><a href=""></a></h2><p>思路：</p>
+<h2 id="Best_Time_to_Buy_and_Sell_Stock_II"><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="external">Best Time to Buy and Sell Stock II</a></h2><p>思路：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 <p><hr></p>
-<h2 id="-2"><a href=""></a></h2><p>思路：</p>
+<h2 id="Best_Time_to_Buy_and_Sell_Stock_III"><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="external">Best Time to Buy and Sell Stock III</a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="Best_Time_to_Buy_and_Sell_Stock_IV"><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="external">Best Time to Buy and Sell Stock IV</a></h2><p>思路：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
     <summary type="html">
     <![CDATA[<ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">Best Time to Buy and Sell Stock</a></li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/">Best Time to Buy and Sell Stock II</a></li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/">Best Time to Buy and Sell Stock III</a></li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/">Best Time to Buy and Sell Stock IV</a></li>
 </ul>]]>
     
     </summary>
@@ -163,8 +378,8 @@
     <link href="http://jakezy.com/2015/08/04/%E9%9B%86%E5%90%88%E5%8C%85/"/>
     <id>http://jakezy.com/2015/08/04/集合包/</id>
     <published>2015-08-04T15:21:57.000Z</published>
-    <updated>2015-08-04T17:28:39.000Z</updated>
-    <content type="html"><![CDATA[<h2 id="JDK类库：集合包（java-util）"><strong>JDK类库：集合包（java.util）</strong></h2><p><img src="http://ww2.sinaimg.cn/large/965a04dfgw1euqy0ir7gyj20i806y3zg.jpg" alt="集合包"></p>
+    <updated>2015-08-07T08:27:52.905Z</updated>
+    <content type="html"><![CDATA[<h1 id="JDK类库：集合包（java-util）"><strong>JDK类库：集合包（java.util）</strong></h1><p><img src="http://ww2.sinaimg.cn/large/965a04dfgw1euqy0ir7gyj20i806y3zg.jpg" alt="集合包"></p>
 <hr>
 <h2 id="Collection"><strong>Collection</strong></h2><p>Collection接口：单对象存储的集合对象</p>
 <hr>
@@ -436,7 +651,7 @@
 <p>（整理自<a href="http://book.douban.com/subject/4848587/" target="_blank" rel="external">分布式Java应用</a>）</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="JDK类库：集合包（java-util）"><strong>JDK类库：集合包（java.util）</strong></h2><p><img src="http://ww2.sinaimg.cn/large/965a04dfgw1euqy0ir7gyj20i80]]>
+    <![CDATA[<h1 id="JDK类库：集合包（java-util）"><strong>JDK类库：集合包（java.util）</strong></h1><p><img src="http://ww2.sinaimg.cn/large/965a04dfgw1euqy0ir7gyj20i80]]>
     </summary>
     
       <category term="Java" scheme="http://jakezy.com/tags/Java/"/>
@@ -558,6 +773,42 @@
 <li><a href="https://leetcode.com/problems/merge-k-sorted-lists/">Merge k Sorted Lists</a></li>
 <li><a href="https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/">Convert Sorted List to Binary Search Tree</a></li>
 <li><a href="https://leetcode.com/problems/insertion-sort-list/">Insertion Sort List</a></li>
+</ul>]]>
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Leetcode刷题记录 ]]></title>
+    <link href="http://jakezy.com/2015/07/30/leetcode/"/>
+    <id>http://jakezy.com/2015/07/30/leetcode/</id>
+    <published>2015-07-30T08:15:58.000Z</published>
+    <updated>2015-08-01T03:09:17.198Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+<a id="more"></a>
+<p><hr></p>
+<h2 id=""><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="-1"><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="-2"><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
 </ul>]]>
     
     </summary>
@@ -1028,66 +1279,6 @@
       <category term="问题记录" scheme="http://jakezy.com/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
       <category term="工作杂记" scheme="http://jakezy.com/categories/%E5%B7%A5%E4%BD%9C%E6%9D%82%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Spring问题：INFO: No Spring WebApplicationInitializer types detected on classpath]]></title>
-    <link href="http://jakezy.com/2015/06/09/Java-problem-record/"/>
-    <id>http://jakezy.com/2015/06/09/Java-problem-record/</id>
-    <published>2015-06-09T15:15:37.000Z</published>
-    <updated>2015-08-06T07:03:14.101Z</updated>
-    <content type="html"><![CDATA[<p>问题：我的Eclipse环境用的JDK 8，项目是JDK 7，在jetty中启动项目时报错：INFO: No Spring WebApplicationInitializer types detected<br><a id="more"></a><br>解决：确定项目编译时的jdk版本，更改Eclipse编译用的jdk版本即可</p>
-<p>参考<a href="http://stackoverflow.com/questions/22938689/info-no-spring-webapplicationinitializer-types-detected-on-classpath" target="_blank" rel="external">http://stackoverflow.com/questions/22938689/info-no-spring-webapplicationinitializer-types-detected-on-classpath</a></p>
-<blockquote>
-<p>I found the error: I have a library that it was built using jdk 1.6. The Spring main controller and components are in this library. And how I use jdk 1.7, It does not find the classes built in 1.6.<br>The solution was built all using “compiler compliance level: 1.7” and “Generated .class files compatibility: 1.6”, “Source compatibility: 1.6”.<br>I setup this option in Eclipse: Preferences\Java\Compiler.</p>
-</blockquote>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>问题：我的Eclipse环境用的JDK 8，项目是JDK 7，在jetty中启动项目时报错：INFO: No Spring WebApplicationInitializer types detected<br>]]>
-    
-    </summary>
-    
-      <category term="Java" scheme="http://jakezy.com/tags/Java/"/>
-    
-      <category term="问题记录" scheme="http://jakezy.com/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="Spring" scheme="http://jakezy.com/categories/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Java面试小记]]></title>
-    <link href="http://jakezy.com/2015/06/09/Java-interview-notes/"/>
-    <id>http://jakezy.com/2015/06/09/Java-interview-notes/</id>
-    <published>2015-06-09T15:06:36.000Z</published>
-    <updated>2015-06-12T08:37:46.315Z</updated>
-    <content type="html"><![CDATA[<ol>
-<li>String, StringBuffer, StringBuilder使用场景，线程安全？</li>
-<li>手写代码：快排</li>
-<li>多线程同步 synchronized<br> 实现一个多线程下的计数操作</li>
-<li>hashmap实现原理</li>
-<li>是否读过Java核心源码、框架源码</li>
-<li>SpringMVC的Controller是线程不安全的，Structs的Action是线程安全的</li>
-<li>手写代码：二叉树层序遍历</li>
-<li>手写代码：单例模式</li>
-<li>Integer、int区别</li>
-<li>MySQL索引原理，先建索引与先插入数据</li>
-<li>POST和GET区别（request header, request body）</li>
-<li>分库分表时的负载均衡：hash - 一致性哈希算法<br>可参考 <a href="http://book.douban.com/subject/25867042/" target="_blank" rel="external">大型网站系统与Java中间件实践</a> 一书中的 5.1 节内容</li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[<ol>
-<li>String, StringBuffer, StringBuilder使用场景，线程安全？</li>
-<li>手写代码：快排</li>
-<li>多线程同步 synchronized<br> 实现一个多线程下的计数操作</li>
-<li>hashmap实现原理</]]>
-    </summary>
-    
-      <category term="面试" scheme="http://jakezy.com/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="求职路上" scheme="http://jakezy.com/categories/%E6%B1%82%E8%81%8C%E8%B7%AF%E4%B8%8A/"/>
     
   </entry>
   
