@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="Leetcode," />
+  <meta name="keywords" content="JDK," />
 
 
 
@@ -37,25 +37,37 @@
   <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.4" />
 
 
-<meta name="description" content="Best Time to Buy and Sell Stock
-Best Time to Buy and Sell Stock II
-Best Time to Buy and Sell Stock III
-Best Time to Buy and Sell Stock IV">
+<meta name="description" content="实现方式：
+ArrayBlockingQueue是基于数组、FIFO、线程安全的集合类，可实现指定时间的阻塞读写，且容量可限制
+
+ArrayBlockingQueue(int)
+无默认构造器，传入参数即为创建的对象数组的大小，同时初始化锁和两个锁上的Condition，一个为notEmpty，一个为notFull
+
+offer(E, long, TimeUnit)
+插入元素至数组尾部。若数组已满，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode刷题记录 14">
-<meta property="og:url" content="http://jakezy.com/2015/08/06/Leetcode刷题记录-14/index.html">
+<meta property="og:title" content="ArrayBlockingQueue">
+<meta property="og:url" content="http://jakezy.com/2015/08/08/ArrayBlockingQueue/index.html">
 <meta property="og:site_name" content="夜阳's Blog">
-<meta property="og:description" content="Best Time to Buy and Sell Stock
-Best Time to Buy and Sell Stock II
-Best Time to Buy and Sell Stock III
-Best Time to Buy and Sell Stock IV">
-<meta property="og:updated_time" content="2015-08-07T05:25:58.665Z">
+<meta property="og:description" content="实现方式：
+ArrayBlockingQueue是基于数组、FIFO、线程安全的集合类，可实现指定时间的阻塞读写，且容量可限制
+
+ArrayBlockingQueue(int)
+无默认构造器，传入参数即为创建的对象数组的大小，同时初始化锁和两个锁上的Condition，一个为notEmpty，一个为notFull
+
+offer(E, long, TimeUnit)
+插入元素至数组尾部。若数组已满，">
+<meta property="og:updated_time" content="2015-08-08T04:48:16.270Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode刷题记录 14">
-<meta name="twitter:description" content="Best Time to Buy and Sell Stock
-Best Time to Buy and Sell Stock II
-Best Time to Buy and Sell Stock III
-Best Time to Buy and Sell Stock IV">
+<meta name="twitter:title" content="ArrayBlockingQueue">
+<meta name="twitter:description" content="实现方式：
+ArrayBlockingQueue是基于数组、FIFO、线程安全的集合类，可实现指定时间的阻塞读写，且容量可限制
+
+ArrayBlockingQueue(int)
+无默认构造器，传入参数即为创建的对象数组的大小，同时初始化锁和两个锁上的Condition，一个为notEmpty，一个为notFull
+
+offer(E, long, TimeUnit)
+插入元素至数组尾部。若数组已满，">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -65,7 +77,7 @@ Best Time to Buy and Sell Stock IV">
   };
 </script>
 
-    <title> Leetcode刷题记录 14 // 夜阳's Blog </title>
+    <title> ArrayBlockingQueue // 夜阳's Blog </title>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 <!--[if lte IE 8]>
@@ -213,7 +225,7 @@ Best Time to Buy and Sell Stock IV">
           
           
             
-              Leetcode刷题记录 14
+              ArrayBlockingQueue
             
           
         </h1>
@@ -222,8 +234,8 @@ Best Time to Buy and Sell Stock IV">
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-08-06T23:32:49+08:00" content="2015-08-06">
-            2015-08-06
+          <time itemprop="dateCreated" datetime="2015-08-08T12:47:55+08:00" content="2015-08-08">
+            2015-08-08
           </time>
         </span>
 
@@ -231,7 +243,7 @@ Best Time to Buy and Sell Stock IV">
           <span class="post-category" >
             &nbsp; | &nbsp; 分类于
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
 
               
               
@@ -244,8 +256,8 @@ Best Time to Buy and Sell Stock IV">
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/08/06/Leetcode刷题记录-14/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/06/Leetcode刷题记录-14/" itemprop="commentsCount"></span>
+              <a href="/2015/08/08/ArrayBlockingQueue/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/ArrayBlockingQueue/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -259,25 +271,50 @@ Best Time to Buy and Sell Stock IV">
       
 
       
-        <span itemprop="articleBody"><ul>
-<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="external">Best Time to Buy and Sell Stock</a></li>
-<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="external">Best Time to Buy and Sell Stock II</a></li>
-<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="external">Best Time to Buy and Sell Stock III</a></li>
-<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="external">Best Time to Buy and Sell Stock IV</a></li>
+        <span itemprop="articleBody"><h3 id="实现方式：">实现方式：</h3><ul>
+<li>ArrayBlockingQueue是基于数组、FIFO、线程安全的集合类，可实现指定时间的阻塞读写，且容量可限制</li>
 </ul>
-<a id="more"></a>
-<p><hr></p>
-<h2 id="Best_Time_to_Buy_and_Sell_Stock"><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="external">Best Time to Buy and Sell Stock</a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="Best_Time_to_Buy_and_Sell_Stock_II"><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="external">Best Time to Buy and Sell Stock II</a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="Best_Time_to_Buy_and_Sell_Stock_III"><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="external">Best Time to Buy and Sell Stock III</a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="Best_Time_to_Buy_and_Sell_Stock_IV"><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="external">Best Time to Buy and Sell Stock IV</a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></span>
+<h4 id="ArrayBlockingQueue(int)">ArrayBlockingQueue(int)</h4><ul>
+<li>无默认构造器，传入参数即为创建的对象数组的大小，同时初始化锁和两个锁上的Condition，一个为notEmpty，一个为notFull</li>
+</ul>
+<h4 id="offer(E,_long,_TimeUnit)">offer(E, long, TimeUnit)</h4><ul>
+<li>插入元素至数组尾部。若数组已满，进入等待，直到被唤醒、到达指定时间或当前线程被中断<blockquote>
+<p>先将指定时间转换为纳秒，加锁<br>  若数组未满，将对象插入数组<br>  若数组已满且已超过指定时间，返回false<br>  若数组已满且未超过指定时间，调用notFull condition的awaitNanos方法进行等待</p>
+<ul>
+<li>若被唤醒或超时，则继续判断数组是否已满</li>
+<li>若线程被interrupt，直接抛出InterruptedException</li>
+</ul>
+</blockquote>
+</li>
+<li>不带时间的offer方法在数组满时不进入等待，直接返回false</li>
+<li>也可选择调用put方法，在数组满时一直等待，直到数组不为空或线程被interrupt</li>
+</ul>
+<h4 id="pool(E,_long,_TimeUnit)">pool(E, long, TimeUnit)</h4><ul>
+<li>获取队列中的第一个元素，若队列中没有元素，则进入等待，直到被唤醒、到达指定时间或当前线程被中断<blockquote>
+<p>先将指定时间转换为纳秒，加锁<br>若数组中元素个数不为0，则从当前对象数组中获取最后一个元素，将该位置上元素置null<br>若数组中元素个数为0，</p>
+<ul>
+<li>若剩余等待时间&lt;0，返回null</li>
+<li>若剩余等待时间&gt;0，调用notEmpty condition的awaitNanos方法进行等待<blockquote>
+<p>若被唤醒或超时，则判断数组中元素个数是否不为0<br>若线程被interrupt，则抛出interruptedException</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>不带时间的poll方法在数组中元素个数为0时不进入等待，直接返回null</li>
+<li>也可选择调用take方法，在数组空时一直等待，直到直到数组不为空或线程被interrupt</li>
+</ul>
+<h4 id="iterator()">iterator()</h4><ul>
+<li>加锁，创建Itr对象实例，创建时首先获取当前数组元素尾部的index及尾部的元素，调用完后释放锁</li>
+<li>调用Itr的next方法：加锁，获取Itr中的nextItem，增加需要获取的下一元素index，并检查下一元素是否存在<blockquote>
+<p>若存在，则获取并赋值到nextItem；<br>若不存在，则将nextIndex设置为-1，nextItem设置为null</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="小结：">小结：</h3><ul>
+<li>ArrayBlockingQueue为一个基于固定大小数组、ReentrantLock及Condition实现的可阻塞的先进先出的Queue</li>
+</ul>
+</span>
       
     </div>
 
@@ -285,7 +322,7 @@ Best Time to Buy and Sell Stock IV">
       
         <div class="post-tags">
           
-            <a href="/tags/Leetcode/" rel="tag">#Leetcode</a>
+            <a href="/tags/JDK/" rel="tag">#JDK</a>
           
         </div>
       
@@ -294,13 +331,11 @@ Best Time to Buy and Sell Stock IV">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/07/并发包/" rel="prev">并发包</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/06/java.util.ConcurrentModificationException出现原因及解决办法/" rel="next">java.util.ConcurrentModificationException出现原因及解决办法</a>
+              <a href="/2015/08/08/CopyOnWriteArraySet/" rel="next">CopyOnWriteArraySet</a>
             
           </div>
         </div>
@@ -315,10 +350,10 @@ Best Time to Buy and Sell Stock IV">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/08/06/Leetcode刷题记录-14/"
-     data-title="Leetcode刷题记录 14"
+        <div class="ds-share flat" data-thread-key="2015/08/08/ArrayBlockingQueue/"
+     data-title="ArrayBlockingQueue"
      data-content=""
-     data-url="http://jakezy.com/2015/08/06/Leetcode刷题记录-14/">
+     data-url="http://jakezy.com/2015/08/08/ArrayBlockingQueue/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -345,8 +380,8 @@ Best Time to Buy and Sell Stock IV">
             
               <div class="comments" id="comments">
                 
-                  <div class="ds-thread" data-thread-key="2015/08/06/Leetcode刷题记录-14/"
-                       data-title="Leetcode刷题记录 14" data-url="http://jakezy.com/2015/08/06/Leetcode刷题记录-14/">
+                  <div class="ds-thread" data-thread-key="2015/08/08/ArrayBlockingQueue/"
+                       data-title="ArrayBlockingQueue" data-url="http://jakezy.com/2015/08/08/ArrayBlockingQueue/">
                   </div>
                 
               </div>
@@ -386,7 +421,7 @@ Best Time to Buy and Sell Stock IV">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -400,7 +435,7 @@ Best Time to Buy and Sell Stock IV">
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -466,7 +501,7 @@ Best Time to Buy and Sell Stock IV">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Best_Time_to_Buy_and_Sell_Stock"><span class="nav-number">1.</span> <span class="nav-text">Best Time to Buy and Sell Stock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Best_Time_to_Buy_and_Sell_Stock_II"><span class="nav-number">2.</span> <span class="nav-text">Best Time to Buy and Sell Stock II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Best_Time_to_Buy_and_Sell_Stock_III"><span class="nav-number">3.</span> <span class="nav-text">Best Time to Buy and Sell Stock III</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Best_Time_to_Buy_and_Sell_Stock_IV"><span class="nav-number">4.</span> <span class="nav-text">Best Time to Buy and Sell Stock IV</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方式："><span class="nav-text">实现方式：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayBlockingQueue(int)"><span class="nav-text">ArrayBlockingQueue(int)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#offer(E,_long,_TimeUnit)"><span class="nav-text">offer(E, long, TimeUnit)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pool(E,_long,_TimeUnit)"><span class="nav-text">pool(E, long, TimeUnit)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iterator()"><span class="nav-text">iterator()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结："><span class="nav-text">小结：</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="JDK," />
 
 
 
@@ -37,34 +37,25 @@
   <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.4" />
 
 
-<meta name="description" content="JDK类库：并发包（java.util.concurrent）
-
-
-ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap()
-
+<meta name="description" content="实现方式：线程安全的HashMap的实现ConcurrentHashMap()
 和HashMap一样，有initialCapacity和loadFactor属性，多了一个concurrencyLevel属性，默认值为16、0.75和16
-计算ssize值，传入Segment的newArray方法">
+计算ssize值，传入Segment的newArray方法创建Segment对象数组
+计算cap值，为Segment数组创建Segment对象（继承自Reentr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="并发包">
-<meta property="og:url" content="http://jakezy.com/2015/08/07/并发包/index.html">
+<meta property="og:title" content="ConcurrentHashMap">
+<meta property="og:url" content="http://jakezy.com/2015/08/08/ConcurrentHashMap/index.html">
 <meta property="og:site_name" content="夜阳's Blog">
-<meta property="og:description" content="JDK类库：并发包（java.util.concurrent）
-
-
-ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap()
-
+<meta property="og:description" content="实现方式：线程安全的HashMap的实现ConcurrentHashMap()
 和HashMap一样，有initialCapacity和loadFactor属性，多了一个concurrencyLevel属性，默认值为16、0.75和16
-计算ssize值，传入Segment的newArray方法">
-<meta property="og:updated_time" content="2015-08-07T10:25:36.048Z">
+计算ssize值，传入Segment的newArray方法创建Segment对象数组
+计算cap值，为Segment数组创建Segment对象（继承自Reentr">
+<meta property="og:updated_time" content="2015-08-08T04:44:31.067Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="并发包">
-<meta name="twitter:description" content="JDK类库：并发包（java.util.concurrent）
-
-
-ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap()
-
+<meta name="twitter:title" content="ConcurrentHashMap">
+<meta name="twitter:description" content="实现方式：线程安全的HashMap的实现ConcurrentHashMap()
 和HashMap一样，有initialCapacity和loadFactor属性，多了一个concurrencyLevel属性，默认值为16、0.75和16
-计算ssize值，传入Segment的newArray方法">
+计算ssize值，传入Segment的newArray方法创建Segment对象数组
+计算cap值，为Segment数组创建Segment对象（继承自Reentr">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -74,7 +65,7 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
   };
 </script>
 
-    <title> 并发包 // 夜阳's Blog </title>
+    <title> ConcurrentHashMap // 夜阳's Blog </title>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 <!--[if lte IE 8]>
@@ -222,7 +213,7 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
           
           
             
-              并发包
+              ConcurrentHashMap
             
           
         </h1>
@@ -231,8 +222,8 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-08-07T18:25:36+08:00" content="2015-08-07">
-            2015-08-07
+          <time itemprop="dateCreated" datetime="2015-08-08T12:30:02+08:00" content="2015-08-08">
+            2015-08-08
           </time>
         </span>
 
@@ -253,8 +244,8 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/08/07/并发包/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/07/并发包/" itemprop="commentsCount"></span>
+              <a href="/2015/08/08/ConcurrentHashMap/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/ConcurrentHashMap/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -268,17 +259,12 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
       
 
       
-        <span itemprop="articleBody"><p><strong>JDK类库：并发包（java.util.concurrent）</strong></p>
-<p><img src="" alt="并发包"></p>
-<hr>
-<h4 id="ConcurrentHashMap"><strong>ConcurrentHashMap</strong></h4><h5 id="实现方式：线程安全的HashMap的实现">实现方式：线程安全的HashMap的实现</h5><p><strong>ConcurrentHashMap()</strong></p>
-<ul>
+        <span itemprop="articleBody"><h3 id="实现方式：线程安全的HashMap的实现">实现方式：线程安全的HashMap的实现</h3><h4 id="ConcurrentHashMap()">ConcurrentHashMap()</h4><ul>
 <li>和HashMap一样，有initialCapacity和loadFactor属性，多了一个concurrencyLevel属性，默认值为16、0.75和16</li>
 <li>计算ssize值，传入Segment的newArray方法创建Segment对象数组</li>
 <li>计算cap值，为Segment数组创建Segment对象（继承自ReentrantLock）：创建一个指定大小为cap的HashEntry对象数组，threshold=(int)(newTable.length*loadFactor);</li>
 </ul>
-<p><strong>put(Object key, Object key)</strong></p>
-<ul>
+<h4 id="put(Object_key,_Object_key)">put(Object key, Object key)</h4><ul>
 <li>无synchronized关键字</li>
 <li>首先判断value是否为null，若为null，抛出NullPointerException</li>
 <li>对key.hashCode进行hash操作，得到key的hash值</li>
@@ -297,8 +283,7 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
 </li>
 <li>小结：ConcurrentHashMap基于匆促人人参与Level划分多个Segment对key-value存储，避免每次put都锁住整个数组。默认情况下，最佳情况可允许16个线程并发无阻塞地操作集合对象</li>
 </ul>
-<p><strong>remove(Object key)</strong></p>
-<ul>
+<h4 id="remove(Object_key)">remove(Object key)</h4><ul>
 <li>对key.hashCode进行hash操作，得到hash值找到对应的Segment对象，调用Segment的remove方法完成remove操作<blockquote>
 <p>Segment的remove方法：</p>
 <ul>
@@ -310,8 +295,7 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
 </blockquote>
 </li>
 </ul>
-<p><strong>get(Object key)</strong></p>
-<ul>
+<h4 id="get(Object_key)">get(Object key)</h4><ul>
 <li>对key.hashCode进行hash操作，得到hash值找到对应的Segment对象，调用Segment的get方法完成get操作<blockquote>
 <p>Segment的get方法：</p>
 <ul>
@@ -334,12 +318,11 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
 </blockquote>
 </li>
 </ul>
-<p><strong>containsKey(Object key)</strong></p>
-<ul>
+<h4 id="containsKey(Object_key)">containsKey(Object key)</h4><ul>
 <li>整个步骤和get相同，没有加锁，只是当寻找到有key、hash相等的HashEntry时才返回true，否则返回false<br>keySet().iterator()：</li>
 <li>不加锁，遍历每个分段中的HashEntry对象数组，完成集合中所有对象的读取</li>
 </ul>
-<h5 id="小结：">小结：</h5><ul>
+<h3 id="小结：">小结：</h3><ul>
 <li>ConcurrentHashMap默认情况下将数据分为16个段存储，各个段持有各自的锁，锁仅用于put和remove等改变集合对象的操作，基于volatile及HashEntry链表的不变性实现读取的不加锁。</li>
 <li>没有全局锁，计算size：<ul>
 <li>不加锁遍历所有段，读取count及modCount（volatile类型）并统计。</li>
@@ -349,115 +332,11 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
 </ul>
 </li>
 </ul>
-<h5 id="和HashMap性能对比：">和HashMap性能对比：</h5><ul>
+<h3 id="和HashMap性能对比：">和HashMap性能对比：</h3><ul>
 <li>线程数为10时，ConcurrentHashMap性能提升不明显</li>
 <li>线程数50或100时，增加删除元素带来一倍左右的性能提升，查找元素10倍左右性能提升</li>
 <li>线程数增长，性能没有出现下降</li>
 </ul>
-<hr>
-<h4 id="CopyOnWriteArrayList"><strong>CopyOnWriteArrayList</strong></h4><h5 id="实现方式：">实现方式：</h5><pre><code>CopyOnWriteArrayList是线程安全、读操作时无锁的ArrayList
-</code></pre><p><strong>CopyOnWriteArrayList()</strong></p>
-<ul>
-<li>创建大小为0的数组</li>
-</ul>
-<p><strong>add(E)</strong></p>
-<ul>
-<li>无synchronized关键字，通过ReentrantLock保证线程安全</li>
-<li>每次都创建一个新的Object数组（数组大小是当前数组大小+1），将之前数组内容复制到新数组，新增加的对象放入数组末尾，最后将新创建的数组对象赋值给全局的数组对象</li>
-</ul>
-<p><strong>remove(E)</strong></p>
-<ul>
-<li>无synchronized关键字，通过ReentrantLock保证线程安全</li>
-<li>首先创建一个比当前数组小1的数组，遍历数组</li>
-<li>若找到equals或均为null的元素，则将之后的元素全部赋值给新数组对象，并将引用切换，返回true</li>
-<li>若未找到，将当前元素赋值给新数组对象，<br>  （未完。。。）</li>
-</ul>
-<p><strong>get(int)</strong></p>
-<ul>
-<li>无锁，直接获取当前数组对应位置的元素，可能出现读脏数据现象</li>
-<li>适合写少读多脏数据影响不大的场景</li>
-</ul>
-<p><strong>iterator()</strong></p>
-<ul>
-<li>创建一个新的COWIterator对象实例，并保存一个当前数组的快照，调用next遍历时仅对此快照数组遍历</li>
-</ul>
-<h5 id="小结：-1">小结：</h5><ul>
-<li>CopyOnWriteArrayList基于ReentrantLock保证了增加删除元素的互斥，读操作是无锁操作，保证了读的性能</li>
-</ul>
-<h5 id="与ArrayList性能比较：">与ArrayList性能比较：</h5><ul>
-<li>随着元素数量和线程数增加，CopyOnWriteArrayList在增删元素时性能下降明显，但查找元素随着线程数增加，性能比ArrayList好很多</li>
-<li>读多写少的并发场景中，CopyOnWriteArrayList比ArrayList更好</li>
-</ul>
-<hr>
-<h4 id="CopyOnWriteArraySet"><strong>CopyOnWriteArraySet</strong></h4><h5 id="实现方式：-1">实现方式：</h5><ul>
-<li>基于CopyOnWriteArrayList实现，唯一不同是在add时调用的是CopyOnWriteArrayList的addIfAbsent方法</li>
-<li>addIfAbsent方法同样采用锁保护，并创建一个新的大小+1的Object数组。遍历当前Object数组，若数组中已有当前元素，则直接返回；若没有，则放入Object数组尾部，并返回</li>
-</ul>
-<h5 id="小结：-2">小结：</h5><ul>
-<li>CopyOnWriteArraySet在add时每次都要遍历数组，因此性能略低于CopyOnWriteArrayList</li>
-</ul>
-<hr>
-<h4 id="ArrayBlockingQueue"><strong>ArrayBlockingQueue</strong></h4><h5 id="实现方式：-2">实现方式：</h5><ul>
-<li>ArrayBlockingQueue是基于数组、FIFO、线程安全的集合类，可实现指定时间的阻塞读写，且容量可限制</li>
-</ul>
-<p><strong>ArrayBlockingQueue(int)</strong></p>
-<ul>
-<li>无默认构造器，传入参数即为创建的对象数组的大小，同时初始化锁和两个锁上的Condition，一个为notEmpty，一个为notFull</li>
-</ul>
-<p><strong>offer(E, long, TimeUnit)</strong></p>
-<ul>
-<li>插入元素至数组尾部。若数组已满，进入等待，直到被唤醒、到达指定时间或当前线程被中断<blockquote>
-<p>先将指定时间转换为纳秒，加锁<br>  若数组未满，将对象插入数组<br>  若数组已满且已超过指定时间，返回false<br>  若数组已满且未超过指定时间，调用notFull condition的awaitNanos方法进行等待</p>
-<ul>
-<li>若被唤醒或超时，则继续判断数组是否已满</li>
-<li>若线程被interrupt，直接抛出InterruptedException</li>
-</ul>
-</blockquote>
-</li>
-<li>不带时间的offer方法在数组满时不进入等待，直接返回false</li>
-<li>也可选择调用put方法，在数组满时一直等待，直到数组不为空或线程被interrupt</li>
-</ul>
-<p><strong>pool(E, long, TimeUnit)</strong></p>
-<ul>
-<li>获取队列中的第一个元素，若队列中没有元素，则进入等待，直到被唤醒、到达指定时间或当前线程被中断<blockquote>
-<p>先将指定时间转换为纳秒，加锁<br>若数组中元素个数不为0，则从当前对象数组中获取最后一个元素，将该位置上元素置null<br>若数组中元素个数为0，</p>
-<ul>
-<li>若剩余等待时间&lt;0，返回null</li>
-<li>若剩余等待时间&gt;0，调用notEmpty condition的awaitNanos方法进行等待<blockquote>
-<p>若被唤醒或超时，则判断数组中元素个数是否不为0<br>若线程被interrupt，则抛出interruptedException</p>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-</li>
-<li>不带时间的poll方法在数组中元素个数为0时不进入等待，直接返回null</li>
-<li>也可选择调用take方法，在数组空时一直等待，直到直到数组不为空或线程被interrupt</li>
-</ul>
-<p><strong>iterator()</strong></p>
-<ul>
-<li>加锁，创建Itr对象实例，创建时首先获取当前数组元素尾部的index及尾部的元素，调用完后释放锁</li>
-<li>调用Itr的next方法：加锁，获取Itr中的nextItem，增加需要获取的下一元素index，并检查下一元素是否存在<blockquote>
-<p>若存在，则获取并赋值到nextItem；<br>若不存在，则将nextIndex设置为-1，nextItem设置为null</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="小结：-3">小结：</h5><ul>
-<li>ArrayBlockingQueue为一个基于固定大小数组、ReentrantLock及Condition实现的可阻塞的先进先出的Queue</li>
-</ul>
-<hr>
-<h4 id="AtomicInteger"><strong>AtomicInteger</strong></h4><h5 id="实现方式：-3">实现方式：</h5><p>AtomicInteger是一个支持原子操作的Integer类<br>用AtomicInteger实现的顺序id获取：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger counter = <span class="keyword">new</span> AtomicInteger();</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNextId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> counter.incrementAndGet();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>incrementAndGet()</strong><br>简化后的相关代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AtomicInteger</span> <span class="keyword">extends</span> <span class="title">Number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> value;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Atomically increments by one the current value.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@return</span> the updated value</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">incrementAndGet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 无限循环直到value设置成功</span></span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">int</span> current = get();</span><br><span class="line">            <span class="keyword">int</span> next = current + <span class="number">1</span>;</span><br><span class="line">            <span class="comment">// 前两步非线程安全，因此不能直接返回next</span></span><br><span class="line">            <span class="comment">// 因为此时可能会有其他线程已经对current进行了更改，所以要调用compareAndSet判断</span></span><br><span class="line">            <span class="keyword">if</span> (compareAndSet(current, next))</span><br><span class="line">                <span class="keyword">return</span> next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Atomically sets the value to the given updated value</span><br><span class="line">     * if the current value &#123;<span class="doctag">@code</span> ==&#125; the expected value.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> expect the expected value</span><br><span class="line">     * <span class="doctag">@param</span> update the new value</span><br><span class="line">     * <span class="doctag">@return</span> true if successful. False return indicates that</span><br><span class="line">     * the actual value was not equal to the expected value.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">compareAndSet</span><span class="params">(<span class="keyword">int</span> expect, <span class="keyword">int</span> update)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// CAS有3个操作数：内存值value，要跟内存值做比较的值expect和新值update</span></span><br><span class="line">        <span class="comment">// 若value==expect，则令value=update，返回true；否则，返回false</span></span><br><span class="line">        <span class="keyword">return</span> unsafe.compareAndSwapInt(<span class="keyword">this</span>, valueOffset, expect, update);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>不使用compareAndSet可能出现的异常：</p>
-<ol>
-<li>A线程执行get()操作，获取current值（假设为1）</li>
-<li>B线程执行get()操作，获取current值（为1）</li>
-<li>B线程执行next = current + 1操作，next = 2</li>
-<li>A线程执行next = current + 1操作，next = 2</li>
-</ol>
-</blockquote>
-<p>compareAndSet调用native方法compareAndSwapInt，它基于CAS原语实现，由CPU比较内存位置上的值是否为当前值，若是则将其设置为next，否则返回false<br>基于CAS的操作可认为是无阻塞的，且CAS原语性能会好于同步锁</p>
-<p>基于原子类的CAS操作自主实现无阻塞操作：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line"> * 判断当前方法是否已经初始化</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AtomicBooleanTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicBoolean inited = <span class="keyword">new</span> AtomicBoolean();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!inited.compareAndSet(<span class="keyword">false</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">            System.out.println(<span class="string">"已初始化："</span> + flag);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 初始化操作</span></span><br><span class="line">        System.out.println(<span class="string">"未初始化："</span> + flag);</span><br><span class="line">        flag++;</span><br><span class="line">        System.out.println(<span class="string">"初始化完毕："</span> + flag);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        init();</span><br><span class="line">        System.out.println(<span class="string">"-----"</span>);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -466,7 +345,7 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag">#Java</a>
+            <a href="/tags/JDK/" rel="tag">#JDK</a>
           
         </div>
       
@@ -475,11 +354,13 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2015/08/08/CopyOnWriteArrayList/" rel="prev">CopyOnWriteArrayList</a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/06/Leetcode刷题记录-14/" rel="next">Leetcode刷题记录 14</a>
+              <a href="/2015/08/08/AtomicInteger/" rel="next">AtomicInteger</a>
             
           </div>
         </div>
@@ -494,10 +375,10 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/08/07/并发包/"
-     data-title="并发包"
+        <div class="ds-share flat" data-thread-key="2015/08/08/ConcurrentHashMap/"
+     data-title="ConcurrentHashMap"
      data-content=""
-     data-url="http://jakezy.com/2015/08/07/并发包/">
+     data-url="http://jakezy.com/2015/08/08/ConcurrentHashMap/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -524,8 +405,8 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
             
               <div class="comments" id="comments">
                 
-                  <div class="ds-thread" data-thread-key="2015/08/07/并发包/"
-                       data-title="并发包" data-url="http://jakezy.com/2015/08/07/并发包/">
+                  <div class="ds-thread" data-thread-key="2015/08/08/ConcurrentHashMap/"
+                       data-title="ConcurrentHashMap" data-url="http://jakezy.com/2015/08/08/ConcurrentHashMap/">
                   </div>
                 
               </div>
@@ -565,7 +446,7 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -579,7 +460,7 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -645,7 +526,7 @@ ConcurrentHashMap实现方式：线程安全的HashMap的实现ConcurrentHashMap
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ConcurrentHashMap"><span class="nav-number">1.</span> <span class="nav-text">ConcurrentHashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式：线程安全的HashMap的实现"><span class="nav-number">1.1.</span> <span class="nav-text">实现方式：线程安全的HashMap的实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小结："><span class="nav-number">1.2.</span> <span class="nav-text">小结：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#和HashMap性能对比："><span class="nav-number">1.3.</span> <span class="nav-text">和HashMap性能对比：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CopyOnWriteArrayList"><span class="nav-number">2.</span> <span class="nav-text">CopyOnWriteArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式："><span class="nav-number">2.1.</span> <span class="nav-text">实现方式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小结：-1"><span class="nav-number">2.2.</span> <span class="nav-text">小结：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与ArrayList性能比较："><span class="nav-number">2.3.</span> <span class="nav-text">与ArrayList性能比较：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CopyOnWriteArraySet"><span class="nav-number">3.</span> <span class="nav-text">CopyOnWriteArraySet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式：-1"><span class="nav-number">3.1.</span> <span class="nav-text">实现方式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小结：-2"><span class="nav-number">3.2.</span> <span class="nav-text">小结：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayBlockingQueue"><span class="nav-number">4.</span> <span class="nav-text">ArrayBlockingQueue</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式：-2"><span class="nav-number">4.1.</span> <span class="nav-text">实现方式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小结：-3"><span class="nav-number">4.2.</span> <span class="nav-text">小结：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AtomicInteger"><span class="nav-number">5.</span> <span class="nav-text">AtomicInteger</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现方式：-3"><span class="nav-number">5.1.</span> <span class="nav-text">实现方式：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方式：线程安全的HashMap的实现"><span class="nav-text">实现方式：线程安全的HashMap的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ConcurrentHashMap()"><span class="nav-text">ConcurrentHashMap()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#put(Object_key,_Object_key)"><span class="nav-text">put(Object key, Object key)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remove(Object_key)"><span class="nav-text">remove(Object key)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get(Object_key)"><span class="nav-text">get(Object key)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#containsKey(Object_key)"><span class="nav-text">containsKey(Object key)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结："><span class="nav-text">小结：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和HashMap性能对比："><span class="nav-text">和HashMap性能对比：</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
