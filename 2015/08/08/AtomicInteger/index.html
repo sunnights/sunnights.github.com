@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="life," />
+  <meta name="keywords" content="JDK," />
 
 
 
@@ -37,16 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.4" />
 
 
-<meta name="description" content="第四周任务（3.30-4.5）：">
+<meta name="description" content="实现方式AtomicInteger是一个支持原子操作的Integer类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第四周记录">
-<meta property="og:url" content="http://jakezy.com/2015/03/31/4th-week/index.html">
+<meta property="og:title" content="AtomicInteger">
+<meta property="og:url" content="http://jakezy.com/2015/08/08/AtomicInteger/index.html">
 <meta property="og:site_name" content="夜阳's Blog">
-<meta property="og:description" content="第四周任务（3.30-4.5）：">
-<meta property="og:updated_time" content="2015-03-31T05:29:21.971Z">
+<meta property="og:description" content="实现方式AtomicInteger是一个支持原子操作的Integer类">
+<meta property="og:updated_time" content="2015-08-08T04:53:14.920Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第四周记录">
-<meta name="twitter:description" content="第四周任务（3.30-4.5）：">
+<meta name="twitter:title" content="AtomicInteger">
+<meta name="twitter:description" content="实现方式AtomicInteger是一个支持原子操作的Integer类">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -56,7 +56,7 @@
   };
 </script>
 
-    <title> 第四周记录 // 夜阳's Blog </title>
+    <title> AtomicInteger // 夜阳's Blog </title>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 <!--[if lte IE 8]>
@@ -204,7 +204,7 @@
           
           
             
-              第四周记录
+              AtomicInteger
             
           
         </h1>
@@ -213,8 +213,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-03-31T13:18:29+08:00" content="2015-03-31">
-            2015-03-31
+          <time itemprop="dateCreated" datetime="2015-08-08T12:01:02+08:00" content="2015-08-08">
+            2015-08-08
           </time>
         </span>
 
@@ -222,7 +222,7 @@
           <span class="post-category" >
             &nbsp; | &nbsp; 分类于
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/生活记录/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a></span>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
 
               
               
@@ -235,8 +235,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/03/31/4th-week/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/31/4th-week/" itemprop="commentsCount"></span>
+              <a href="/2015/08/08/AtomicInteger/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/AtomicInteger/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -250,15 +250,20 @@
       
 
       
-        <span itemprop="articleBody"><p>第四周任务（3.30-4.5）：<br><a id="more"></a></p>
-<ul>
-<li>根据业务确定项目实训具体架构</li>
-<li>搭建环境平台</li>
-<li>阿里笔试</li>
-<li><a href="http://book.douban.com/subject/1230413/" target="_blank" rel="external">深入理解计算机系统</a></li>
-<li>池建强 <a href="http://book.douban.com/subject/25826578/" target="_blank" rel="external">MacTalk</a></li>
-</ul>
-</span>
+        <span itemprop="articleBody"><h3 id="实现方式">实现方式</h3><p>AtomicInteger是一个支持原子操作的Integer类<br><a id="more"></a></p>
+<p>用AtomicInteger实现的顺序id获取：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger counter = <span class="keyword">new</span> AtomicInteger();</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNextId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> counter.incrementAndGet();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="incrementAndGet()">incrementAndGet()</h4><p>简化后的相关代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AtomicInteger</span> <span class="keyword">extends</span> <span class="title">Number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> value;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Atomically increments by one the current value.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@return</span> the updated value</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">incrementAndGet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 无限循环直到value设置成功</span></span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">int</span> current = get();</span><br><span class="line">            <span class="keyword">int</span> next = current + <span class="number">1</span>;</span><br><span class="line">            <span class="comment">// 前两步非线程安全，因此不能直接返回next</span></span><br><span class="line">            <span class="comment">// 因为此时可能会有其他线程已经对current进行了更改，所以要调用compareAndSet判断</span></span><br><span class="line">            <span class="keyword">if</span> (compareAndSet(current, next))</span><br><span class="line">                <span class="keyword">return</span> next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Atomically sets the value to the given updated value</span><br><span class="line">     * if the current value &#123;<span class="doctag">@code</span> ==&#125; the expected value.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> expect the expected value</span><br><span class="line">     * <span class="doctag">@param</span> update the new value</span><br><span class="line">     * <span class="doctag">@return</span> true if successful. False return indicates that</span><br><span class="line">     * the actual value was not equal to the expected value.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">compareAndSet</span><span class="params">(<span class="keyword">int</span> expect, <span class="keyword">int</span> update)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// CAS有3个操作数：内存值value，要跟内存值做比较的值expect和新值update</span></span><br><span class="line">        <span class="comment">// 若value==expect，则令value=update，返回true；否则，返回false</span></span><br><span class="line">        <span class="keyword">return</span> unsafe.compareAndSwapInt(<span class="keyword">this</span>, valueOffset, expect, update);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>不使用compareAndSet可能出现的异常：</p>
+<ol>
+<li>A线程执行get()操作，获取current值（假设为1）</li>
+<li>B线程执行get()操作，获取current值（为1）</li>
+<li>B线程执行next = current + 1操作，next = 2</li>
+<li>A线程执行next = current + 1操作，next = 2</li>
+</ol>
+</blockquote>
+<p>compareAndSet调用native方法compareAndSwapInt，它基于CAS原语实现，由CPU比较内存位置上的值是否为当前值，若是则将其设置为next，否则返回false<br>基于CAS的操作可认为是无阻塞的，且CAS原语性能会好于同步锁</p>
+<h5 id="基于原子类的CAS操作自主实现无阻塞操作">基于原子类的CAS操作自主实现无阻塞操作</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line"> * CAS操作判断当前方法是否已经初始化</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AtomicBooleanTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicBoolean inited = <span class="keyword">new</span> AtomicBoolean();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!inited.compareAndSet(<span class="keyword">false</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">            System.out.println(<span class="string">"已初始化："</span> + flag);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 初始化操作</span></span><br><span class="line">        System.out.println(<span class="string">"未初始化："</span> + flag);</span><br><span class="line">        flag++;</span><br><span class="line">        System.out.println(<span class="string">"初始化完毕："</span> + flag);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        init();</span><br><span class="line">        System.out.println(<span class="string">"-----"</span>);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -266,7 +271,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/life/" rel="tag">#life</a>
+            <a href="/tags/JDK/" rel="tag">#JDK</a>
           
         </div>
       
@@ -275,13 +280,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/04/15/6th-week/" rel="prev">第六周记录</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/03/22/3rd-week/" rel="next">第三周记录</a>
+              <a href="/2015/08/08/Leetcode刷题记录-14/" rel="next">Leetcode刷题记录 14</a>
             
           </div>
         </div>
@@ -296,10 +299,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/03/31/4th-week/"
-     data-title="第四周记录"
+        <div class="ds-share flat" data-thread-key="2015/08/08/AtomicInteger/"
+     data-title="AtomicInteger"
      data-content=""
-     data-url="http://jakezy.com/2015/03/31/4th-week/">
+     data-url="http://jakezy.com/2015/08/08/AtomicInteger/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -326,8 +329,8 @@
             
               <div class="comments" id="comments">
                 
-                  <div class="ds-thread" data-thread-key="2015/03/31/4th-week/"
-                       data-title="第四周记录" data-url="http://jakezy.com/2015/03/31/4th-week/">
+                  <div class="ds-thread" data-thread-key="2015/08/08/AtomicInteger/"
+                       data-title="AtomicInteger" data-url="http://jakezy.com/2015/08/08/AtomicInteger/">
                   </div>
                 
               </div>
@@ -447,7 +450,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方式"><span class="nav-text">实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#incrementAndGet()"><span class="nav-text">incrementAndGet()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基于原子类的CAS操作自主实现无阻塞操作"><span class="nav-text">基于原子类的CAS操作自主实现无阻塞操作</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

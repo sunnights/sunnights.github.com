@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-08T02:50:14.574Z</updated>
+  <updated>2015-08-08T04:53:14.920Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[AtomicInteger]]></title>
+    <link href="http://jakezy.com/2015/08/08/AtomicInteger/"/>
+    <id>http://jakezy.com/2015/08/08/AtomicInteger/</id>
+    <published>2015-08-08T04:01:02.000Z</published>
+    <updated>2015-08-08T04:53:14.920Z</updated>
+    <content type="html"><![CDATA[<h3 id="实现方式">实现方式</h3><p>AtomicInteger是一个支持原子操作的Integer类<br><a id="more"></a></p>
+<p>用AtomicInteger实现的顺序id获取：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger counter = <span class="keyword">new</span> AtomicInteger();</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNextId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> counter.incrementAndGet();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="incrementAndGet()">incrementAndGet()</h4><p>简化后的相关代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AtomicInteger</span> <span class="keyword">extends</span> <span class="title">Number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> value;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Atomically increments by one the current value.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@return</span> the updated value</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">incrementAndGet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 无限循环直到value设置成功</span></span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">int</span> current = get();</span><br><span class="line">            <span class="keyword">int</span> next = current + <span class="number">1</span>;</span><br><span class="line">            <span class="comment">// 前两步非线程安全，因此不能直接返回next</span></span><br><span class="line">            <span class="comment">// 因为此时可能会有其他线程已经对current进行了更改，所以要调用compareAndSet判断</span></span><br><span class="line">            <span class="keyword">if</span> (compareAndSet(current, next))</span><br><span class="line">                <span class="keyword">return</span> next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Atomically sets the value to the given updated value</span><br><span class="line">     * if the current value &#123;<span class="doctag">@code</span> ==&#125; the expected value.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> expect the expected value</span><br><span class="line">     * <span class="doctag">@param</span> update the new value</span><br><span class="line">     * <span class="doctag">@return</span> true if successful. False return indicates that</span><br><span class="line">     * the actual value was not equal to the expected value.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">compareAndSet</span><span class="params">(<span class="keyword">int</span> expect, <span class="keyword">int</span> update)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// CAS有3个操作数：内存值value，要跟内存值做比较的值expect和新值update</span></span><br><span class="line">        <span class="comment">// 若value==expect，则令value=update，返回true；否则，返回false</span></span><br><span class="line">        <span class="keyword">return</span> unsafe.compareAndSwapInt(<span class="keyword">this</span>, valueOffset, expect, update);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>不使用compareAndSet可能出现的异常：</p>
+<ol>
+<li>A线程执行get()操作，获取current值（假设为1）</li>
+<li>B线程执行get()操作，获取current值（为1）</li>
+<li>B线程执行next = current + 1操作，next = 2</li>
+<li>A线程执行next = current + 1操作，next = 2</li>
+</ol>
+</blockquote>
+<p>compareAndSet调用native方法compareAndSwapInt，它基于CAS原语实现，由CPU比较内存位置上的值是否为当前值，若是则将其设置为next，否则返回false<br>基于CAS的操作可认为是无阻塞的，且CAS原语性能会好于同步锁</p>
+<h5 id="基于原子类的CAS操作自主实现无阻塞操作">基于原子类的CAS操作自主实现无阻塞操作</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line"> * CAS操作判断当前方法是否已经初始化</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AtomicBooleanTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicBoolean inited = <span class="keyword">new</span> AtomicBoolean();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!inited.compareAndSet(<span class="keyword">false</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">            System.out.println(<span class="string">"已初始化："</span> + flag);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 初始化操作</span></span><br><span class="line">        System.out.println(<span class="string">"未初始化："</span> + flag);</span><br><span class="line">        flag++;</span><br><span class="line">        System.out.println(<span class="string">"初始化完毕："</span> + flag);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        init();</span><br><span class="line">        System.out.println(<span class="string">"-----"</span>);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="实现方式">实现方式</h3><p>AtomicInteger是一个支持原子操作的Integer类<br>]]>
+    
+    </summary>
+    
+      <category term="JDK" scheme="http://jakezy.com/tags/JDK/"/>
+    
+      <category term="Java" scheme="http://jakezy.com/categories/Java/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Leetcode刷题记录 14]]></title>
@@ -850,41 +881,6 @@ h3, h4 {
       <category term="问题记录" scheme="http://jakezy.com/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
       <category term="Spring" scheme="http://jakezy.com/categories/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Java面试小记]]></title>
-    <link href="http://jakezy.com/2015/06/09/Java-interview-notes/"/>
-    <id>http://jakezy.com/2015/06/09/Java-interview-notes/</id>
-    <published>2015-06-09T15:06:36.000Z</published>
-    <updated>2015-06-12T08:37:46.315Z</updated>
-    <content type="html"><![CDATA[<ol>
-<li>String, StringBuffer, StringBuilder使用场景，线程安全？</li>
-<li>手写代码：快排</li>
-<li>多线程同步 synchronized<br> 实现一个多线程下的计数操作</li>
-<li>hashmap实现原理</li>
-<li>是否读过Java核心源码、框架源码</li>
-<li>SpringMVC的Controller是线程不安全的，Structs的Action是线程安全的</li>
-<li>手写代码：二叉树层序遍历</li>
-<li>手写代码：单例模式</li>
-<li>Integer、int区别</li>
-<li>MySQL索引原理，先建索引与先插入数据</li>
-<li>POST和GET区别（request header, request body）</li>
-<li>分库分表时的负载均衡：hash - 一致性哈希算法<br>可参考 <a href="http://book.douban.com/subject/25867042/" target="_blank" rel="external">大型网站系统与Java中间件实践</a> 一书中的 5.1 节内容</li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[<ol>
-<li>String, StringBuffer, StringBuilder使用场景，线程安全？</li>
-<li>手写代码：快排</li>
-<li>多线程同步 synchronized<br> 实现一个多线程下的计数操作</li>
-<li>hashmap实现原理</]]>
-    </summary>
-    
-      <category term="面试" scheme="http://jakezy.com/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="求职路上" scheme="http://jakezy.com/categories/%E6%B1%82%E8%81%8C%E8%B7%AF%E4%B8%8A/"/>
     
   </entry>
   
