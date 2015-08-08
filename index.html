@@ -205,460 +205,6 @@
           
           
             
-              <a class="post-title-link" href="/2015/08/08/ArrayBlockingQueue/" itemprop="url">
-                ArrayBlockingQueue
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-08-08T12:47:55+08:00" content="2015-08-08">
-            2015-08-08
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/08/08/ArrayBlockingQueue/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/ArrayBlockingQueue/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-            实现方式：
-ArrayBlockingQueue是基于数组、FIFO、线程安全的集合类，可实现指定时间的阻塞读写，且容量可限制
-
-ArrayBlockingQueue(int)
-无默认构造器，传入参数即为创建的对象数组的大小，同时初始化锁和两个锁上的Condition，一个为notEmpty，一个为
-            ...
-          </span>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/08/ArrayBlockingQueue/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/08/08/CopyOnWriteArraySet/" itemprop="url">
-                CopyOnWriteArraySet
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-08-08T12:45:55+08:00" content="2015-08-08">
-            2015-08-08
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/08/08/CopyOnWriteArraySet/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/CopyOnWriteArraySet/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-            实现方式：
-基于CopyOnWriteArrayList实现，唯一不同是在add时调用的是CopyOnWriteArrayList的addIfAbsent方法
-addIfAbsent方法同样采用锁保护，并创建一个新的大小+1的Object数组。遍历当前Object数组，若数组中已有当前元素，则直接返
-            ...
-          </span>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/08/CopyOnWriteArraySet/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/08/08/CopyOnWriteArrayList/" itemprop="url">
-                CopyOnWriteArrayList
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-08-08T12:42:02+08:00" content="2015-08-08">
-            2015-08-08
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/08/08/CopyOnWriteArrayList/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/CopyOnWriteArrayList/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-            实现方式：CopyOnWriteArrayList是线程安全、读操作时无锁的ArrayList
-CopyOnWriteArrayList()
-创建大小为0的数组
-
-add(E)
-无synchronized关键字，通过ReentrantLock保证线程安全
-每次都创建一个新的Object数组（数组大小
-            ...
-          </span>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/08/CopyOnWriteArrayList/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/08/08/ConcurrentHashMap/" itemprop="url">
-                ConcurrentHashMap
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-08-08T12:30:02+08:00" content="2015-08-08">
-            2015-08-08
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/08/08/ConcurrentHashMap/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/ConcurrentHashMap/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-            实现方式：线程安全的HashMap的实现ConcurrentHashMap()
-和HashMap一样，有initialCapacity和loadFactor属性，多了一个concurrencyLevel属性，默认值为16、0.75和16
-计算ssize值，传入Segment的newArray方法创建
-            ...
-          </span>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/08/ConcurrentHashMap/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/08/08/AtomicInteger/" itemprop="url">
-                AtomicInteger
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-08-08T12:01:02+08:00" content="2015-08-08">
-            2015-08-08
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/08/08/AtomicInteger/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/AtomicInteger/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-            实现方式AtomicInteger是一个支持原子操作的Integer类用AtomicInteger实现的顺序id获取：1234private static AtomicInteger counter = new AtomicInteger();public static int getNextId(
-            ...
-          </span>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/08/AtomicInteger/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
               <a class="post-title-link" href="/2015/08/08/Leetcode刷题记录-14/" itemprop="url">
                 Leetcode刷题记录 14
               </a>
@@ -1013,8 +559,8 @@ add(E)
           
           
             
-              <a class="post-title-link" href="/2015/08/04/集合包/" itemprop="url">
-                集合包
+              <a class="post-title-link" href="/2015/08/04/JDK类库/" itemprop="url">
+                JDK类库
               </a>
             
           
@@ -1024,7 +570,7 @@ add(E)
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-08-04T23:21:57+08:00" content="2015-08-04">
+          <time itemprop="dateCreated" datetime="2015-08-04T23:14:56+08:00" content="2015-08-04">
             2015-08-04
           </time>
         </span>
@@ -1046,8 +592,8 @@ add(E)
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/08/04/集合包/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/04/集合包/" itemprop="commentsCount"></span>
+              <a href="/2015/08/04/JDK类库/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/04/JDK类库/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -1062,20 +608,449 @@ add(E)
 
       
         
-          <span itemprop="articleBody">
-            
-            JDK类库：集合包（java.util）
-
-CollectionCollection接口：单对象存储的集合对象
-
-List允许元素重复
-ArrayList实现方式：数组方式存放对象
-
-创建：ArrayList(int)  实例化一个大小为intitailCapacity（默认为10）的Object数
-            ...
-          </span>
+          <p><img src="http://ww1.sinaimg.cn/large/965a04dfgw1euqz5bkuvrj20ix0ga41f.jpg" alt="JDK类库"></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/04/集合包/" rel="contents">
+            <a class="btn" href="/2015/08/04/JDK类库/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/08/03/Leetcode刷题记录-11/" itemprop="url">
+                Leetcode刷题记录 11
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-08-03T14:16:58+08:00" content="2015-08-03">
+            2015-08-03
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/08/03/Leetcode刷题记录-11/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/03/Leetcode刷题记录-11/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <ul>
+<li><a href="https://leetcode.com/problems/copy-list-with-random-pointer/">Copy List with Random Pointer</a></li>
+<li><a href="https://leetcode.com/problems/reverse-nodes-in-k-group/">Reverse Nodes in k-Group</a></li>
+<li><a href="https://leetcode.com/problems/rotate-array/">Rotate Array</a></li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/03/Leetcode刷题记录-11/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/08/01/Leetcode刷题记录-10/" itemprop="url">
+                Leetcode刷题记录 10
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-08-01T11:10:39+08:00" content="2015-08-01">
+            2015-08-01
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/08/01/Leetcode刷题记录-10/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/01/Leetcode刷题记录-10/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <ul>
+<li><a href="https://leetcode.com/problems/merge-k-sorted-lists/">Merge k Sorted Lists</a></li>
+<li><a href="https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/">Convert Sorted List to Binary Search Tree</a></li>
+<li><a href="https://leetcode.com/problems/insertion-sort-list/">Insertion Sort List</a></li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/01/Leetcode刷题记录-10/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/07/30/Leetcode刷题记录-9/" itemprop="url">
+                Leetcode刷题记录 9
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-07-30T16:15:58+08:00" content="2015-07-30">
+            2015-07-30
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/07/30/Leetcode刷题记录-9/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/30/Leetcode刷题记录-9/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <ul>
+<li><a href="https://leetcode.com/problems/delete-node-in-a-linked-list/">Delete Node in a Linked List</a></li>
+<li><a href="https://leetcode.com/problems/palindrome-linked-list/">Palindrome Linked List</a></li>
+<li><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/">Intersection of Two Linked Lists</a></li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/30/Leetcode刷题记录-9/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/07/30/leetcode/" itemprop="url">
+                Leetcode刷题记录 
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-07-30T16:15:58+08:00" content="2015-07-30">
+            2015-07-30
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/07/30/leetcode/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/30/leetcode/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/30/leetcode/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/07/29/Leetcode刷题记录-8/" itemprop="url">
+                Leetcode刷题记录 8
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-07-29T01:54:58+08:00" content="2015-07-29">
+            2015-07-29
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/07/29/Leetcode刷题记录-8/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/29/Leetcode刷题记录-8/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <ul>
+<li><a href="https://leetcode.com/problems/partition-list/">Partition List</a></li>
+<li><a href="https://leetcode.com/problems/reorder-list/">Reorder List</a></li>
+<li><a href="https://leetcode.com/problems/remove-linked-list-elements/">Remove Linked List Elements</a></li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/29/Leetcode刷题记录-8/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1101,7 +1076,7 @@ ArrayList实现方式：数组方式存放对象
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </nav>
 
 
@@ -1136,7 +1111,7 @@ ArrayList实现方式：数组方式存放对象
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
