@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-08T04:53:14.920Z</updated>
+  <updated>2015-08-09T17:09:11.529Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Leetcode刷题记录 15]]></title>
+    <link href="http://jakezy.com/2015/08/08/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-15/"/>
+    <id>http://jakezy.com/2015/08/08/Leetcode刷题记录-15/</id>
+    <published>2015-08-08T09:11:58.000Z</published>
+    <updated>2015-08-09T17:09:11.529Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li><a href="https://leetcode.com/problems/excel-sheet-column-title/" target="_blank" rel="external">Excel Sheet Column Title</a></li>
+<li><a href="https://leetcode.com/problems/excel-sheet-column-number/" target="_blank" rel="external">Excel Sheet Column Number</a></li>
+<li><a href="https://leetcode.com/problems/basic-calculator-ii/" target="_blank" rel="external">Basic Calculator II</a></li>
+</ul>
+<a id="more"></a>
+<p><hr></p>
+<h2 id="Excel_Sheet_Column_Title"><a href="https://leetcode.com/problems/excel-sheet-column-title/" target="_blank" rel="external">Excel Sheet Column Title</a></h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convertToTitle</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            n--;</span><br><span class="line">            <span class="keyword">char</span> ch = (<span class="keyword">char</span>) (n % <span class="number">26</span> + <span class="string">'A'</span>);</span><br><span class="line">            sb.append(ch);</span><br><span class="line">            n = n / <span class="number">26</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        sb.reverse();</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="Excel_Sheet_Column_Number"><a href="https://leetcode.com/problems/excel-sheet-column-number/" target="_blank" rel="external">Excel Sheet Column Number</a></h2><p>思路：<br>26进制转10进制<br>$ABCD_{26} = 1\times26^3 + 2\times26^2 + 3\times26^1 + 4\times26^0$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">titleToNumber</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> ch = s.charAt(i);</span><br><span class="line">            <span class="keyword">int</span> n = ch - <span class="string">'A'</span> + <span class="number">1</span>;</span><br><span class="line">            num += Math.<span class="built_in">pow</span>(<span class="number">26</span>, s.length() - i - <span class="number">1</span>) * n;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="Basic_Calculator_II"><a href="https://leetcode.com/problems/basic-calculator-ii/" target="_blank" rel="external">Basic Calculator II</a></h2><p>思路一：<br>parseMulDiv：计算下一个操作数（这里的操作数指乘除法计算完后的操作数）<br>初始时先使用parseMulDiv计算一个操作数赋给result，直到下一个运算符不是乘除<br>保存下一个运算符（+/-），使用parseMulDiv计算下一个操作数，加减运算后赋给result<br>继续查找下一个运算符和操作数，直到字符串末尾</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> cur = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculate</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        s = s.replace(<span class="string">" "</span>, <span class="string">""</span>);</span><br><span class="line">        result = parseMulDiv(s);</span><br><span class="line">        <span class="keyword">while</span> (cur &lt; s.length()) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(cur);</span><br><span class="line">            cur++;</span><br><span class="line">            <span class="keyword">int</span> b = parseMulDiv(s);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">'+'</span>) &#123;</span><br><span class="line">                result += b;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'-'</span>) &#123;</span><br><span class="line">                result -= b;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">parseMulDiv</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = parseNum(s);</span><br><span class="line">        <span class="keyword">while</span> (cur &lt; s.length()) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(cur);</span><br><span class="line">            <span class="keyword">if</span> (c != <span class="string">'*'</span> &amp;&amp; c != <span class="string">'/'</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> num;</span><br><span class="line">            &#125;</span><br><span class="line">            cur++;</span><br><span class="line">            <span class="keyword">int</span> nextNum = parseNum(s);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">'*'</span>) &#123;</span><br><span class="line">                num *= nextNum;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'/'</span>) &#123;</span><br><span class="line">                num /= nextNum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">parseNum</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (cur &lt; s.length()) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(cur);</span><br><span class="line">            <span class="keyword">if</span> (c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> n;</span><br><span class="line">            &#125;</span><br><span class="line">            n = n * <span class="number">10</span> + c - <span class="string">'0'</span>;</span><br><span class="line">            cur++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>思路二：<br>num记录当前待参与运算的运算数，lastOpt记录上一个加减运算符，result记录表达式的值<br>若当前运算符为乘除法，则对num与下一个运算数nextNum执行乘除运算，赋值给num<br>若当前运算符为加减法，则对result与num执行lastOpt（加减）运算，赋值给result，并更新lastOpt<br>这种方法需要在表达式前后各加一个“+”<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> cur = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculate</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        s = s.replace(<span class="string">" "</span>, <span class="string">""</span>);</span><br><span class="line">        s = s + <span class="string">"+"</span>;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">char</span> lastOpt = <span class="string">'+'</span>;</span><br><span class="line">        <span class="keyword">int</span> num = parseNum(s);</span><br><span class="line">        <span class="keyword">while</span> (cur &lt; s.length()) &#123;</span><br><span class="line">            <span class="keyword">char</span> opt = parseOpt(s);</span><br><span class="line">            <span class="keyword">if</span> (opt == <span class="string">'+'</span> || opt == <span class="string">'-'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (lastOpt == <span class="string">'+'</span>)</span><br><span class="line">                    result += num;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (lastOpt == <span class="string">'-'</span>)</span><br><span class="line">                    result -= num;</span><br><span class="line">                lastOpt = opt;</span><br><span class="line">                num = parseNum(s);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> nextNum = parseNum(s);</span><br><span class="line">                <span class="keyword">if</span> (opt == <span class="string">'*'</span>)</span><br><span class="line">                    num *= nextNum;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (opt == <span class="string">'/'</span>)</span><br><span class="line">                    num /= nextNum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">char</span> <span class="title">parseOpt</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (cur &lt; s.length()) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(cur);</span><br><span class="line">            cur++;</span><br><span class="line">            <span class="keyword">return</span> c;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">parseNum</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (cur &lt; s.length()) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(cur);</span><br><span class="line">            <span class="keyword">if</span> (c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> n;</span><br><span class="line">            &#125;</span><br><span class="line">            n = n * <span class="number">10</span> + c - <span class="string">'0'</span>;</span><br><span class="line">            cur++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<ul>
+<li><a href="https://leetcode.com/problems/excel-sheet-column-title/">Excel Sheet Column Title</a></li>
+<li><a href="https://leetcode.com/problems/excel-sheet-column-number/">Excel Sheet Column Number</a></li>
+<li><a href="https://leetcode.com/problems/basic-calculator-ii/">Basic Calculator II</a></li>
+</ul>]]>
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[AtomicInteger]]></title>
@@ -48,10 +85,10 @@
   
   <entry>
     <title><![CDATA[Leetcode刷题记录 14]]></title>
-    <link href="http://jakezy.com/2015/08/08/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-14/"/>
-    <id>http://jakezy.com/2015/08/08/Leetcode刷题记录-14/</id>
-    <published>2015-08-08T02:50:49.000Z</published>
-    <updated>2015-08-08T02:50:14.574Z</updated>
+    <link href="http://jakezy.com/2015/08/07/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-14/"/>
+    <id>http://jakezy.com/2015/08/07/Leetcode刷题记录-14/</id>
+    <published>2015-08-07T02:50:49.000Z</published>
+    <updated>2015-08-08T09:13:52.547Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="external">Best Time to Buy and Sell Stock</a></li>
 <li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="external">Best Time to Buy and Sell Stock II</a></li>
@@ -361,6 +398,42 @@ h3, h4 {
   </entry>
   
   <entry>
+    <title><![CDATA[Leetcode刷题记录 ]]></title>
+    <link href="http://jakezy.com/2015/07/30/leetcode/"/>
+    <id>http://jakezy.com/2015/07/30/leetcode/</id>
+    <published>2015-07-30T08:15:58.000Z</published>
+    <updated>2015-08-01T03:09:17.198Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+<a id="more"></a>
+<p><hr></p>
+<h2 id=""><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="-1"><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="-2"><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>]]>
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Leetcode刷题记录 9]]></title>
     <link href="http://jakezy.com/2015/07/30/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-9/"/>
     <id>http://jakezy.com/2015/07/30/Leetcode刷题记录-9/</id>
@@ -396,42 +469,6 @@ h3, h4 {
 <li><a href="https://leetcode.com/problems/delete-node-in-a-linked-list/">Delete Node in a Linked List</a></li>
 <li><a href="https://leetcode.com/problems/palindrome-linked-list/">Palindrome Linked List</a></li>
 <li><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/">Intersection of Two Linked Lists</a></li>
-</ul>]]>
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
-    
-      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Leetcode刷题记录 ]]></title>
-    <link href="http://jakezy.com/2015/07/30/leetcode/"/>
-    <id>http://jakezy.com/2015/07/30/leetcode/</id>
-    <published>2015-07-30T08:15:58.000Z</published>
-    <updated>2015-08-01T03:09:17.198Z</updated>
-    <content type="html"><![CDATA[<ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-</ul>
-<a id="more"></a>
-<p><hr></p>
-<h2 id=""><a href=""></a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="-1"><a href=""></a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="-2"><a href=""></a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    <summary type="html">
-    <![CDATA[<ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
 </ul>]]>
     
     </summary>
@@ -856,31 +893,6 @@ h3, h4 {
       <category term="问题记录" scheme="http://jakezy.com/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
       <category term="工作杂记" scheme="http://jakezy.com/categories/%E5%B7%A5%E4%BD%9C%E6%9D%82%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Spring问题：INFO: No Spring WebApplicationInitializer types detected on classpath]]></title>
-    <link href="http://jakezy.com/2015/06/09/Java-problem-record/"/>
-    <id>http://jakezy.com/2015/06/09/Java-problem-record/</id>
-    <published>2015-06-09T15:15:37.000Z</published>
-    <updated>2015-08-06T07:03:14.101Z</updated>
-    <content type="html"><![CDATA[<p>问题：我的Eclipse环境用的JDK 8，项目是JDK 7，在jetty中启动项目时报错：INFO: No Spring WebApplicationInitializer types detected<br><a id="more"></a><br>解决：确定项目编译时的jdk版本，更改Eclipse编译用的jdk版本即可</p>
-<p>参考<a href="http://stackoverflow.com/questions/22938689/info-no-spring-webapplicationinitializer-types-detected-on-classpath" target="_blank" rel="external">http://stackoverflow.com/questions/22938689/info-no-spring-webapplicationinitializer-types-detected-on-classpath</a></p>
-<blockquote>
-<p>I found the error: I have a library that it was built using jdk 1.6. The Spring main controller and components are in this library. And how I use jdk 1.7, It does not find the classes built in 1.6.<br>The solution was built all using “compiler compliance level: 1.7” and “Generated .class files compatibility: 1.6”, “Source compatibility: 1.6”.<br>I setup this option in Eclipse: Preferences\Java\Compiler.</p>
-</blockquote>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>问题：我的Eclipse环境用的JDK 8，项目是JDK 7，在jetty中启动项目时报错：INFO: No Spring WebApplicationInitializer types detected<br>]]>
-    
-    </summary>
-    
-      <category term="Java" scheme="http://jakezy.com/tags/Java/"/>
-    
-      <category term="问题记录" scheme="http://jakezy.com/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="Spring" scheme="http://jakezy.com/categories/Spring/"/>
     
   </entry>
   
