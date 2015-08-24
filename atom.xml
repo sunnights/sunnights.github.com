@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-09T17:09:11.529Z</updated>
+  <updated>2015-08-24T03:01:24.172Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[近期阅读]]></title>
+    <link href="http://jakezy.com/2015/08/24/%E8%BF%91%E6%9C%9F%E9%98%85%E8%AF%BB/"/>
+    <id>http://jakezy.com/2015/08/24/近期阅读/</id>
+    <published>2015-08-24T02:52:38.000Z</published>
+    <updated>2015-08-24T03:01:24.172Z</updated>
+    <content type="html"><![CDATA[<p>近期阅读<br><a id="more"></a></p>
+<ul>
+<li><a href="http://blog.eood.cn/rate-limiting" target="_blank" rel="external">架构必备：Rate limiting 的作用和常见方式</a></li>
+<li><a href="http://vinoyang.com/2015/08/17/redis-practice-of-preempting-dorm/" target="_blank" rel="external">redis在学生抢房应用中的实践总结</a></li>
+<li><a href="http://outofmemory.cn/mysql/mysql-index-arithmetic" target="_blank" rel="external">MySQL索引背后的数据结构及算法原理</a></li>
+<li><a href="http://blog.csdn.net/duqi_2009/article/details/47752169" target="_blank" rel="external">Spring+Velocity+Mybatis入门（step by step）</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>近期阅读<br>]]>
+    
+    </summary>
+    
+      <category term="life" scheme="http://jakezy.com/tags/life/"/>
+    
+      <category term="reading" scheme="http://jakezy.com/tags/reading/"/>
+    
+      <category term="生活记录" scheme="http://jakezy.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Leetcode刷题记录 15]]></title>
@@ -850,51 +877,6 @@ h3, h4 {
       <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
     
       <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[POI设置Excel单元格格式]]></title>
-    <link href="http://jakezy.com/2015/07/04/POI%E8%AE%BE%E7%BD%AEExcel%E5%8D%95%E5%85%83%E6%A0%BC%E6%A0%BC%E5%BC%8F/"/>
-    <id>http://jakezy.com/2015/07/04/POI设置Excel单元格格式/</id>
-    <published>2015-07-04T03:40:25.000Z</published>
-    <updated>2015-07-06T05:01:30.438Z</updated>
-    <content type="html"><![CDATA[<p>最近用POI导出Excel时，碰到一些问题，记录下：</p>
-<ul>
-<li>数字格式</li>
-<li>单元格宽度</li>
-<li>显示#####问题</li>
-</ul>
-<hr>
-<h2 id="数字格式">数字格式</h2><p>使用POI导出Excel时经常需要更改单元格格式，比如日期类型等等</p>
-<p>问题场景：<br>java中date类型的对象直接导出到Excel显示不正确，如：”2015-07-04”显示为”42084”之类的内容</p>
-<p>解决方案：<br>修改单元格格式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cell.setCellValue(<span class="keyword">new</span> Date(<span class="number">2015</span>, <span class="number">7</span>, <span class="number">4</span>));</span><br><span class="line">CellStyle cellStyle = wb.createCellStyle();</span><br><span class="line">cellStyle.setDataFormat(HSSFDataFormat.getBuiltinFormat(<span class="string">"m/d/yy h:mm"</span>));</span><br><span class="line">cell.setCellStyle(cellStyle);</span><br></pre></td></tr></table></figure>
-<p>注意其中getBuiltinFormat函数的参数，查看源码发现如下代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class BuiltinFormats</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getBuiltinFormat</span><span class="params">(String pFmt)</span> </span>&#123;</span><br><span class="line">  String fmt;</span><br><span class="line">  <span class="keyword">if</span> (pFmt.equalsIgnoreCase(<span class="string">"TEXT"</span>)) &#123;</span><br><span class="line">      fmt = <span class="string">"@"</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      fmt = pFmt;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>; i&lt; _formats.length; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(fmt.equals(_formats[i])) &#123;</span><br><span class="line">          <span class="keyword">return</span> i;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>其中的_formats相关代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String[] _formats;</span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    List&lt;String&gt; m = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">    putFormat(m, <span class="number">0</span>, <span class="string">"General"</span>);</span><br><span class="line">    putFormat(m, <span class="number">1</span>, <span class="string">"0"</span>);</span><br><span class="line">    putFormat(m, <span class="number">2</span>, <span class="string">"0.00"</span>);</span><br><span class="line">    putFormat(m, <span class="number">3</span>, <span class="string">"#,##0"</span>);</span><br><span class="line">    putFormat(m, <span class="number">4</span>, <span class="string">"#,##0.00"</span>);</span><br><span class="line">    putFormat(m, <span class="number">5</span>, <span class="string">"\"$\"#,##0_);(\"$\"#,##0)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">6</span>, <span class="string">"\"$\"#,##0_);[Red](\"$\"#,##0)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">7</span>, <span class="string">"\"$\"#,##0.00_);(\"$\"#,##0.00)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">8</span>, <span class="string">"\"$\"#,##0.00_);[Red](\"$\"#,##0.00)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">9</span>, <span class="string">"0%"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0xa</span>, <span class="string">"0.00%"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0xb</span>, <span class="string">"0.00E+00"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0xc</span>, <span class="string">"# ?/?"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0xd</span>, <span class="string">"# ??/??"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0xe</span>, <span class="string">"m/d/yy"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0xf</span>, <span class="string">"d-mmm-yy"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x10</span>, <span class="string">"d-mmm"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x11</span>, <span class="string">"mmm-yy"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x12</span>, <span class="string">"h:mm AM/PM"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x13</span>, <span class="string">"h:mm:ss AM/PM"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x14</span>, <span class="string">"h:mm"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x15</span>, <span class="string">"h:mm:ss"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x16</span>, <span class="string">"m/d/yy h:mm"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 0x17 - 0x24 reserved for international and undocumented</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0x17</span>; i&lt;=<span class="number">0x24</span>; i++) &#123;</span><br><span class="line">        <span class="comment">// TODO - one junit relies on these values which seems incorrect</span></span><br><span class="line">        putFormat(m, i, <span class="string">"reserved-0x"</span> + Integer.toHexString(i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    putFormat(m, <span class="number">0x25</span>, <span class="string">"#,##0_);(#,##0)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x26</span>, <span class="string">"#,##0_);[Red](#,##0)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x27</span>, <span class="string">"#,##0.00_);(#,##0.00)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x28</span>, <span class="string">"#,##0.00_);[Red](#,##0.00)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x29</span>, <span class="string">"_(\"$\"* #,##0_);_(\"$\"* (#,##0);_(\"$\"* \"-\"_);_(@_)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x2a</span>, <span class="string">"_(* #,##0_);_(* (#,##0);_(* \"-\"_);_(@_)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x2b</span>, <span class="string">"_(\"$\"* #,##0.00_);_(\"$\"* (#,##0.00);_(\"$\"* \"-\"??_);_(@_)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x2c</span>, <span class="string">"_(* #,##0.00_);_(* (#,##0.00);_(* \"-\"??_);_(@_)"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x2d</span>, <span class="string">"mm:ss"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x2e</span>, <span class="string">"[h]:mm:ss"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x2f</span>, <span class="string">"mm:ss.0"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x30</span>, <span class="string">"##0.0E+0"</span>);</span><br><span class="line">    putFormat(m, <span class="number">0x31</span>, <span class="string">"@"</span>);</span><br><span class="line">    String[] ss = <span class="keyword">new</span> String[m.size()];</span><br><span class="line">    m.toArray(ss);</span><br><span class="line">    _formats = ss;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>_format中列出的即是Excel中定义的数字类型<br>getBuiltinFormat的参数需要根据需求匹配_format中相应的字符串来对应Excel的数字格式，<br>自定义类型的话需要调用其他方法。</p>
-<hr>
-<h2 id="单元格宽度">单元格宽度</h2><p>自适应宽度：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autoSizeColumn(<span class="keyword">int</span> column);</span><br></pre></td></tr></table></figure><br>指定宽度：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setColumnWidth(<span class="keyword">int</span> columnIndex, <span class="keyword">int</span> width);</span><br></pre></td></tr></table></figure><br>其中，width是以字符的1/256为单位，代码可写为：setColumnWidth(1, 17*256);</p>
-<hr>
-<h2 id="显示#####问题">显示#####问题</h2><p>原因：单元格宽度不够导致无法显示格式化之后的内容<br>解决：指定单元格宽度即可（注意日期等类型设置自适应宽度时单元格宽度依旧不够，需要自己指定宽度）</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>最近用POI导出Excel时，碰到一些问题，记录下：</p>
-<ul>
-<li>数字格式</li>
-<li>单元格宽度</li>
-<li>显示#####问题</li>
-</ul>
-<hr>
-<h2 id="数字格式">数字格式</h2><p>使用POI导出Excel时经常需]]>
-    </summary>
-    
-      <category term="Excel" scheme="http://jakezy.com/tags/Excel/"/>
-    
-      <category term="POI" scheme="http://jakezy.com/tags/POI/"/>
-    
-      <category term="问题记录" scheme="http://jakezy.com/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="工作杂记" scheme="http://jakezy.com/categories/%E5%B7%A5%E4%BD%9C%E6%9D%82%E8%AE%B0/"/>
     
   </entry>
   
