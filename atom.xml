@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-25T21:14:15.111Z</updated>
+  <updated>2015-08-25T21:15:36.657Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -20,8 +20,8 @@
     <link href="http://jakezy.com/2015/08/26/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95%E9%98%B6%E6%A2%AF%E8%AE%AD%E7%BB%83/"/>
     <id>http://jakezy.com/2015/08/26/九章算法阶梯训练/</id>
     <published>2015-08-25T21:12:38.000Z</published>
-    <updated>2015-08-25T21:14:15.111Z</updated>
-    <content type="html"><![CDATA[<p>这几天按照<a href="http://www.lintcode.com/en/ladder/" target="_blank" rel="external">九章算法阶梯训练</a>开始刷题，建了个Gitbook，把相关的Leetcode代码都转移到Gitbook上了</p>
+    <updated>2015-08-25T21:15:36.657Z</updated>
+    <content type="html"><![CDATA[<p>这几天按照<a href="http://www.lintcode.com/en/ladder/" target="_blank" rel="external">九章算法阶梯训练</a>开始刷题，建了个Gitbook，把相关的Leetcode代码都转移到Gitbook上了<br>之后会写一篇Gitbook发布到Github Pages的教程</p>
 <p>Gitbook：<a href="http://jakezy.com/Nine-Chapters-Ladder/">九章算法阶梯训练（Nine Chapters / Ladder）</a></p>
 ]]></content>
     <summary type="html">
