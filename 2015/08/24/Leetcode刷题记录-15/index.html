@@ -39,20 +39,29 @@
 
 <meta name="description" content="Implement strStr()
 Subsets
-Subsets II">
+Subsets II
+Permutations
+Permutations II
+Permutation Sequence">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode刷题记录 15">
+<meta property="og:title" content="Leetcode刷题记录 15 strStr & Coding Style">
 <meta property="og:url" content="http://jakezy.com/2015/08/24/Leetcode刷题记录-15/index.html">
 <meta property="og:site_name" content="夜阳's Blog">
 <meta property="og:description" content="Implement strStr()
 Subsets
-Subsets II">
-<meta property="og:updated_time" content="2015-08-25T02:11:37.830Z">
+Subsets II
+Permutations
+Permutations II
+Permutation Sequence">
+<meta property="og:updated_time" content="2015-08-25T10:09:28.886Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode刷题记录 15">
+<meta name="twitter:title" content="Leetcode刷题记录 15 strStr & Coding Style">
 <meta name="twitter:description" content="Implement strStr()
 Subsets
-Subsets II">
+Subsets II
+Permutations
+Permutations II
+Permutation Sequence">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -62,7 +71,7 @@ Subsets II">
   };
 </script>
 
-    <title> Leetcode刷题记录 15 // 夜阳's Blog </title>
+    <title> Leetcode刷题记录 15 strStr & Coding Style // 夜阳's Blog </title>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 <!--[if lte IE 8]>
@@ -218,7 +227,7 @@ Subsets II">
           
           
             
-              Leetcode刷题记录 15
+              Leetcode刷题记录 15 strStr & Coding Style
             
           
         </h1>
@@ -268,6 +277,9 @@ Subsets II">
 <li><a href="https://leetcode.com/problems/implement-strstr/" target="_blank" rel="external">Implement strStr()</a></li>
 <li><a href="https://leetcode.com/problems/subsets/" target="_blank" rel="external">Subsets</a></li>
 <li><a href="https://leetcode.com/problems/subsets-ii/" target="_blank" rel="external">Subsets II</a></li>
+<li><a href="https://leetcode.com/problems/permutations/" target="_blank" rel="external">Permutations</a></li>
+<li><a href="https://leetcode.com/problems/permutations-ii/" target="_blank" rel="external">Permutations II</a></li>
+<li><a href="https://leetcode.com/problems/permutation-sequence/" target="_blank" rel="external">Permutation Sequence</a></li>
 </ul>
 <a id="more"></a>
 <p><hr></p>
@@ -277,6 +289,19 @@ Subsets II">
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsets(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        subsetsHelper(result, res, nums, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">subsetsHelper</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; res, <span class="keyword">int</span>[] nums, <span class="keyword">int</span> pos)</span> </span>&#123;</span><br><span class="line">        result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(res));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = pos; i &lt; nums.length; i++) &#123;</span><br><span class="line">            res.add(nums[i]);</span><br><span class="line">            subsetsHelper(result, res, nums, i + <span class="number">1</span>);</span><br><span class="line">            res.remove(res.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><hr></p>
 <h2 id="Subsets_II"><a href="https://leetcode.com/problems/subsets-ii/" target="_blank" rel="external">Subsets II</a></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsetsWithDup(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        subsetsHelper(result, res, nums, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">subsetsHelper</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; res, <span class="keyword">int</span>[] nums, <span class="keyword">int</span> pos)</span> </span>&#123;</span><br><span class="line">        result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(res));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = pos; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i != pos &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(nums[i]);</span><br><span class="line">            subsetsHelper(result, res, nums, i + <span class="number">1</span>);</span><br><span class="line">            res.remove(res.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="Permutations"><a href="https://leetcode.com/problems/permutations/" target="_blank" rel="external">Permutations</a></h2><p>思路：<br>visited[]记录该位置是否访问过</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[nums.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; visited.length; i++) &#123;</span><br><span class="line">            visited[i] = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        permuteHelper(result, res, nums, visited);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">permuteHelper</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; res, <span class="keyword">int</span>[] nums, <span class="keyword">boolean</span>[] visited)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (res.size() == nums.length) &#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(res));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (visited[i]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(nums[i]);</span><br><span class="line">            visited[i] = <span class="keyword">true</span>;</span><br><span class="line">            permuteHelper(result, res, nums, visited);</span><br><span class="line">            res.remove(res.size() - <span class="number">1</span>);</span><br><span class="line">            visited[i] = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="Permutations_II"><a href="https://leetcode.com/problems/permutations-ii/" target="_blank" rel="external">Permutations II</a></h2><p>思路：<br>注意循环跳过条件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permuteUnique(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[nums.length];</span><br><span class="line">        permuteUniqueHelper(result, res, nums, visited);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">permuteUniqueHelper</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; res, <span class="keyword">int</span>[] nums, <span class="keyword">boolean</span>[] visited)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (res.size() == nums.length) &#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(res));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (visited[i] || (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>] &amp;&amp; !visited[i - <span class="number">1</span>])) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(nums[i]);</span><br><span class="line">            visited[i] = <span class="keyword">true</span>;</span><br><span class="line">            permuteUniqueHelper(result, res, nums, visited);</span><br><span class="line">            res.remove(res.size() - <span class="number">1</span>);</span><br><span class="line">            visited[i] = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="Permutation_Sequence"><a href="https://leetcode.com/problems/permutation-sequence/" target="_blank" rel="external">Permutation Sequence</a></h2><p>思路一：<br>递归构造所有排列，返回第k个</p>
+<p>思路二：<br>找数学规律<br>假设有$n$个元素，第$k$个permutation是$a_1a_2\ldots a_n$<br>对于$a_1$开头的排列，$a_2…a_n$共$n-1$个元素，有$(n-1)!$种排列<br>令$i = k / (n-1)!$，表示第$k$个permutation在第$i$组，$a_1 = k / (n-1)!$<br>令$k’ = k \% (n-1)!$，表示第$k$个permutation在第$i$组的$k’$位置<br>则有：</p>
+<blockquote>
+<p>$k_1 = k$<br>$a_1 = k_1 / (n-1)!$<br>$k_2 = k_1 \% (n-1)!$<br>$a_2 = k_2 / (n-2)!$<br>$\ldots$</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPermutation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        List&lt;Integer&gt; nums = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            nums.add(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        k--;</span><br><span class="line">        <span class="keyword">int</span> factorial = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            factorial *= i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            factorial /= n - i; <span class="comment">// factorial = (n-i-1)!</span></span><br><span class="line">            <span class="keyword">int</span> index = k / factorial;</span><br><span class="line">            result.append(nums.get(index));</span><br><span class="line">            nums.remove(index);</span><br><span class="line">            k %= factorial;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -294,7 +319,7 @@ Subsets II">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/25/Leetcode刷题记录-16/" rel="prev">Leetcode刷题记录 16</a>
+              <a href="/2015/08/25/Leetcode刷题记录-16/" rel="prev">Leetcode刷题记录 16 Binary Search & Sorted Array</a>
             
           </div>
 
@@ -316,7 +341,7 @@ Subsets II">
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2015/08/24/Leetcode刷题记录-15/"
-     data-title="Leetcode刷题记录 15"
+     data-title="Leetcode刷题记录 15 strStr & Coding Style"
      data-content=""
      data-url="http://jakezy.com/2015/08/24/Leetcode刷题记录-15/">
   <div class="ds-share-inline">
@@ -346,7 +371,7 @@ Subsets II">
               <div class="comments" id="comments">
                 
                   <div class="ds-thread" data-thread-key="2015/08/24/Leetcode刷题记录-15/"
-                       data-title="Leetcode刷题记录 15" data-url="http://jakezy.com/2015/08/24/Leetcode刷题记录-15/">
+                       data-title="Leetcode刷题记录 15 strStr & Coding Style" data-url="http://jakezy.com/2015/08/24/Leetcode刷题记录-15/">
                   </div>
                 
               </div>
@@ -466,7 +491,7 @@ Subsets II">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Implement_strStr()"><span class="nav-text">Implement strStr()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subsets"><span class="nav-text">Subsets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subsets_II"><span class="nav-text">Subsets II</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Implement_strStr()"><span class="nav-text">Implement strStr()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subsets"><span class="nav-text">Subsets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subsets_II"><span class="nav-text">Subsets II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Permutations"><span class="nav-text">Permutations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Permutations_II"><span class="nav-text">Permutations II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Permutation_Sequence"><span class="nav-text">Permutation Sequence</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
