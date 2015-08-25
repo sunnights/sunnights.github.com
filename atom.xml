@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-08-24T05:25:30.668Z</updated>
+  <updated>2015-08-25T04:45:38.855Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -16,38 +16,52 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[近期阅读]]></title>
-    <link href="http://jakezy.com/2015/08/24/%E8%BF%91%E6%9C%9F%E9%98%85%E8%AF%BB/"/>
-    <id>http://jakezy.com/2015/08/24/近期阅读/</id>
-    <published>2015-08-24T02:52:38.000Z</published>
-    <updated>2015-08-24T05:25:30.668Z</updated>
-    <content type="html"><![CDATA[<p>近期阅读<br><a id="more"></a></p>
-<ul>
-<li><a href="http://blog.eood.cn/rate-limiting" target="_blank" rel="external">架构必备：Rate limiting 的作用和常见方式</a></li>
-<li><a href="http://vinoyang.com/2015/08/17/redis-practice-of-preempting-dorm/" target="_blank" rel="external">redis在学生抢房应用中的实践总结</a></li>
-<li><a href="http://outofmemory.cn/mysql/mysql-index-arithmetic" target="_blank" rel="external"><strong>MySQL索引背后的数据结构及算法原理</strong></a></li>
-<li><a href="http://blog.csdn.net/duqi_2009/article/details/47752169" target="_blank" rel="external">Spring+Velocity+Mybatis入门（step by step）</a></li>
+    <title><![CDATA[Leetcode刷题记录 16]]></title>
+    <link href="http://jakezy.com/2015/08/25/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-16/"/>
+    <id>http://jakezy.com/2015/08/25/Leetcode刷题记录-16/</id>
+    <published>2015-08-25T02:11:30.000Z</published>
+    <updated>2015-08-25T04:45:38.855Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li><a href="https://leetcode.com/problems/permutations/" target="_blank" rel="external">Permutations</a></li>
+<li><a href="https://leetcode.com/problems/permutations-ii/" target="_blank" rel="external">Permutations II</a></li>
+<li><a href="https://leetcode.com/problems/permutation-sequence/" target="_blank" rel="external">Permutation Sequence</a></li>
 </ul>
+<a id="more"></a>
+<p><hr></p>
+<h2 id="Permutations"><a href="https://leetcode.com/problems/permutations/" target="_blank" rel="external">Permutations</a></h2><p>思路：<br>visited[]记录该位置是否访问过</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[nums.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; visited.length; i++) &#123;</span><br><span class="line">            visited[i] = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        permuteHelper(result, res, nums, visited);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">permuteHelper</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; res, <span class="keyword">int</span>[] nums, <span class="keyword">boolean</span>[] visited)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (res.size() == nums.length) &#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(res));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (visited[i]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(nums[i]);</span><br><span class="line">            visited[i] = <span class="keyword">true</span>;</span><br><span class="line">            permuteHelper(result, res, nums, visited);</span><br><span class="line">            res.remove(res.size() - <span class="number">1</span>);</span><br><span class="line">            visited[i] = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="Permutations_II"><a href="https://leetcode.com/problems/permutations-ii/" target="_blank" rel="external">Permutations II</a></h2><p>思路：<br>注意循环跳过条件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permuteUnique(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[nums.length];</span><br><span class="line">        permuteUniqueHelper(result, res, nums, visited);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">permuteUniqueHelper</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; res, <span class="keyword">int</span>[] nums, <span class="keyword">boolean</span>[] visited)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (res.size() == nums.length) &#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(res));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (visited[i] || (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>] &amp;&amp; !visited[i - <span class="number">1</span>])) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(nums[i]);</span><br><span class="line">            visited[i] = <span class="keyword">true</span>;</span><br><span class="line">            permuteUniqueHelper(result, res, nums, visited);</span><br><span class="line">            res.remove(res.size() - <span class="number">1</span>);</span><br><span class="line">            visited[i] = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="Permutation_Sequence"><a href="https://leetcode.com/problems/permutation-sequence/" target="_blank" rel="external">Permutation Sequence</a></h2><p>思路一：<br>递归构造所有排列，返回第k个</p>
+<p>思路二：<br>找数学规律<br>假设有n个元素，第k个permutation是$a_1a_2…a_n$<br>对于$a_1$开头的排列，$a_2…a_n$共n-1个元素，有(n-1)!种排列<br>令i = k / (n-1)!，表示第k个permutation在第i组，$a_1$ = k / (n-1)!<br>令k’ = k % (n-1)!，表示第k个permutation在第i组的k’位置<br>则有：</p>
+<blockquote>
+<p>$k_1 = k$<br>$a_1 = k_1 / (n-1)!$<br>$k_2 = k_1 \% (n-1)!$<br>$a_2 = k<em>2 / (n-2)!$<br>$…$<br>$k</em>{n-1} = k<em>{n-2} \% 2!$<br>$a</em>{n-1} = k_{n-1} / 1!$<br>$a<em>n = k</em>{n-1}$</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPermutation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        List&lt;Integer&gt; nums = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            nums.add(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        k--;</span><br><span class="line">        <span class="keyword">int</span> factorial = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            factorial *= i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            factorial /= n - i; <span class="comment">// (n-i-1)!</span></span><br><span class="line">            <span class="keyword">int</span> index = k / factorial;</span><br><span class="line">            result.append(nums.get(index));</span><br><span class="line">            nums.remove(index);</span><br><span class="line">            k %= factorial;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>近期阅读<br>]]>
+    <![CDATA[<ul>
+<li><a href="https://leetcode.com/problems/permutations/">Permutations</a></li>
+<li><a href="https://leetcode.com/problems/permutations-ii/">Permutations II</a></li>
+<li><a href="https://leetcode.com/problems/permutation-sequence/">Permutation Sequence</a></li>
+</ul>]]>
     
     </summary>
     
-      <category term="life" scheme="http://jakezy.com/tags/life/"/>
+      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
     
-      <category term="reading" scheme="http://jakezy.com/tags/reading/"/>
-    
-      <category term="生活记录" scheme="http://jakezy.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Leetcode刷题记录 15]]></title>
-    <link href="http://jakezy.com/2015/08/08/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-15/"/>
-    <id>http://jakezy.com/2015/08/08/Leetcode刷题记录-15/</id>
-    <published>2015-08-08T09:45:30.000Z</published>
-    <updated>2015-08-24T16:11:04.911Z</updated>
+    <link href="http://jakezy.com/2015/08/24/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-15/"/>
+    <id>http://jakezy.com/2015/08/24/Leetcode刷题记录-15/</id>
+    <published>2015-08-24T09:45:30.000Z</published>
+    <updated>2015-08-25T02:11:37.830Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><a href="https://leetcode.com/problems/implement-strstr/" target="_blank" rel="external">Implement strStr()</a></li>
 <li><a href="https://leetcode.com/problems/subsets/" target="_blank" rel="external">Subsets</a></li>
@@ -74,6 +88,33 @@
       <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
     
       <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[近期阅读]]></title>
+    <link href="http://jakezy.com/2015/08/24/%E8%BF%91%E6%9C%9F%E9%98%85%E8%AF%BB/"/>
+    <id>http://jakezy.com/2015/08/24/近期阅读/</id>
+    <published>2015-08-24T02:52:38.000Z</published>
+    <updated>2015-08-24T05:25:30.668Z</updated>
+    <content type="html"><![CDATA[<p>近期阅读<br><a id="more"></a></p>
+<ul>
+<li><a href="http://blog.eood.cn/rate-limiting" target="_blank" rel="external">架构必备：Rate limiting 的作用和常见方式</a></li>
+<li><a href="http://vinoyang.com/2015/08/17/redis-practice-of-preempting-dorm/" target="_blank" rel="external">redis在学生抢房应用中的实践总结</a></li>
+<li><a href="http://outofmemory.cn/mysql/mysql-index-arithmetic" target="_blank" rel="external"><strong>MySQL索引背后的数据结构及算法原理</strong></a></li>
+<li><a href="http://blog.csdn.net/duqi_2009/article/details/47752169" target="_blank" rel="external">Spring+Velocity+Mybatis入门（step by step）</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>近期阅读<br>]]>
+    
+    </summary>
+    
+      <category term="life" scheme="http://jakezy.com/tags/life/"/>
+    
+      <category term="reading" scheme="http://jakezy.com/tags/reading/"/>
+    
+      <category term="生活记录" scheme="http://jakezy.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
@@ -462,6 +503,42 @@ h3, h4 {
   </entry>
   
   <entry>
+    <title><![CDATA[Leetcode刷题记录 ]]></title>
+    <link href="http://jakezy.com/2015/07/30/leetcode/"/>
+    <id>http://jakezy.com/2015/07/30/leetcode/</id>
+    <published>2015-07-30T08:15:58.000Z</published>
+    <updated>2015-08-01T03:09:17.198Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+<a id="more"></a>
+<p><hr></p>
+<h2 id=""><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="-1"><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<h2 id="-2"><a href=""></a></h2><p>思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>]]>
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
+    
+      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Leetcode刷题记录 9]]></title>
     <link href="http://jakezy.com/2015/07/30/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-9/"/>
     <id>http://jakezy.com/2015/07/30/Leetcode刷题记录-9/</id>
@@ -497,42 +574,6 @@ h3, h4 {
 <li><a href="https://leetcode.com/problems/delete-node-in-a-linked-list/">Delete Node in a Linked List</a></li>
 <li><a href="https://leetcode.com/problems/palindrome-linked-list/">Palindrome Linked List</a></li>
 <li><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/">Intersection of Two Linked Lists</a></li>
-</ul>]]>
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
-    
-      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Leetcode刷题记录 ]]></title>
-    <link href="http://jakezy.com/2015/07/30/leetcode/"/>
-    <id>http://jakezy.com/2015/07/30/leetcode/</id>
-    <published>2015-07-30T08:15:58.000Z</published>
-    <updated>2015-08-01T03:09:17.198Z</updated>
-    <content type="html"><![CDATA[<ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-</ul>
-<a id="more"></a>
-<p><hr></p>
-<h2 id=""><a href=""></a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="-1"><a href=""></a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="-2"><a href=""></a></h2><p>思路：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    <summary type="html">
-    <![CDATA[<ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
 </ul>]]>
     
     </summary>
@@ -807,55 +848,6 @@ h3, h4 {
 <li><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">Remove Nth Node From End of List</a></li>
 <li><a href="https://leetcode.com/problems/swap-nodes-in-pairs/">Swap Nodes in Pairs</a></li>
 <li><a href="https://leetcode.com/problems/rotate-list/">Rotate List</a></li>
-</ul>]]>
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
-    
-      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Leetcode刷题记录 2]]></title>
-    <link href="http://jakezy.com/2015/07/22/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-2/"/>
-    <id>http://jakezy.com/2015/07/22/Leetcode刷题记录-2/</id>
-    <published>2015-07-22T07:48:16.000Z</published>
-    <updated>2015-07-29T07:28:14.746Z</updated>
-    <content type="html"><![CDATA[<ul>
-<li><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="external">Longest Substring Without Repeating Characters</a></li>
-<li><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="external">Valid Parentheses</a></li>
-<li><a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank" rel="external">Merge Two Sorted Lists</a></li>
-<li><a href="https://leetcode.com/problems/powx-n/" target="_blank" rel="external">Pow(x, n)</a></li>
-</ul>
-<a id="more"></a>
-<p><hr></p>
-<h2 id="Longest_Substring_Without_Repeating_Characters"><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="external">Longest Substring Without Repeating Characters</a></h2><p>思路：</p>
-<p>和大部分字符统计或字符重复的思路一样，使用哈希。</p>
-<p>再使用两个指针，start指向当前遍历的字串的开始位置。</p>
-<p>如果遇到重复字符x，就将start的位置改为上一个x位置+1</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[] flag = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">256</span>];</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (end = <span class="number">0</span>; end &lt; s.length(); end++) &#123;</span><br><span class="line">            <span class="keyword">int</span> current = s.charAt(end);</span><br><span class="line">            <span class="keyword">while</span> (flag[current] != <span class="keyword">false</span> &amp;&amp; start &lt; end) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = s.charAt(start);</span><br><span class="line">                flag[temp] = <span class="keyword">false</span>;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[current] = <span class="keyword">true</span>;</span><br><span class="line">            result = Math.max(result, end - start + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="Valid_Parentheses"><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="external">Valid Parentheses</a></h2><p>思路：</p>
-<p>当前字符为”([{“时入栈，”}])”时，判断栈顶元素是否与其配对</p>
-<p>结束时判断栈是否为空</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Character, Character&gt; map = <span class="keyword">new</span> HashMap&lt;Character, Character&gt;();</span><br><span class="line">        map.put(<span class="string">'('</span>, <span class="string">')'</span>);</span><br><span class="line">        map.put(<span class="string">'['</span>, <span class="string">']'</span>);</span><br><span class="line">        map.put(<span class="string">'&#123;'</span>, <span class="string">'&#125;'</span>);</span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> ch = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (map.keySet().contains(ch)) &#123;</span><br><span class="line">                stack.push(ch);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (map.values().contains(ch)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!stack.empty() &amp;&amp; map.get(stack.peek()) == ch) &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stack.empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="Merge_Two_Sorted_Lists"><a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank" rel="external">Merge Two Sorted Lists</a></h2><p>思路：</p>
-<p>利用伪头结点使插入第一个结点与其他结点操作一致</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        ListNode p1 = l1;</span><br><span class="line">        ListNode p2 = l2;</span><br><span class="line">        ListNode fakeHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode p = fakeHead;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (p1 != <span class="keyword">null</span> &amp;&amp; p2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1.val &lt; p2.val) &#123;</span><br><span class="line">                p.next = p1;</span><br><span class="line">                p1 = p1.next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                p.next = p2;</span><br><span class="line">                p2 = p2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            p = p.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (p1 == <span class="keyword">null</span>) &#123;</span><br><span class="line">            p.next = p2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (p2 == <span class="keyword">null</span>) &#123;</span><br><span class="line">            p.next = p1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> fakeHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="Pow(x,_n)"><a href="https://leetcode.com/problems/powx-n/" target="_blank" rel="external">Pow(x, n)</a></h2><p>思路：</p>
-<p>注意负指数</p>
-<p>利用二分思想：$2^8 = 2^4 * 2^4$</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> / pow(x, -n);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> pow(x, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">pow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">double</span> v = pow(x, n / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> v * v;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> v * v * x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    <summary type="html">
-    <![CDATA[<ul>
-<li><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a></li>
-<li><a href="https://leetcode.com/problems/valid-parentheses/">Valid Parentheses</a></li>
-<li><a href="https://leetcode.com/problems/merge-two-sorted-lists/">Merge Two Sorted Lists</a></li>
-<li><a href="https://leetcode.com/problems/powx-n/">Pow(x, n)</a></li>
 </ul>]]>
     
     </summary>
