@@ -5,7 +5,7 @@
   <subtitle><![CDATA[记录点滴　|　仰望星空，脚踏实地]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jakezy.com//"/>
-  <updated>2015-09-05T00:20:44.809Z</updated>
+  <updated>2015-10-12T10:12:56.493Z</updated>
   <id>http://jakezy.com//</id>
   
   <author>
@@ -14,6 +14,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[从回调监听谈起]]></title>
+    <link href="http://jakezy.com/2015/10/12/%E4%BB%8E%E5%9B%9E%E8%B0%83%E7%9B%91%E5%90%AC%E8%B0%88%E8%B5%B7/"/>
+    <id>http://jakezy.com/2015/10/12/从回调监听谈起/</id>
+    <published>2015-10-12T10:09:35.000Z</published>
+    <updated>2015-10-12T10:12:56.493Z</updated>
+    <content type="html"><![CDATA[<p>C++<br>    sort cmp<br>Java<br>    button listener<br>    lambda<br>    ::<br>JavaScript<br>    闭包<br>监听器-设计模式<br>    观察者模式<br>    装饰者模式<br>    职责链模式<br>    模板方法模式<br>注册监听=订阅</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>C++<br>    sort cmp<br>Java<br>    button listener<br>    lambda<br>    ::<br>JavaScript<br>    闭包<br>监听器-设计模式<br>    观察者模式<br>    装饰者模式<]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Ubuntu环境配置]]></title>
@@ -243,7 +257,7 @@
 </ul>
 <a id="more"></a>
 <p><hr></p>
-<h2 id="Excel_Sheet_Column_Title"><a href="https://leetcode.com/problems/excel-sheet-column-title/" target="_blank" rel="external">Excel Sheet Column Title</a></h2><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">class</span> Solution &#123;</span><br><span class="line">    public String convertToTitle(int <span class="keyword">n</span>) &#123;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">n</span> &gt; 0) &#123;</span><br><span class="line">            <span class="keyword">n</span>--;</span><br><span class="line">            <span class="keyword">char</span> ch = (<span class="keyword">char</span>) (<span class="keyword">n</span> % 26 + 'A');</span><br><span class="line">            sb.<span class="keyword">append</span>(ch);</span><br><span class="line">            <span class="keyword">n</span> = <span class="keyword">n</span> / 26;</span><br><span class="line">        &#125;</span><br><span class="line">        sb.<span class="literal">reverse</span>();</span><br><span class="line">        <span class="keyword">return</span> sb.<span class="keyword">toString</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Excel_Sheet_Column_Title"><a href="https://leetcode.com/problems/excel-sheet-column-title/" target="_blank" rel="external">Excel Sheet Column Title</a></h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convertToTitle</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            n--;</span><br><span class="line">            <span class="keyword">char</span> ch = (<span class="keyword">char</span>) (n % <span class="number">26</span> + <span class="string">'A'</span>);</span><br><span class="line">            sb.append(ch);</span><br><span class="line">            n = n / <span class="number">26</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        sb.reverse();</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><hr></p>
 <h2 id="Excel_Sheet_Column_Number"><a href="https://leetcode.com/problems/excel-sheet-column-number/" target="_blank" rel="external">Excel Sheet Column Number</a></h2><p>思路：<br>26进制转10进制<br>$ABCD_{26} = 1\times26^3 + 2\times26^2 + 3\times26^1 + 4\times26^0$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">titleToNumber</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> ch = s.charAt(i);</span><br><span class="line">            <span class="keyword">int</span> n = ch - <span class="string">'A'</span> + <span class="number">1</span>;</span><br><span class="line">            num += Math.<span class="built_in">pow</span>(<span class="number">26</span>, s.length() - i - <span class="number">1</span>) * n;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -768,54 +782,6 @@ h3, h4 {
 <li><a href="https://leetcode.com/problems/palindrome-partitioning-ii/">Palindrome Partitioning II</a></li>
 <li><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/">Remove Duplicates from Sorted List</a></li>
 <li><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/">Remove Duplicates from Sorted List II</a></li>
-</ul>]]>
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://jakezy.com/tags/Leetcode/"/>
-    
-      <category term="Leetcode" scheme="http://jakezy.com/categories/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Leetcode刷题记录 6]]></title>
-    <link href="http://jakezy.com/2015/07/27/Leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-6/"/>
-    <id>http://jakezy.com/2015/07/27/Leetcode刷题记录-6/</id>
-    <published>2015-07-27T04:46:51.000Z</published>
-    <updated>2015-07-29T07:32:07.302Z</updated>
-    <content type="html"><![CDATA[<ul>
-<li><a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="external">Minimum Path Sum</a></li>
-<li><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="external">Climbing Stairs</a></li>
-<li><a href="https://leetcode.com/problems/jump-game/" target="_blank" rel="external">Jump Game</a></li>
-</ul>
-<a id="more"></a>
-<p><hr></p>
-<h2 id="Minimum_Path_Sum"><a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="external">Minimum Path Sum</a></h2><p>思路：</p>
-<p>state: f[i][j]表示从起点到i,j的最短路径和</p>
-<p>function: f[i][j] = min(f[i-1][j], f[i][j-1]) + cost[i][j]</p>
-<p>initialize: f[0][0] = cost[0][0], f[0][i] = cost[0][i] + f[0][i-1], f[i][0] = cost[i][0] + f[i-1][0]</p>
-<p>answer: f[m-1][n-1]</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = grid.length;</span><br><span class="line">        <span class="keyword">int</span> n = grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span>[][] sum = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</span><br><span class="line"></span><br><span class="line">        sum[<span class="number">0</span>][<span class="number">0</span>] = grid[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            sum[<span class="number">0</span>][i] = grid[<span class="number">0</span>][i] + sum[<span class="number">0</span>][i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++) &#123;</span><br><span class="line">            sum[i][<span class="number">0</span>] = grid[i][<span class="number">0</span>] + sum[i - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">                sum[i][j] = grid[i][j] + Math.min(sum[i - <span class="number">1</span>][j], sum[i][j - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sum[m - <span class="number">1</span>][n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="Climbing_Stairs"><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="external">Climbing Stairs</a></h2><p>思路：</p>
-<p>state: f[i]表示前i个位置跳到i的方案数</p>
-<p>function: f[i] = f[i-1] + f[i-2]</p>
-<p>initialize: f[0] = 1, f[1] = 2</p>
-<p>answer: f[n-1]</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> first = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> second = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> first;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">return</span> second;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">            result = first + second;</span><br><span class="line">            first = second;</span><br><span class="line">            second = result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><hr></p>
-<h2 id="Jump_Game"><a href="https://leetcode.com/problems/jump-game/" target="_blank" rel="external">Jump Game</a></h2><p>思路：</p>
-<p>state: f[i]表示前i个位置能否跳到第i个位置</p>
-<p>function: f[i] = OR(f[j], 0 &lt; j &lt; i &amp;&amp; j能跳到i)</p>
-<p>initialize: f[0] = true</p>
-<p>answer: f[n-1]</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Dynamic Programming</span></span><br><span class="line">    <span class="comment">// 注：在Leetcode运行会超时</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canJump</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="keyword">boolean</span>[] result = <span class="keyword">new</span> <span class="keyword">boolean</span>[n];</span><br><span class="line">        result[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (result[j] &amp;&amp; nums[j] + j &gt;= i) &#123;</span><br><span class="line">                    result[i] = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result[n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    <summary type="html">
-    <![CDATA[<ul>
-<li><a href="https://leetcode.com/problems/minimum-path-sum/">Minimum Path Sum</a></li>
-<li><a href="https://leetcode.com/problems/climbing-stairs/">Climbing Stairs</a></li>
-<li><a href="https://leetcode.com/problems/jump-game/">Jump Game</a></li>
 </ul>]]>
     
     </summary>
