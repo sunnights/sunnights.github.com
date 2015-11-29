@@ -17,8 +17,8 @@
   
   <entry>
     <title><![CDATA[从回调监听谈起]]></title>
-    <link href="http://jakezy.com/2015/10/12/%E4%BB%8E%E5%9B%9E%E8%B0%83%E7%9B%91%E5%90%AC%E8%B0%88%E8%B5%B7/"/>
-    <id>http://jakezy.com/2015/10/12/从回调监听谈起/</id>
+    <link href="http://jakezy.com/2015/10/12/12-%E4%BB%8E%E5%9B%9E%E8%B0%83%E7%9B%91%E5%90%AC%E8%B0%88%E8%B5%B7/"/>
+    <id>http://jakezy.com/2015/10/12/12-从回调监听谈起/</id>
     <published>2015-10-12T10:09:35.000Z</published>
     <updated>2015-10-12T10:12:56.493Z</updated>
     <content type="html"><![CDATA[<p>C++<br>    sort cmp<br>Java<br>    button listener<br>    lambda<br>    ::<br>JavaScript<br>    闭包<br>监听器-设计模式<br>    观察者模式<br>    装饰者模式<br>    职责链模式<br>    模板方法模式<br>注册监听=订阅</p>
